@@ -1,21 +1,20 @@
-import React, { useState } from "react"; // <-- FIX: Added useState import
+import React, { useEffect, useState } from "react";
 import { Linking } from "react-native";
-
 import {
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
   Image,
-  ScrollView,
   ImageBackground,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
-
-import { useRouter } from "expo-router";
-
+import { Asset } from "expo-asset";
+import { useRouter, useFocusEffect } from "expo-router";
 import { FontAwesome6 } from "@expo/vector-icons";
 import MaskedView from "@react-native-masked-view/masked-view";
+import PopupModal from "../../components/PopupModal";
+import AutoScrollView from "../../components/AutoScrollView";
 
 // Data for the bullet points to make the code cleaner
 const solutions = [
@@ -41,44 +40,112 @@ const philosophyPoints = [
 export default function HomeScreen() {
   const router = useRouter();
 
-  const video = React.useRef(null);
+  // popup state
+  const [showPopup, setShowPopup] = useState(false);
+
+  const video = React.useRef<Video>(null);
   // State to track if the image is grayscale or color
   const [isGrayscale, setIsGrayscale] = useState(true);
 
+  // --- Preload & MaskedView first-render fix ---
+  const [assetsReady, setAssetsReady] = useState(false);
+  const [rerenderKey, setRerenderKey] = useState(0);
+
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        await Asset.loadAsync([
+          require("../../assets/bg-mask.png"),
+          require("../../assets/buddha_grayscale4.png"),
+          require("../../assets/buddha_color4.png"),
+        ]);
+      } catch (e) {
+        // ignore – still try to render
+      } finally {
+        if (!mounted) return;
+        setAssetsReady(true);
+        // Force one extra composition pass (Android MaskedView quirk)
+        requestAnimationFrame(() => setRerenderKey((k) => k + 1));
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // Auto-show popup when Home mounts
+  useEffect(() => {
+    // small timeout so the screen has a chance to mount UI first
+    const t = setTimeout(() => setShowPopup(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+  // --- end fix ---
+
+  // AutoScrollView will handle scrolling to top on focus
+
   return (
-    <ScrollView style={styles.container}>
+    <>
+      <PopupModal
+        visible={showPopup}
+        onClose={() => setShowPopup(false)}
+        title={"Welcome to Daily Money 💰"}
+        // pass a Text node so we can style the popup message white
+        message={
+          <Text style={{ color: '#ffffff', fontSize: 22, fontWeight: '600', textAlign: 'center', lineHeight: 34 }}>
+            For the betterment of all people worldwide — Especially those driving innovation in the Global IT Industry.
+          </Text>
+        }
+        buttonText={"Get in →"}
+      />
+
+  <AutoScrollView style={styles.container}>
       {/* ========== HERO SECTION (FIXED) ========== */}
       <View style={styles.heroSection}>
-        {/* This MaskedView creates the cutout effect */}
-        <MaskedView
-          style={styles.maskedViewStyle}
-          maskElement={
-            <View style={styles.maskContainer}>
-              <Image
-                source={require("../../assets/bg-mask.png")}
-                style={styles.maskImage}
-              />
-            </View>
-          }
-        >
-          {/* This TouchableOpacity handles the tap to change color */}
-          <TouchableOpacity
-            activeOpacity={0.9}
-            onPress={() => setIsGrayscale(!isGrayscale)} // Toggles the color state
+        {/* Masked Buddha */}
+        {assetsReady ? (
+          <MaskedView
+            key={rerenderKey}
+            style={styles.maskedViewStyle}
+            maskElement={
+              <View
+                style={styles.maskContainer}
+                renderToHardwareTextureAndroid
+                collapsable={false}
+              >
+                <Image
+                  source={require("../../assets/bg-mask.png")}
+                  style={styles.maskImage}
+                />
+              </View>
+            }
           >
-            {/* The Buddha image changes based on the isGrayscale state */}
-            {/* <View style={styles.buddhaImageContainer}>  */}
+            {/* Put the hardware hint on a View, not TouchableOpacity */}
+            <View renderToHardwareTextureAndroid>
+              <TouchableOpacity
+                activeOpacity={0.9}
+                onPress={() => setIsGrayscale(!isGrayscale)}
+              >
+                <Image
+                  source={
+                    isGrayscale
+                      ? require("../../assets/buddha_grayscale4.png")
+                      : require("../../assets/buddha_color4.png")
+                  }
+                  style={styles.buddhaImage}
+                />
+              </TouchableOpacity>
+            </View>
+          </MaskedView>
+        ) : (
+          // Placeholder occupies space while assets preload
+          <View style={styles.maskedViewStyle}>
             <Image
-              source={
-                isGrayscale
-                  ? require("../../assets/buddha_grayscale4.png")
-                  : require("../../assets/buddha_color4.png")
-              }
+              source={require("../../assets/buddha_grayscale4.png")}
               style={styles.buddhaImage}
             />
-            {/* </View> */}
-          </TouchableOpacity>
-        </MaskedView>
+          </View>
+        )}
 
         {/* The hero text content now follows the masked image */}
         <View style={styles.heroContent}>
@@ -86,7 +153,7 @@ export default function HomeScreen() {
             <Text style={styles.heroRed}>Daily </Text>
             <Text style={styles.money}>Money</Text>
           </Text>
-          <Text style={styles.heroSub}>Health & wealth.</Text>
+          <Text style={styles.heroSub}>Health & Wealth. </Text>
           <Text style={styles.heroSubtitle}>Independent for Entire life.</Text>
           <Text style={styles.heroDesc}>
             Daily Money stands for discipline, unity and freedom. Together, we
@@ -97,7 +164,7 @@ export default function HomeScreen() {
             life without limits.
           </Text>
           <Text style={styles.heroDesc}>
-            Welcome to <Text style={styles.span}>daily money!</Text>
+            Welcome to <Text style={styles.span}>daily money! </Text>
           </Text>
           <View style={styles.heroActions}>
             <TouchableOpacity
@@ -118,6 +185,7 @@ export default function HomeScreen() {
       <View style={styles.cardSection}>
         <View style={styles.videoCardContainer}>
           <Video
+            ref={video}
             style={styles.videoBackground}
             source={require("../../assets/gif7.mp4")}
             resizeMode={ResizeMode.COVER}
@@ -145,30 +213,28 @@ export default function HomeScreen() {
       <View style={styles.solutionsGrid}>
         <View style={styles.solutionCard}>
           <Text style={styles.solutionCardTitle}>
-            Daily Money is your <Text style={styles.redText}>Future</Text>
+            Vision & Mission is your <Text style={styles.redText}>Future</Text>
           </Text>
           <Image
-            source={require("../../assets/phone1st.jpg")}
+            source={require("../../assets/phone1.png")}
             style={styles.solutionCardImage}
           />
         </View>
         <View style={styles.solutionCard}>
           <Text style={styles.solutionCardTitle}>
-            Daily Money is your{" "}
-            <Text style={styles.redText}>future generation</Text>
+           Vision & Mission is your  <Text style={styles.redText}>Future Generation </Text>
           </Text>
           <Image
-            source={require("../../assets/phone2nd.jpg")}
+            source={require("../../assets/phone2.png")}
             style={styles.solutionCardImage}
           />
         </View>
         <View style={styles.solutionCard}>
           <Text style={styles.solutionCardTitle}>
-            Daily Money is your{" "}
-            <Text style={styles.redText}>generation after generations</Text>
+           Vision & Mission is your <Text style={styles.redText}>Generation After Generations </Text>
           </Text>
           <Image
-            source={require("../../assets/phone3rd.png")}
+            source={require("../../assets/phone3.png")}
             style={styles.solutionCardImage}
           />
         </View>
@@ -177,13 +243,13 @@ export default function HomeScreen() {
       {/* ========== "WEALTH THAT GROWS" CARD ========== */}
       <View style={styles.cardSection}>
         <ImageBackground
-          source={require("../../assets/wealth1.jpg")}
+          source={require("../../assets/home4.jpg")}
           style={styles.wealthCard}
           imageStyle={{ borderRadius: 20 }}
-        ></ImageBackground>
+        />
       </View>
 
-      {/* ========== PHILOSOPHY SECTION (FIXED) ========== */}
+      {/* ========== PHILOSOPHY SECTION ========== */}
       <View style={styles.philosophySectionWrapper}>
         <View style={styles.philosophyCard}>
           <Text style={styles.sectionTitle}>The Daily Money Philosophy</Text>
@@ -243,7 +309,7 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      {/* ========== FOOTER (FIXED) ========== */}
+      {/* ========== FOOTER ========== */}
       <View style={styles.footer}>
         <View style={styles.footerBannerContainer}>
           <Image
@@ -279,33 +345,35 @@ export default function HomeScreen() {
               © 2025. All rights reserved.
             </Text>
           </View>
-
+           
           <View style={styles.footerRightColumn}>
+            
             <View style={styles.footerLinkSection}>
+              
               <TouchableOpacity onPress={() => router.push("/home")}>
-                <Text style={styles.footerLink}>Home</Text>
+                <Text style={styles.footerLink}>Home </Text>
               </TouchableOpacity>
 
               <TouchableOpacity onPress={() => router.push("/health")}>
-                <Text style={styles.footerLink}>Health</Text>
+                <Text style={styles.footerLink}>Health </Text>
               </TouchableOpacity>
 
               <TouchableOpacity onPress={() => router.push("/wealth")}>
-                <Text style={styles.footerLink}>Wealth</Text>
+                <Text style={styles.footerLink}>Wealth </Text>
               </TouchableOpacity>
 
               <TouchableOpacity onPress={() => router.push("/family")}>
-                <Text style={styles.footerLink}>Family</Text>
+                <Text style={styles.footerLink}>Family </Text>
               </TouchableOpacity>
 
               <TouchableOpacity onPress={() => router.push("/about/overview")}>
-                <Text style={styles.footerLink}>About</Text>
+                <Text style={styles.footerLink}>About </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={() => router.push("/mylife/entrepreneur")}
               >
-                <Text style={styles.footerLink}>My Life</Text>
+                <Text style={styles.footerLink}>My Life </Text>
               </TouchableOpacity>
             </View>
 
@@ -358,7 +426,8 @@ export default function HomeScreen() {
           </View>
         </View>
       </View>
-    </ScrollView>
+  </AutoScrollView>
+    </>
   );
 }
 
@@ -368,13 +437,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  redText: {
-    color: "#b71c1c",
-  },
+  redText: { color: "#b71c1c" },
   // Hero Section
   heroSection: {
     paddingHorizontal: 20,
-    paddingVertical: 40,
+    paddingVertical: 0,
     alignItems: "center",
   },
   maskedViewStyle: {
@@ -392,7 +459,6 @@ const styles = StyleSheet.create({
     height: "100%",
     resizeMode: "contain",
   },
-
   buddhaImage: {
     width: "100%",
     height: "100%",
@@ -423,10 +489,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     lineHeight: 24,
   },
-  span: {
-    color: "#d32a2a",
-  },
-
+  span: { color: "#d32a2a" },
   heroActions: {
     flexDirection: "row",
     marginTop: 20,
@@ -537,7 +600,7 @@ const styles = StyleSheet.create({
   },
   // Wealth Grows Card
   wealthCard: {
-    height: 500,
+    height: 370,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -693,6 +756,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     resizeMode: "contain",
+    marginLeft:35,
   },
   footerLogoText: {
     color: "#fff",
@@ -719,11 +783,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     marginBottom: 10,
+    
   },
   footerLink: {
     color: "#949090",
     fontSize: 14,
-    marginBottom: 8,
+    marginBottom: 10,
+   
   },
   socialLinkItem: {
     flexDirection: "row",

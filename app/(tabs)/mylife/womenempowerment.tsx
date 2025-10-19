@@ -1,12 +1,13 @@
 import React from "react";
-import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import AutoScrollView from "../../../components/AutoScrollView";
 import { useRouter } from "expo-router";
 
 export default function WomenEmpowerment() {
     const router = useRouter();
 
     return (
-        <ScrollView style={styles.container}>
+        <AutoScrollView style={styles.container}>
             {/* Header */}
             <View style={styles.headerWrap}>
                 <Text style={styles.headerText}>Women Empowerment - {"\n"} A Deeper Vision</Text>
@@ -15,7 +16,7 @@ export default function WomenEmpowerment() {
             {/* Hero Section */}
             <View style={styles.hero}>
                 <Image
-                    source={{ uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1759735299/grp_vjrnq7.png" }}
+                    source={require("../../../assets/women-1.jpg")}
                     style={styles.heroImage}
                 />
                 <View style={styles.heroContent}>
@@ -44,9 +45,9 @@ export default function WomenEmpowerment() {
 
                 {/* Image Row */}
                 <View style={styles.imageRow}>
-                    <Image source={require("../../../assets/smile.png")} style={styles.rowImage} />
-                    <Image source={require("../../../assets/talk.png")} style={styles.rowImage} />
-                    <Image source={require("../../../assets/hpy.png")} style={styles.rowImage} />
+                    <Image source={require("../../../assets/women-2.jpg")} style={styles.rowImage} />
+                    <Image source={require("../../../assets/women-3.jpg")} style={styles.rowImage} />
+                    <Image source={require("../../../assets/women-4.jpg")} style={styles.rowImage} />
                 </View>
             </View>
 
@@ -75,7 +76,7 @@ export default function WomenEmpowerment() {
                         <Text style={styles.programText}>
                             Education, career development programs, and economic empowerment initiatives for women.
                         </Text>
-                        <Image source={require("../../../assets/em1.jpg")} style={styles.programImage} />
+                        <Image source={require("../../../assets/women-5.jpg")} style={styles.programImage} />
                     </View>
 
                     <View style={styles.program}>
@@ -91,7 +92,7 @@ export default function WomenEmpowerment() {
                         <Text style={styles.programText}>
                             Promoting womens rights and gender equality through advocacy and community programs.
                         </Text>
-                        <Image source={require("../../../assets/em3.jpg")} style={styles.programImage} />
+                        <Image source={require("../../../assets/women-7.jpg")} style={styles.programImage} />
                     </View>
                 </View>
             </View>
@@ -119,7 +120,7 @@ export default function WomenEmpowerment() {
             </View>
 
 
-        </ScrollView>
+        </AutoScrollView>
     );
 }
 
@@ -150,18 +151,23 @@ const styles = StyleSheet.create({
     statText: { fontSize: 14, color: "#fff", textAlign: "center" },
 
     programs: { flexDirection: "row", flexWrap: "wrap", justifyContent: "center", gap: 15 },
-    program: { width: 350, backgroundColor: "#fff", borderRadius: 10, padding: 10, margin: 10, shadowColor: "#000", shadowOpacity: 0.1, shadowRadius: 5, elevation: 3 },
+    program: { width: 300, backgroundColor: "#fff", borderRadius: 10, padding: 10, margin: 10, shadowColor: "#000", shadowOpacity: 0.1, shadowRadius: 5, elevation: 3 },
     programTitle: { fontSize: 28, fontWeight: "700", color: "#b20a2c", marginBottom: 5 },
     programText: { fontSize: 18, color: "#555", marginBottom: 10, fontWeight: "700", },
-    programImage: { width: "100%", height: 520, borderRadius: 8 },
+    programImage: { width: "100%", height: 400, borderRadius: 8 },
 
     viewMoreWrap: { alignItems: "center", marginVertical: 20 },
     viewMoreBtn: { backgroundColor: "#0b3a55", paddingVertical: 12, paddingHorizontal: 30, borderRadius: 12 },
     viewMoreText: { color: "#fff", fontSize: 16, fontWeight: "600" },
 
 
-    footer: { alignItems: "center", paddingVertical: 30 },
-    footerLogo: { width: 100, height: 40, resizeMode: "contain", marginBottom: 10 },
-    footerTitle: { fontSize: 20, fontWeight: "700", color: "#000" ,padding:10 },
-    footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#b40000ff" },
+  footer: { alignItems: "center", paddingVertical: 30 ,backgroundColor:'#1f2937'},
+  footerLogo: {
+    width: 100,
+    height: 40,
+    resizeMode: "contain",
+    marginBottom: 10,
+  },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

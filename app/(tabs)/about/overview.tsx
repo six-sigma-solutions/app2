@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet, Animated } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, Animated } from "react-native";
+import AutoScrollView from '../../../components/AutoScrollView';
 import { useRouter } from "expo-router";
 
 export default function Overview() {
@@ -23,13 +24,13 @@ export default function Overview() {
       title: "Our Purpose",
       color: "#f30000ff",
       text: "Daily Money exists to make the world healthier, happier, wealthier — one person, one family, and one community at a time.",
-      img: require("../../../assets/image-1.jpg"),
+      img: require("../../../assets/over1.jpg"),
     },
     {
       title: "Our Approach",
       color: "#0035c7ff",
       text: "Clarity – Simplifying money so everyone can understand it.\nDiscipline – Encouraging consistent daily habits that build lasting wealth.\nIntegration – Connecting health, wealth, and peace as part of the same journey.\nGenerational Growth – Ensuring prosperity passes forward, sustaining families across generations.",
-      img: require("../../../assets/image-2.jpg"),
+      img: require("../../../assets/over2.jpg"),
     },
     {
       title: "Our Core Beliefs",
@@ -46,7 +47,7 @@ export default function Overview() {
   ];
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <AutoScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Overview</Text>
       </View>
@@ -94,7 +95,7 @@ export default function Overview() {
         <Text style={styles.footerTitle}>DAILY MONEY</Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 
@@ -121,14 +122,19 @@ const styles = StyleSheet.create({
   title: { fontSize: 20, fontWeight: "700", marginBottom: 10, textAlign: "center" },
   text: { fontSize: 15, lineHeight: 22, textAlign: "center", color: "#0f172a", marginBottom: 12 },
 
-  image: { width: "100%", height: 280, borderRadius: 15 },
+  image: { width: "100%", height: 210, borderRadius: 10 },
 
   buttonWrap: { alignItems: "center", marginVertical: 30 },
   button: { backgroundColor: "#4caf50", paddingVertical: 12, paddingHorizontal: 30, borderRadius: 30 },
   buttonText: { color: "#fff", fontSize: 16, fontWeight: "600" },
 
-  footer: { alignItems: "center", paddingVertical: 30 },
-  footerLogo: { width: 100, height: 40, resizeMode: "contain", marginBottom: 10 },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#000" },
-  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#b40000ff" },
+  footer: { alignItems: "center", paddingVertical: 30 ,backgroundColor:'#1f2937'},
+  footerLogo: {
+    width: 100,
+    height: 40,
+    resizeMode: "contain",
+    marginBottom: 10,
+  },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

@@ -9,6 +9,7 @@ import {
   Animated,
   ImageSourcePropType,
 } from "react-native";
+import AutoScrollView from '../../../components/AutoScrollView';
 import { useRouter } from "expo-router";
 
 interface VisionSection {
@@ -39,28 +40,28 @@ const Visionmission: React.FC = () => {
 
   const sections: VisionSection[] = [
     {
-      img: require("../../../assets/vmd-1.jpeg"),
+      img: require("../../../assets/vision11.jpg"),
       points: [
         "Transforming the way the world lives — healthier in body, happier in heart, and richer in spirit.",
         "Inspire a world where well-being, joy, and prosperity thrive together.",
       ],
     },
     {
-      img: require("../../../assets/vmd-2.jpeg"),
+      img: require("../../../assets/vision2.jpg"),
       points: [
         "To nurture global wellness and wealth through mindful living and empowered growth.",
         "To harmonize body, mind, and prosperity through conscious, nature-powered living.",
       ],
     },
     {
-      img: require("../../../assets/vmd-3.jpeg"),
+      img: require("../../../assets/vision3.jpeg"),
       points: [
         "A world of harmony — where health, happiness, and wealth coexist in balance.",
         "To redefine success by aligning well-being, joy, happiness, and financial growth.",
       ],
     },
     {
-      img: require("../../../assets/vm-143.jpeg"),
+      img: require("../../../assets/vision4.jpg"),
       points: [
         "To create a global movement that connects well-being with wealth-building for a better tomorrow.",
         "Empower every individual to live healthier, happier, and more abundant lives through balance and purpose.",
@@ -76,7 +77,7 @@ const Visionmission: React.FC = () => {
   ];
 
   return (
-    <ScrollView style={styles.container}>
+    <AutoScrollView style={styles.container}>
       {/* Title */}
       <Text style={styles.title}>Daily Money Vision & Mission</Text>
 
@@ -200,7 +201,7 @@ const Visionmission: React.FC = () => {
         <Text style={styles.footerTitle}>DAILY MONEY</Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 };
 
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
   },
   heroImage: {
     width: "100%",
-    height: 600,
+    height: 450,
     opacity: 0.7,
   },
   heroOverlay: {
@@ -260,8 +261,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   sectionImage: {
-    width: "100%",
-    height: 200,
+    width: "95%",
+    height: 184,
     borderRadius: 16,
     marginBottom: 15,
   },
@@ -319,8 +320,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   galleryImage: {
-    width: 350,
-    height: 490,
+    width: 250,
+    height: 350,
     borderRadius: 16,
     padding: 20,
     paddingLeft: 20,
@@ -346,13 +347,14 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 
-  footer: { alignItems: "center", paddingVertical: 30 },
+
+  footer: { alignItems: "center", paddingVertical: 30 ,backgroundColor:'#1f2937'},
   footerLogo: {
     width: 100,
     height: 40,
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#000", padding: 10 },
-  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#b40000ff" },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

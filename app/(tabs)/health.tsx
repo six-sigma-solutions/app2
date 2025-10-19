@@ -1,24 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import AutoScrollView from '../../components/AutoScrollView';
 import { useRouter } from "expo-router";
 
 export default function Health() {
   const router = useRouter();
-
+ 
   return (
-    <ScrollView style={styles.container}>
+    <AutoScrollView style={styles.container}>
       {/* === PAGE TITLE === */}
       <Text style={styles.heading}>Our Health</Text>
 
       {/* === HERO SECTION === */}
       <View style={styles.hero}>
-        <View style={styles.heroImageContainer}>
-          <Image
-            source={require("../../assets/health1.jpg")}
-            style={styles.heroImage}
-          />
-        </View>
+        
 
         <View style={styles.heroContent}>
           <Text style={styles.heroTitle}>
@@ -26,12 +22,20 @@ export default function Health() {
             <Text style={styles.colorHappy}>Live Happy, </Text>
             <Text style={styles.colorWealthy}>Live Wealthy</Text>
           </Text>
+          </View>
+          <View style={styles.heroImageContainer}>
+          <Image
+            source={require("../../assets/healthhead.jpg")}
+            style={styles.heroImage}
+          />
+        </View>
 
+        <View style={styles.heroContent}>
           <Text style={styles.heroText}>
             Your journey to wellness and financial freedom starts here.
           </Text>
           <Text style={styles.heroText}>
-            Our health is our true wealth — it gives us energy, focus, and freedom to live fully.
+            Our health is our true wealth — it gives us energy, focus, and freedom to live fully. Every choice - what we eat, how we move, how we rest shapes our future. When we care for our health, we care for our dreams, our families, and our world. Strong bodies. Clear minds. Happy hearts. Together, we build a healthier tomorrow - Our health, our strength, our future.
           </Text>
         </View>
       </View>
@@ -45,8 +49,8 @@ export default function Health() {
       <View style={styles.subImageContainer}>
         {[
           {
-            img: require("../../assets/image12.jpeg"),
-            color: "#036600",
+            img: require("../../assets/health1.jpg"),
+            color: "#27b4f0ff",
             quotes: [
               "Health and fitness are not temporary — they are my lifetime goal.",
               "Health is not a destination — it’s a lifelong evolution.",
@@ -54,7 +58,7 @@ export default function Health() {
             ],
           },
           {
-            img: require("../../assets/image11.jpeg"),
+            img: require("../../assets/health2.jpg"),
             color: "#b11597",
             quotes: [
               "I am committed to wellness for life.",
@@ -63,7 +67,7 @@ export default function Health() {
             ],
           },
           {
-            img: require("../../assets/image3.jpeg"),
+            img: require("../../assets/health3.jpg"),
             color: "#34004d",
             quotes: [
               "I need lifelong health and fitness.",
@@ -72,7 +76,7 @@ export default function Health() {
             ],
           },
           {
-            img: require("../../assets/image4.jpeg"),
+            img: require("../../assets/health4.jpg"),
             color: "#002770",
             quotes: [
               "I want to be fit, strong, and energetic for my entire life.",
@@ -142,7 +146,7 @@ export default function Health() {
           Independent for Entire Life
         </Text>
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 
@@ -312,13 +316,13 @@ const styles = StyleSheet.create({
 
   btnText: { color: "#fff", fontWeight: "700", fontSize: 16 },
 
-  footer2: { alignItems: "center", paddingVertical: 30 },
+  footer2: { alignItems: "center", paddingVertical: 30,backgroundColor:'#1f2937' },
   footerLogo2: {
     width: 100,
     height: 40,
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle2: { fontSize: 20, fontWeight: "700", color: "#000" },
-  footerSubtitle2: { fontSize: 16, fontWeight: "700", color: "#b40000" },
+  footerTitle2: { fontSize: 20, fontWeight: "700", color: "#fffb2c" },
+  footerSubtitle2: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

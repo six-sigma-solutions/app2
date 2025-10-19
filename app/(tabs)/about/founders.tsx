@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import AutoScrollView from '../../../components/AutoScrollView';
 import { Link } from 'expo-router'; // or react-navigation if using that
 
 const founder = {
@@ -10,7 +11,7 @@ const founder = {
 
 export default function FounderMsg() {
   return (
-    <ScrollView style={styles.container}>
+    <AutoScrollView style={styles.container}>
       <View style={styles.founderPageSection}>
         {/* Main Card */}
         <View style={styles.founderMessageCard}>
@@ -26,17 +27,18 @@ export default function FounderMsg() {
             <Text style={styles.founderName}>{founder.name}</Text>
             <Text style={styles.founderRole}>{founder.role}</Text>
           </View>
+          <View style={styles.messageSection}>
+              <Image source={require('../../../assets/founder1.jpg')} style={styles.messageImage} />
+            </View>
 
           {/* Message Content */}
-          <View style={styles.messageContent}>
-            <Text style={styles.messageQuote}>
-              “I’m <Text style={styles.signature}>Chellapondy Vellaiswamy,</Text> with over 35 years of experience across Media, Finance, and Wellness. From launching Kailash Cable Network in 1990 to serving as Deputy Director – Distribution at Tamilthirai TV and AVP at India Infoline Ltd, I have developed extensive expertise in leadership and business growth. Since 2010, I’ve been a wellness consultant, helping over 100,000 people transform their health and wealth while building an organization of 5,000+ associates. My global learning across 15+ countries, combined with a Doctorate in Social Work, reflects my passion for holistic well-being and community impact.”
-            </Text>
+      
+            
 
             <View style={styles.messageSection}>
-              <Image source={require('../../../assets/mainhead.jpg')} style={styles.messageImage} />
+              <Image source={require('../../../assets/founder2.jpg')} style={styles.messageImage} />
             </View>
-          </View>
+          
 
           {/* View More Button */}
           <View style={styles.viewMoreLinkMyLife}>
@@ -58,7 +60,7 @@ export default function FounderMsg() {
           </View>
         </View>
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
   },
 
   founderMessageCard: {
-    maxWidth: 900,
+    width: "100%",
     alignSelf: 'center',
     backgroundColor: '#047871',
     borderRadius: 12,
@@ -160,8 +162,9 @@ const styles = StyleSheet.create({
   },
   messageImage: {
     width: '100%',
-    height: 560,
+    height: 440,
     borderRadius: 15,
+    objectFit:'cover',
     
     resizeMode: 'cover',
   },

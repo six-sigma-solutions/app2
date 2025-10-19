@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import {
-  ScrollView,
   View,
   Text,
   Image,
@@ -8,6 +7,7 @@ import {
   StyleSheet,
   Animated,
 } from "react-native";
+import AutoScrollView from "../../../components/AutoScrollView";
 import { useRouter } from "expo-router";
 
 export default function Students() {
@@ -31,14 +31,14 @@ export default function Students() {
 
   const sections = [
     {
-      img: require("../../../assets/ssss.jpg"),
+      img: require("../../../assets/student-1.jpg"),
       text: `Our future starts with today's discipline. 
 We help turn student loans into student gains.
 Your degree gets you a job; your DailyMoney skills get you freedom.
 Build wealth while you learn. Don't just chase grades, chase growth.`,
     },
     {
-      img: require("../../../assets/student555.jpg"),
+      img: require("../../../assets/student-2.jpg"),
       text: `Learn to earn while you still have time.
 Our side hustle is your main opportunity.
 Financial confidence is the best graduation gift.
@@ -46,13 +46,13 @@ DailyMoney provides a business blueprint for students.
 We train you for real-world success.`,
     },
     {
-      img: require("../../../assets/stu3.jpg"),
+      img: require("../../../assets/student-3.jpg"),
       text: `Achieve personal growth and financial freedom.
 Pay off student debt through your own earned income.
 Financial independence brings confidence and self-respect.`,
     },
     {
-      img: require("../../../assets/stu4.jpg"),
+      img: require("../../../assets/student-4.jpg"),
       text: `DailyMoney empowered to learn, inspired to earn.
 Earn with pride, learn with purpose.
 Students earn, and the world learns the value of determination.
@@ -61,9 +61,9 @@ Self-earned income builds more than wealth, it builds wisdom.`,
   ];
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <AutoScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Daily Money – Empower Students</Text>
+        <Text style={styles.headerText}>Daily Money  Empower Students</Text>
       </View>
 
       {sections.map((section, index) => (
@@ -88,7 +88,7 @@ Self-earned income builds more than wealth, it builds wisdom.`,
           <View style={styles.imageWrapper}>
             <Image
               source={section.img}
-              style={styles.image}
+              style={[styles.image, index === 1 && styles.imageShort]}
               resizeMode="stretch"
             />
           </View>
@@ -116,7 +116,7 @@ Self-earned income builds more than wealth, it builds wisdom.`,
         <Text style={styles.footerTitle}>DAILY MONEY</Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 
@@ -155,10 +155,13 @@ const styles = StyleSheet.create({
 
   image: {
     width: "100%",
-    height: 600,
+    height: 400,
     borderRadius: 15,
     marginBottom: 12,
     
+  },
+  imageShort: {
+    height: 340,
   },
 
   text: {
@@ -177,13 +180,13 @@ const styles = StyleSheet.create({
   },
   viewMoreText: { color: "#fff", fontSize: 16, fontWeight: "600" },
 
-  footer: { alignItems: "center", paddingVertical: 30 },
+  footer: { alignItems: "center", paddingVertical: 30 ,backgroundColor:'#1f2937'},
   footerLogo: {
     width: 100,
     height: 40,
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#000" },
-  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#b40000ff" },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

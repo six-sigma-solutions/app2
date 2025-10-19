@@ -5,11 +5,11 @@ import {
   TextInput,
   TouchableOpacity,
   Linking,
-  ScrollView,
   StyleSheet,
   Alert,
   Platform,
 } from "react-native";
+import AutoScrollView from "../components/AutoScrollView";
 import { Picker } from "@react-native-picker/picker";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -69,7 +69,7 @@ export default function Contact() {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <AutoScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>📞 Contact Us</Text>
       <Text style={styles.subtitle}>Join Together! Journey Together!</Text>
 
@@ -202,7 +202,7 @@ export default function Contact() {
           </Text>
         )}
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 

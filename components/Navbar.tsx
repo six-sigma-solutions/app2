@@ -3,17 +3,20 @@ import { View, Image, Text, TouchableOpacity, StyleSheet, Platform } from "react
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 
+const BAR_HEIGHT = 65;       // fixed visual height for the row
+const BUTTON_HEIGHT = 35;    // fixed button height (no vertical padding)
+
 export default function Navbar() {
   return (
-    <SafeAreaView style={styles.safeArea}>
+    // Only paint background behind the status bar, don’t add bottom insets
+    <SafeAreaView style={styles.safeArea} edges={["top"]}>
+      {/* Fixed-height row — looks identical on all devices */}
       <View style={styles.navbar}>
         {/* Left Logo */}
         <Link href="/home" asChild>
           <TouchableOpacity activeOpacity={0.8} style={styles.logoWrapper}>
             <Image
-              source={{
-                uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png",
-              }}
+              source={{ uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png" }}
               resizeMode="contain"
               style={styles.logo}
             />
@@ -23,7 +26,12 @@ export default function Navbar() {
         {/* Right Contact */}
         <Link href="/contact" asChild>
           <TouchableOpacity activeOpacity={0.8} style={styles.contactButton}>
-            <Text style={styles.contactText}>Contact</Text>
+            <Text
+              style={styles.contactText}
+              allowFontScaling={false}        // lock text size so height doesn’t change
+            >
+              Contact
+            </Text>
           </TouchableOpacity>
         </Link>
       </View>
@@ -32,30 +40,44 @@ export default function Navbar() {
 }
 
 const styles = StyleSheet.create({
-  safeArea: { backgroundColor: "#fafafa" },
+  // Just background for the notch/status area
+  safeArea: {
+    backgroundColor: "#fafafa",
+  },
+
+  // Fixed-height horizontal bar; no vertical padding that can expand
   navbar: {
+    height: BAR_HEIGHT,
+    backgroundColor: "#1f2937",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: Platform.OS === "android" ? 8 : 10,
     paddingHorizontal: 20,
-    backgroundColor: "#fafafa",
   },
+
   logoWrapper: { justifyContent: "center", alignItems: "center" },
   logo: { width: 105, height: 54 },
+
+  // Fixed-height button; avoid paddingVertical so height is stable
   contactButton: {
-    backgroundColor: "#E21212",
-    paddingVertical: 8,
+    height: BUTTON_HEIGHT,
     paddingHorizontal: 18,
     borderRadius: 10,
+    backgroundColor: "#E21212",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: 38,
+    // prevent Android from inflating touchable due to font ascent/descents
+    ...(Platform.OS === "android" ? { overflow: "hidden" } : null),
   },
+
+  // Keep text from changing height across devices
   contactText: {
     color: "#fff",
     fontWeight: "700",
     fontSize: 15,
+    lineHeight: 18,           // lock line box
     textAlign: "center",
+    // Android-only: removes extra top spacing in Text
+    ...(Platform.OS === "android" ? { includeFontPadding: false, textAlignVertical: "center" as const } : null),
   },
 });

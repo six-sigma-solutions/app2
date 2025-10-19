@@ -1,12 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Image, ScrollView, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
+import AutoScrollView from '../components/AutoScrollView';
 import { useRouter } from 'expo-router'; // Or use react-navigation
 
 const images = [
 
-    require("../assets/health-mob.png"),
-    require("../assets/solution-img-4.png"),
-    require("../assets/solution-img-3.png"),
+    require("../assets/solution1.jpg"),
+    require("../assets/solution2.jpg"),
+    require("../assets/solution3.jpg"),
+
+    
     require("../assets/solution-modified2.jpg"),
 ];
 
@@ -20,11 +23,21 @@ export default function Solution() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <AutoScrollView style={styles.container} contentContainerStyle={styles.content}>
       {/* Image Cards */}
       {images.map((img, index) => (
         <View key={index} style={styles.imageCard}>
-          <Image source={img} style={styles.cardImage} resizeMode='stretch' />
+          <Image
+            source={img}
+            style={
+              index === 0
+                ? [styles.cardImage, styles.cardImageSolution1]
+                : index === 3
+                ? [styles.cardImageModified]
+                : styles.cardImage
+            }
+            resizeMode='stretch'
+          />
         </View>
       ))}
 
@@ -33,7 +46,7 @@ export default function Solution() {
         <Text style={styles.ctaButtonText}>Click to Transform Your Life</Text>
       </TouchableOpacity>
 
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 
@@ -44,14 +57,26 @@ const styles = StyleSheet.create({
   /* Image Card */
   imageCard: { width: '100%', marginVertical: 30 },
   cardImage: {
-    width: '99%',
-    height: 500,
+    width: '98%',
+    height: 260,
     borderRadius: 10,
+  },
+  cardImageSolution1: {
+    height: 200,
+  },
+  cardImageModified: {
+    width: '90%',
+    height: 400,
+    borderRadius: 20,
+    borderWidth: 3,
+    borderColor: '#0f766e',
+    alignSelf: 'center',
   },
 
   /* CTA Button */
   ctaButton: {
     backgroundColor: '#ffcc00',
+    marginBottom:70,
     paddingVertical: 14,
     paddingHorizontal: 40,
     borderRadius: 50,

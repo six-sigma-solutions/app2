@@ -1,5 +1,6 @@
 import React from "react";
-import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import AutoScrollView from "../../../components/AutoScrollView";
 import { useRouter } from "expo-router";
 
 export default function Income() {
@@ -7,11 +8,11 @@ export default function Income() {
 
   const sections = [
     {
-      image: require("../../../assets/incomeimg-1.png"),
+      image: require("../../../assets/income-11.png"),
       text: "Income is more than just money earned — it is the reward for effort, time, and value created. Whether through wages, salaries, profits, or investments, income provides the foundation for stability and growth.",
     },
     {
-      image: require("../../../assets/incomeimg-2.jpg"),
+      image: require("../../../assets/income-12.png"),
       text: "True income, however, is not just financial. It is about the returns you gain from life itself — the knowledge you acquire, the relationships you nurture, and the health you maintain.",
     },
     {
@@ -19,13 +20,13 @@ export default function Income() {
       text: "Secure your family's future. Build lasting wealth and assets. Create the freedom to travel, explore, and experience the world. Live with peace of mind and purpose.",
     },
     {
-      image: require("../../../assets/uuu.jpg"),
+      image: require("../../../assets/income4.jpg"),
       text: "Income powers growth, not greed. Energy creates opportunity. Wealth begins with wisdom. Freedom follows discipline. Balance builds true success.",
     },
   ];
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <AutoScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerText}>Income: The Fuel of Growth</Text>
@@ -33,8 +34,14 @@ export default function Income() {
 
       {/* Sections */}
       {sections.map((section, index) => (
-        <View key={index} style={styles.sectionCard}>
-          <Image source={section.image} style={styles.image} />
+        <View
+          key={index}
+          style={[styles.sectionCard, index === sections.length - 1 && styles.lastSectionCard]}
+        >
+          <Image
+            source={section.image}
+            style={[styles.image, index === sections.length - 1 && styles.lastImage]}
+          />
           <View style={styles.textBox}>
             <Text style={styles.text}>{section.text}</Text>
           </View>
@@ -60,11 +67,34 @@ export default function Income() {
         <Text style={styles.footerTitle}>DAILY MONEY</Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  lastSectionCard: {
+    backgroundColor: '#f5f5f5',
+    borderColor: '#0b3a55',
+    borderWidth: 2,
+    shadowColor: '#0b3a55',
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  lastImage: {
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    borderBottomLeftRadius: 40,
+    borderBottomRightRadius: 40,
+    borderWidth: 2,
+    borderColor: '#0b3a55',
+    width: '90%',
+    height: 400,
+    alignSelf: 'center',
+    marginTop: 12,
+    marginBottom: 8,
+    backgroundColor: '#fff',
+  },
   container: { flex: 1, backgroundColor: "#fafafa" },
 
   header: { backgroundColor: "forestgreen", paddingVertical: 20, alignItems: "center" },
@@ -86,7 +116,7 @@ const styles = StyleSheet.create({
 
   image: {
     width: "100%",
-    height: 600,
+    height: 280,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     resizeMode: "cover",
@@ -108,8 +138,13 @@ const styles = StyleSheet.create({
   },
   viewMoreText: { color: "#fff", fontSize: 16, fontWeight: "600" },
 
-  footer: { alignItems: "center", paddingVertical: 30 },
-  footerLogo: { width: 100, height: 40, resizeMode: "contain", marginBottom: 10 },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#000" },
-  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#b40000ff" },
+  footer: { alignItems: "center", paddingVertical: 30 ,backgroundColor:'#1f2937'},
+  footerLogo: {
+    width: 100,
+    height: 40,
+    resizeMode: "contain",
+    marginBottom: 10,
+  },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

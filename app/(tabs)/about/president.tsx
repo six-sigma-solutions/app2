@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import AutoScrollView from '../../../components/AutoScrollView';
 import { Link } from 'expo-router'; // Or use react-navigation if needed
 
 const president = {
@@ -10,7 +11,7 @@ const president = {
 
 export default function PresidentMsg() {
   return (
-    <ScrollView style={styles.container}>
+    <AutoScrollView style={styles.container}>
       {/* President Page Section */}
       <View style={styles.presidentPageSection}>
         <View style={styles.presidentMessageCard}>
@@ -70,7 +71,7 @@ export default function PresidentMsg() {
         </View>
 
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 

@@ -5,9 +5,9 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
   Animated,
 } from "react-native";
+import AutoScrollView from "../components/AutoScrollView";
 import { useRouter } from "expo-router";
 
 const Gratitude: React.FC = () => {
@@ -33,7 +33,7 @@ const Gratitude: React.FC = () => {
   }, [fadeAnim, translateY]);
 
   return (
-    <ScrollView style={styles.container}>
+    <AutoScrollView style={styles.container}>
       <ImageBackground
         source={require("../assets/universe.png")}
         style={styles.background}
@@ -83,7 +83,7 @@ const Gratitude: React.FC = () => {
           </View>
         </Animated.View>
       </ImageBackground>
-    </ScrollView>
+    </AutoScrollView>
   );
 };
 

@@ -3,10 +3,10 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
   Image,
   TouchableOpacity,
 } from 'react-native';
+import AutoScrollView from '../../components/AutoScrollView';
 
 
 import { useRouter } from "expo-router";
@@ -18,32 +18,32 @@ export default function Family() {
   const steps = [
     {
       id: 1,
-      img: require('@/assets/familyz.jpg'),
+      img: require('../../assets/family1.png'),
       quote:
         '“I have secured my family\'s health, education, and finances, ensuring long-term security, growth, and happiness for future generations.”',
     },
     {
       id: 2,
-      img: require('@/assets/dddd.jpg'),
+      img: require('../../assets/family2.png'),
       quote:
         '“I’ve secured my family\'s well-being and plan to expand their opportunities, investing in their safety, education, and lifestyle.”',
     },
     {
       id: 3,
-      img: require('@/assets/gggg.jpg'),
+      img: require('../../assets/family3.png'),
       quote:
         '“I\'ve secured my children\'s future with education, savings, and guidance, aiming for long-term financial freedom.”',
     },
     {
       id: 4,
-      img: require('@/assets/nnn.jpg'),
+      img: require('../../assets/family4.png'),
       quote:
         '“I prioritize my family, ensuring their financial security and emotional support for the long term.”',
     },
   ];
 
   return (
-    <ScrollView style={styles.container}>
+    <AutoScrollView style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>
@@ -53,10 +53,7 @@ export default function Family() {
           True prosperity comes from both good health and financial security.
           With our transparent, collaborative approach, we bring your vision to
           life. Guided by our three-phase methodology, we consistently deliver
-          value and adapt to change — building a better world:{' '}
-          <Text style={styles.highlightText}>
-            Healthier, Happier, and Wealthier
-          </Text>
+          value and adapt to change — building a better world: <Text style={styles.highlightText}>Healthier, Happier, and Wealthier</Text>
         </Text>
       </View>
 
@@ -72,10 +69,7 @@ export default function Family() {
 
       {/* Blog Section */}
       <View style={styles.blogSection}>
-        <Text style={styles.blogTitle}>From the Blog</Text>
-        <Text style={styles.blogSubtitle}>
-          Insights and updates from our team
-        </Text>
+       
         <TouchableOpacity
           style={styles.readMoreBtn}
           onPress={() => router.push("/(tabs)/mylife/entrepreneur")}
@@ -95,7 +89,7 @@ export default function Family() {
               <Text style={styles.footerTitle}>DAILY MONEY</Text>
               <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
             </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 
@@ -131,6 +125,11 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     fontWeight: 'bold',
   },
+  highlightColumn: {
+    marginTop: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
   // ✅ Vertical Step Layout
   step: {
@@ -141,8 +140,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   imageTop: {
-    width: '90%',
-    height: 250,
+    width: '100%',
+    height: 240,
     borderRadius: 15,
     marginBottom: 15,
     resizeMode: 'cover',
@@ -184,13 +183,14 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 
-  footer: { alignItems: "center", paddingVertical: 30 },
+ 
+  footer: { alignItems: "center", paddingVertical: 30 ,backgroundColor:'#1f2937'},
   footerLogo: {
     width: 100,
     height: 40,
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#000", padding: 10 },
-  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#b40000ff" },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "daily-money-app",
+    "name": "Daily Money",
     "slug": "daily-money-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/DailyMoney.png",
     "scheme": "dailymoneyapp",
     "userInterfaceStyle": "automatic",
     "ios": {
@@ -13,19 +13,19 @@
     "android": {
       "package": "com.sathish2882sk.dailymoneyapp",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "foregroundImage": "./assets/DailyMoney.png",
         "backgroundColor": "#E6F4FE"
       }
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/DailyMoney.png"
     },
     "plugins": [
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/DailyMoney.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
@@ -33,11 +33,12 @@
       ],
       "expo-router"
     ],
+    "sdkVersion": "54.0.0",
     "extra": {
+      "router": {},
       "eas": {
-        "projectId": "b9585db8-8780-40cc-b2a5-f1d603cb3613"
+        "projectId": "93a4f4be-668b-44f3-85b0-ef8ba40c0e75"
       }
-    },
-    "sdkVersion": "54.0.0"
+    }
   }
 }

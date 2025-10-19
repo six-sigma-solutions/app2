@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet, Animated } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, Animated } from "react-native";
+import AutoScrollView from "../../../components/AutoScrollView";
 import { useRouter } from "expo-router";
 
 export default function Elder() {
@@ -26,19 +27,19 @@ Live with financial confidence. Feel valued and included. Share your wisdom, not
 Enjoy peace, purpose, and pride in your DailyMoney life.`,
     },
     {
-      img: require("../../../assets/e1.jpg"),
+      img: require("../../../assets/elder2.jpg"),
       text: `Empowerment begins with a choice. Choose to live with abundance, not dependence.
 Your experience is your greatest asset and we help you turn it into income.
 Invest in your health, reclaim your wealth, and cherish your family. That's the DailyMoney way.`,
     },
     {
-      img: require("../../../assets/e3.jpg"),
+      img: require("../../../assets/elder3.jpg"),
       text: `Retirement means living life on your own schedule and enjoying inner peace.
 It’s not the end of possibilities; it’s the start of living life on your own terms.
 That’s the DailyMoney way: freedom with purpose and dignity at every stage of life.`,
     },
     {
-      img: require("../../../assets/e4.jpg"),
+      img: require("../../../assets/elder4.jpg"),
       text: `When elders thrive, families become stronger. When their voices are valued, communities become wiser.
 Living freely and confidently makes society richer in humanity, not just wealth.
 The DailyMoney way lets every generation learn, earn, and live with purpose.`,
@@ -46,7 +47,7 @@ The DailyMoney way lets every generation learn, earn, and live with purpose.`,
   ];
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <AutoScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Daily Money – Empower Elders</Text>
       </View>
@@ -94,7 +95,7 @@ The DailyMoney way lets every generation learn, earn, and live with purpose.`,
         <Text style={styles.footerTitle}>DAILY MONEY</Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
 
   image: {
     width: "100%",
-    height: 570,
+    height: 420,
     borderRadius: 15,
     marginBottom: 12,
   },
@@ -148,8 +149,13 @@ const styles = StyleSheet.create({
   },
   viewMoreText: { color: "#fff", fontSize: 16, fontWeight: "600" },
 
-  footer: { alignItems: "center", paddingVertical: 30 },
-  footerLogo: { width: 100, height: 40, resizeMode: "contain", marginBottom: 10 },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#000" },
-  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#b40000ff" },
+  footer: { alignItems: "center", paddingVertical: 30 ,backgroundColor:'#1f2937'},
+  footerLogo: {
+    width: 100,
+    height: 40,
+    resizeMode: "contain",
+    marginBottom: 10,
+  },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

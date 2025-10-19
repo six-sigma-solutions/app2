@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import AutoScrollView from '../../components/AutoScrollView';
 import { useRouter } from "expo-router";
 
 export default function Wealth() {
@@ -15,39 +9,39 @@ export default function Wealth() {
   const rows = [
     {
       id: 1,
-      image: require("../../assets/hhh.jpg"),
+      image: require("../../assets/wealth1.jpg"),
       text: "Wealth is more than numbers in a bank account. It is the freedom to choose our path, the security to protect what matters, and the power to create a lasting impact.",
       backgroundColor: "#2b9348",
     },
     {
       id: 2,
-      image: require("../../assets/w2.jpg"),
+      image: require("../../assets/wealth2.jpg"),
       text: "True wealth begins with discipline — living with intention, saving with wisdom, and investing with vision. It grows not only through money but also through knowledge, relationships, and the values we pass on to the next generation.",
       backgroundColor: "#382813",
     },
     {
       id: 3,
-      image: require("../../assets/w1.jpg"),
+      image: require("../../assets/wealth3.jpg"),
       text: "Our wealth is not just about what we accumulate, but about what we enable. With wealth, we gain the ability to support our families, nurture dreams, create opportunities, and contribute to causes that uplift society.",
       backgroundColor: "#910000",
     },
     {
       id: 4,
-      image: require("../../assets/w45.jpg"),
+      image: require("../../assets/wealth4.jpg"),
       text: "Wealth is not greed—it is growth. It is not selfishness—it is stewardship. When guided by purpose, wealth becomes a force for freedom, for impact, and for legacy. Our wealth is our power to live with dignity, give with generosity, and build a future that outlives us.",
       backgroundColor: "#ff9100",
     },
   ];
 
   return (
-    <ScrollView style={styles.container}>
+    <AutoScrollView style={styles.container}>
       {/* Header */}
       <Text style={styles.heading}>Our Wealth</Text>
 
       {/* Hero Image */}
       <View style={styles.hero}>
         <Image
-          source={require("../../assets/lll.jpg")}
+          source={require("../../assets/wealthhead.jpg")}
           style={styles.heroImage}
           resizeMode="cover"
         />
@@ -85,7 +79,7 @@ export default function Wealth() {
         <Text style={styles.footerTitle}>DAILY MONEY</Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
-    </ScrollView>
+    </AutoScrollView>
   );
 }
 
@@ -100,7 +94,7 @@ const styles = StyleSheet.create({
     color: "#0b3550",
   },
   hero: { alignItems: "center", marginBottom: 20, paddingHorizontal: 20 },
-  heroImage: { width: "100%", height: 270, borderRadius: 20, marginBottom: 10 },
+  heroImage: { width: "100%", height: 200, borderRadius: 20, marginBottom: 10 },
 
   row: {
     alignItems: "center",
@@ -108,7 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginVertical: 10,
   },
-  rowImage: { width: "100%", height: 550, borderRadius: 20, marginBottom: 15 },
+  rowImage: { width: "100%", height: 430, borderRadius: 20, marginBottom: 15 },
   rowTextBox: { paddingHorizontal: 10 },
   rowText: {
     color: "#fff",
@@ -127,13 +121,13 @@ const styles = StyleSheet.create({
   },
   viewMoreText: { color: "#fff", fontWeight: "700", fontSize: 16 },
 
-  footer: { alignItems: "center", paddingVertical: 30 },
+  footer: { alignItems: "center", paddingVertical: 30 ,backgroundColor:'#1f2937'},
   footerLogo: {
     width: 100,
     height: 40,
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#000", padding: 10 },
-  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#b40000ff" },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

@@ -1,36 +1,33 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import AutoScrollView from "../components/AutoScrollView";
 import { useRouter } from "expo-router";
 
 const Mypromises = () => {
   const router = useRouter();
 
-  const handleGetMove = () => {
-    // Open external Herbalife link
-    const url = "https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/";
-    router.push({ pathname: url }); // works for internal routes
-    // OR if you want to open in browser:
-    // Linking.openURL(url);
+  const handleCtaClick = () => {
+    router.push('/bio'); // Navigate to Gratitude page
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <AutoScrollView contentContainerStyle={styles.container}>
       <View style={styles.wrapper}>
         {/* Image */}
         <Image
-          source={require("../assets/rrr.jpg")}
+          source={require("../assets/promise1.png")}
           style={styles.image}
           resizeMode="cover"
         />
 
         {/* Button */}
-        <TouchableOpacity style={styles.button} onPress={handleGetMove}>
+        <TouchableOpacity style={styles.button} onPress={handleCtaClick}>
           <Text style={styles.buttonText}>GET STARTED</Text>
         </TouchableOpacity>
       </View>
 
     
-    </ScrollView>
+    </AutoScrollView>
   );
 };
 
@@ -39,7 +36,7 @@ export default Mypromises;
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#2cd915ff',
+    backgroundColor: '#08143aff',
     alignItems: "center",
     justifyContent: "center",
   },
@@ -51,8 +48,8 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   image: {
-    width: "100%",
-    height: 260,
+    width: "98%",
+    height: 310,
   },
   button: {
     position: "absolute",
