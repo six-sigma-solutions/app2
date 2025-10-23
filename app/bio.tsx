@@ -256,12 +256,12 @@ export default function Bio() {
         <View style={styles.footerCard}>
           <View style={styles.footerLogoWrap}>
             <Image
-              source={{ uri: 'https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png' }}
+              source={{ uri: 'https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png' }}
               style={styles.footerLogo}
               resizeMode="contain"
             />
           </View>
-          <Text style={styles.footerTitle}>DAILY MONEY</Text>
+          <Text style={styles.footerTitle}></Text>
           <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
         </View>
       </AutoScrollView>
@@ -400,9 +400,11 @@ const styles = StyleSheet.create({
   footerLogo: {
     width: 100,
     height: 40,
+    alignSelf:"center",
     resizeMode: "contain",
+    paddingRight:10,
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", marginTop:-10 },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

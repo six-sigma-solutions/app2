@@ -9,6 +9,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
+import { LinearGradient } from 'expo-linear-gradient';
 import { Asset } from "expo-asset";
 import { useRouter, useFocusEffect } from "expo-router";
 import { FontAwesome6 } from "@expo/vector-icons";
@@ -19,19 +20,19 @@ import AutoScrollView from "../../components/AutoScrollView";
 // Data for the bullet points to make the code cleaner
 const solutions = [
   "Solutions for Every Stage of Your Health & Wealth Journey.",
-  "Daily Money Made Easy, Health & Wealth Made Possible.",
-  "Smart Choices for Daily Money, Smarter Future in Health & Wealth.",
+  "DM Made Easy, Health & Wealth Made Possible.",
+  "Smart Choices for DM, Smarter Future in Health & Wealth.",
   "From Today’s Money to Tomorrow’s Wealth & Wellness.",
   "Empowering You Every Day with Money, Health, and Wealth.",
 ];
 
 // NEW: Data for the Philosophy section
 const philosophyPoints = [
-  "Your Partner in Daily Money, Health, and Wealth for Life.",
+  "Your Partner in DM, Health, and Wealth for Life.",
   "Every Stage, Every Step Money, Health & Wealth Solutions.",
-  "Balance Your Daily Money. Build Your Health. Grow Your Wealth.",
+  "Balance Your DM. Build Your Health. Grow Your Wealth.",
   "Small Daily Money Wins, Big Health & Wealth Gains.",
-  "Simplify Daily Money. Strengthen Health. Secure Wealth.",
+  "Simplify DM. Strengthen Health. Secure Wealth.",
   "Master Your Day, Master Your Money, Master Your Well-being.",
   "Turn Daily Financial Actions into a Lifetime of Health and Wealth.",
   "Live Well, Live Wealthy, Every Single Day.",
@@ -98,8 +99,23 @@ export default function HomeScreen() {
         }
         buttonText={"Get in →"}
       />
+       <AutoScrollView style={styles.container}>    
 
-  <AutoScrollView style={styles.container}>
+      {/* Top banner: DM - Daily Message (45deg gradient) */}
+      <LinearGradient
+        colors={["#cedb1c", "#79d8d8"]}
+        start={[0, 0]}
+        end={[1, 1]}
+        style={styles.topBanner}
+      >
+        <View style={styles.bannerInner}>
+          <Text style={styles.bannerTitle}>DM - Daily Message</Text>
+          <Text style={styles.bannerSubtitle}> Health and Freedom</Text>
+
+        </View>
+      </LinearGradient>
+
+ 
       {/* ========== HERO SECTION (FIXED) ========== */}
       <View style={styles.heroSection}>
         {/* Masked Buddha */}
@@ -150,21 +166,21 @@ export default function HomeScreen() {
         {/* The hero text content now follows the masked image */}
         <View style={styles.heroContent}>
           <Text style={styles.heroTitle}>
-            <Text style={styles.heroRed}>Daily </Text>
-            <Text style={styles.money}>Money</Text>
+            <Text style={styles.heroRed}>D</Text>
+            <Text style={styles.money}>M</Text>
           </Text>
           <Text style={styles.heroSub}>Health & Wealth. </Text>
           <Text style={styles.heroSubtitle}>Independent for Entire life.</Text>
           <Text style={styles.heroDesc}>
-            Daily Money stands for discipline, unity and freedom. Together, we
+            DM stands for discipline, unity and freedom. Together, we
             are shaping a future of health, wealth, and limitless opportunities.
           </Text>
           <Text style={styles.heroDesc}>
-            With Daily Money, every step forward is a step toward freedom, and a
+            With DM, every step forward is a step toward freedom, and a
             life without limits.
           </Text>
           <Text style={styles.heroDesc}>
-            Welcome to <Text style={styles.span}>daily money! </Text>
+            Welcome to <Text style={styles.span}>DM! </Text>
           </Text>
           <View style={styles.heroActions}>
             <TouchableOpacity
@@ -199,7 +215,7 @@ export default function HomeScreen() {
       {/* ========== SOLUTIONS SECTION ========== */}
       <View style={styles.solutionsSection}>
         <Text style={styles.sectionTitle}>
-          Solutions for every stage of Daily Money
+          Solutions for every stage of DM
         </Text>
         {solutions.map((item, index) => (
           <View key={index} style={styles.bulletItem}>
@@ -243,7 +259,7 @@ export default function HomeScreen() {
       {/* ========== "WEALTH THAT GROWS" CARD ========== */}
       <View style={styles.cardSection}>
         <ImageBackground
-          source={require("../../assets/home4.jpg")}
+          source={require("../../assets/home4.png")}
           style={styles.wealthCard}
           imageStyle={{ borderRadius: 20 }}
         />
@@ -252,7 +268,7 @@ export default function HomeScreen() {
       {/* ========== PHILOSOPHY SECTION ========== */}
       <View style={styles.philosophySectionWrapper}>
         <View style={styles.philosophyCard}>
-          <Text style={styles.sectionTitle}>The Daily Money Philosophy</Text>
+          <Text style={styles.sectionTitle}>The DM Philosophy</Text>
           {philosophyPoints.map((item, index) => (
             <View key={index} style={styles.bulletItem}>
               <Text style={styles.bulletCheck}>✓</Text>
@@ -284,9 +300,7 @@ export default function HomeScreen() {
               style={styles.teamMemberImage}
             />
             <Text style={styles.teamMemberName}>S.Vasu</Text>
-            <Text style={styles.teamMemberRole}>
-              Technocrat & Media Industry
-            </Text>
+            
           </View>
           <View style={styles.teamMemberCard}>
             <Image
@@ -294,9 +308,7 @@ export default function HomeScreen() {
               style={styles.teamMemberImage}
             />
             <Text style={styles.teamMemberName}>Dr. KP Kosygan</Text>
-            <Text style={styles.teamMemberRole}>
-              Senior Orthopaedic Consultant
-            </Text>
+          
           </View>
           <View style={styles.teamMemberCard}>
             <Image
@@ -304,7 +316,7 @@ export default function HomeScreen() {
               style={styles.teamMemberImage}
             />
             <Text style={styles.teamMemberName}>R.K.Selvamani</Text>
-            <Text style={styles.teamMemberRole}>Film Director & Producer</Text>
+            
           </View>
         </View>
       </View>
@@ -334,9 +346,10 @@ export default function HomeScreen() {
               <Image
                 source={require("../../assets/DailyMoney.png")}
                 style={styles.footerLogo}
+                
               />
             </TouchableOpacity>
-            <Text style={styles.footerLogoText}>Daily Money</Text>
+            <Text style={styles.footerLogoText}></Text>
             <Text style={styles.footerAddress}>
               Six Sigma Solutions, NKC Towers 1st Floor, Opp to Government
               Engineering College, Salem-636011. TamilNadu, India.
@@ -348,7 +361,9 @@ export default function HomeScreen() {
            
           <View style={styles.footerRightColumn}>
             
+            
             <View style={styles.footerLinkSection}>
+              <Text style={styles.footerLinkTitle}>Company</Text>
               
               <TouchableOpacity onPress={() => router.push("/home")}>
                 <Text style={styles.footerLink}>Home </Text>
@@ -461,7 +476,7 @@ const styles = StyleSheet.create({
   },
   buddhaImage: {
     width: "100%",
-    height: "100%",
+    height: "99%",
     resizeMode: "cover",
   },
   heroContent: {
@@ -579,13 +594,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   solutionCard: {
-    width: "80%",
+    width: "90%",
     borderWidth: 1,
     borderColor: "#e0e0e0",
     borderRadius: 16,
     marginBottom: 20,
     alignItems: "center",
     overflow: "hidden",
+    height:490,
+    
   },
   solutionCardTitle: {
     fontWeight: "bold",
@@ -597,6 +614,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 400,
     resizeMode: "contain",
+
   },
   // Wealth Grows Card
   wealthCard: {
@@ -726,6 +744,22 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 20,
   },
+  topBanner: {
+    width: '100%',
+    paddingVertical: 18,
+    paddingHorizontal: 20,
+  },
+  bannerInner: { maxWidth: '100%' },
+  bannerTitle: { fontSize: 22, fontWeight: '700', color: '#0f172a' ,textAlign:'center'},
+  bannerSubtitle: { fontSize: 18, marginTop: 4, color: '#0f172a',textAlign:'center' },
+  bannerBody: { fontSize: 16, marginTop: 8, color: '#0f172a', lineHeight: 22 },
+  bannerText: {
+    fontSize: 20,
+    color: '#0f172a',
+    lineHeight: 32,
+    fontWeight: '600',
+    
+  },
   footerBannerButton: {
     backgroundColor: "#d32a2a",
     paddingVertical: 5,
@@ -760,9 +794,11 @@ const styles = StyleSheet.create({
   },
   footerLogoText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
-    marginTop: 10,
+    marginTop: 5,
+    marginLeft:36,
+    
   },
   footerAddress: {
     color: "#bdbdbd",

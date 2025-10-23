@@ -9,13 +9,13 @@ export default function Wealth() {
   const rows = [
     {
       id: 1,
-      image: require("../../assets/wealth1.jpg"),
+      image: require("../../assets/wealth1.png"),
       text: "Wealth is more than numbers in a bank account. It is the freedom to choose our path, the security to protect what matters, and the power to create a lasting impact.",
       backgroundColor: "#2b9348",
     },
     {
       id: 2,
-      image: require("../../assets/wealth2.jpg"),
+      image: require("../../assets/wealth2.png"),
       text: "True wealth begins with discipline — living with intention, saving with wisdom, and investing with vision. It grows not only through money but also through knowledge, relationships, and the values we pass on to the next generation.",
       backgroundColor: "#382813",
     },
@@ -27,7 +27,7 @@ export default function Wealth() {
     },
     {
       id: 4,
-      image: require("../../assets/wealth4.jpg"),
+      image: require("../../assets/wealth4.png"),
       text: "Wealth is not greed—it is growth. It is not selfishness—it is stewardship. When guided by purpose, wealth becomes a force for freedom, for impact, and for legacy. Our wealth is our power to live with dignity, give with generosity, and build a future that outlives us.",
       backgroundColor: "#ff9100",
     },
@@ -72,11 +72,11 @@ export default function Wealth() {
       <View style={styles.footer}>
         <Image
           source={{
-            uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png",
+            uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png",
           }}
           style={styles.footerLogo}
         />
-        <Text style={styles.footerTitle}>DAILY MONEY</Text>
+        <Text style={styles.footerTitle}></Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
     </AutoScrollView>
@@ -128,6 +128,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerTitle: { fontSize: 20, fontWeight: "700", marginTop:-10, color: "#fffb2c"},
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

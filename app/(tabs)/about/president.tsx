@@ -62,10 +62,10 @@ export default function PresidentMsg() {
           {/* Footer */}
           <View style={styles.cardFooterBg}>
             <Image
-              source={{ uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png" }}
+              source={{ uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png" }}
               style={styles.footerLogo}
             />
-            <Text style={styles.footerTitle2}>DAILY MONEY</Text>
+            <Text style={styles.footerTitle2}></Text>
             <Text style={styles.footerSubtitle2}>Independent for Entire Life</Text>
           </View>
         </View>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
 
   cardFooterBg: { backgroundColor: '#1f2937', paddingVertical: 24, alignItems: 'center' },
   footerLogo: { width: 60, height: 60, resizeMode: 'contain', marginBottom: 12 },
-  footerTitle2: { fontSize: 28, fontWeight: '700', letterSpacing: 1, color: '#facc15', textTransform: 'uppercase' },
+  footerTitle2: { fontSize: 28, fontWeight: '700', letterSpacing: 1, color: '#facc15', marginTop: -10, textTransform: 'uppercase' },
   footerSubtitle2: { fontSize: 18, color: '#fde047', marginTop: 4 },
 
   

@@ -23,7 +23,7 @@ export default function Overview() {
     {
       title: "Our Purpose",
       color: "#f30000ff",
-      text: "Daily Money exists to make the world healthier, happier, wealthier — one person, one family, and one community at a time.",
+      text: "DM exists to make the world healthier, happier, wealthier — one person, one family, and one community at a time.",
       img: require("../../../assets/over1.jpg"),
     },
     {
@@ -41,7 +41,7 @@ export default function Overview() {
     {
       title: "Our Promise",
       color: "#c29503ff",
-      text: "Daily Money is not just about income today, but about wealth for life and beyond. We help build strong foundations so every generation thrives — financially, physically, and spiritually.",
+      text: "DM is not just about income today, but about wealth for life and beyond. We help build strong foundations so every generation thrives — financially, physically, and spiritually.",
       img: require("../../../assets/image-4.jpg"),
     },
   ];
@@ -88,11 +88,11 @@ export default function Overview() {
       <View style={styles.footer}>
         <Image
           source={{
-            uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png",
+            uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png",
           }}
           style={styles.footerLogo}
         />
-        <Text style={styles.footerTitle}>DAILY MONEY</Text>
+        <Text style={styles.footerTitle}></Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
     </AutoScrollView>
@@ -135,6 +135,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", marginTop:-10 },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, findNodeHandle, StatusBar, Pressable, Keyboard } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import AutoScrollView from '../components/AutoScrollView';
+import FloatingLabelInput from '../components/FloatingLabelInput';
 import { Link, useRouter } from 'expo-router';
 import AuthHeader from '../components/AuthHeader';
 import { signIn as firebaseSignIn } from '../lib/firebase';
@@ -10,6 +13,46 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const scrollRef = useRef<any>(null);
+  const emailRef = useRef<any>(null);
+  const passwordRef = useRef<any>(null);
+
+  useEffect(() => {
+    // Try to set navigation bar color & button style at runtime if expo-navigation-bar is available.
+    (async () => {
+      try {
+        // require.resolve throws if module isn't present; keeps bundlers happy
+        if (require.resolve && typeof require.resolve === 'function') {
+          try {
+            require.resolve('expo-navigation-bar');
+          } catch (err) {
+            return; // not installed
+          }
+        }
+
+        // dynamic require so bundlers don't crash when package is missing
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const NavigationBar = require('expo-navigation-bar');
+        if (NavigationBar?.setBackgroundColorAsync) {
+          await NavigationBar.setBackgroundColorAsync('#2a74c6');
+        }
+        if (NavigationBar?.setButtonStyleAsync) {
+          await NavigationBar.setButtonStyleAsync('light');
+        }
+      } catch (e) {
+        // ignore
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    try {
+      StatusBar.setBarStyle('light-content');
+      if (Platform.OS === 'android') {
+        StatusBar.setBackgroundColor('#2a74c6', true);
+      }
+    } catch (e) {}
+  }, []);
 
   function onSignIn() {
     setError('');
@@ -40,52 +83,68 @@ export default function SignIn() {
   }
 
   return (
-    <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <View style={styles.container}>
-        <AuthHeader />
-
-        <View style={styles.form}>
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
-            placeholderTextColor="rgba(255,255,255,0.7)"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            value={email}
-            onChangeText={setEmail}
-            accessibilityLabel="Email"
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor="rgba(255,255,255,0.7)"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-            accessibilityLabel="Password"
-          />
-
-          <Link href="/forgot-password" asChild>
-            <TouchableOpacity style={styles.forgotLink}>
-              <Text style={styles.forgotText}>Forgot password?</Text>
-            </TouchableOpacity>
-          </Link>
-
-          {error ? <Text style={styles.error}>{error}</Text> : null}
-
-          <TouchableOpacity accessibilityRole="button" onPress={onSignIn} style={styles.primaryButton}>
-            <Text style={styles.primaryText}>{loading ? 'Signing in...' : 'Sign In'}</Text>
-          </TouchableOpacity>
-
-          <View style={styles.bottomRow}>
-            <Text style={styles.bottomText}>Don't have an account? </Text>
-            <Link href="/signup" style={styles.bottomLink}>
-              <Text style={styles.bottomLink}>Sign Up</Text>
-            </Link>
-          </View>
-        </View>
-      </View>
+    <KeyboardAvoidingView
+      style={styles.flex}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? -60 : -70}
+    >
+      <SafeAreaView edges={["top","bottom"]} style={styles.safeArea}>
+        <Pressable style={styles.flex} onPress={Keyboard.dismiss}>
+          <AutoScrollView
+            ref={scrollRef}
+            contentContainerStyle={styles.container}
+            keyboardShouldPersistTaps="handled"
+          >
+            <AuthHeader />
+            <View style={styles.form}>
+              <FloatingLabelInput
+                ref={emailRef}
+                label="Email"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                value={email}
+                onChangeText={setEmail}
+                accessibilityLabel="Email"
+                onFocus={() => {
+                  try {
+                    const node = findNodeHandle(emailRef.current);
+                    scrollRef.current?.scrollResponderScrollNativeHandleToKeyboard(node, 120, true);
+                  } catch (e) {}
+                }}
+              />
+              <FloatingLabelInput
+                ref={passwordRef}
+                label="Password"
+                secureTextEntry
+                value={password}
+                onChangeText={setPassword}
+                accessibilityLabel="Password"
+                onFocus={() => {
+                  try {
+                    const node = findNodeHandle(passwordRef.current);
+                    scrollRef.current?.scrollResponderScrollNativeHandleToKeyboard(node, 120, true);
+                  } catch (e) {}
+                }}
+              />
+              <Link href="/forgot-password" asChild>
+                <TouchableOpacity style={styles.forgotLink}>
+                  <Text style={styles.forgotText}>Forgot password ?  </Text>
+                </TouchableOpacity>
+              </Link>
+              {error ? <Text style={styles.error}>{error}</Text> : null}
+              <TouchableOpacity accessibilityRole="button" onPress={onSignIn} style={styles.primaryButton}>
+                <Text style={styles.primaryText}>{loading ? 'Signing in...' : 'Sign In'}</Text>
+              </TouchableOpacity>
+              <View style={styles.bottomRow}>
+                <Text style={styles.bottomText}>Don't have an account? </Text>
+                <Link href="/signup" style={styles.bottomLink}>
+                  <Text style={styles.bottomLink}> Sign Up</Text>
+                </Link>
+              </View>
+            </View>
+          </AutoScrollView>
+        </Pressable>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 }
@@ -95,9 +154,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
+    paddingTop: 56,
+    paddingBottom: 40,
     backgroundColor: '#2a74c6',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
+  safeArea: { flex: 1, backgroundColor: '#2a74c6' },
   form: { marginTop: 10 },
   input: {
     height: 48,
@@ -113,7 +175,7 @@ const styles = StyleSheet.create({
   forgotText: { color: '#fff', opacity: 0.9 },
   error: { color: '#ffdcdc', marginBottom: 8 },
   primaryButton: {
-    backgroundColor: '#E16666',
+    backgroundColor: '#d63333ff',
     height: 52,
     borderRadius: 14,
     justifyContent: 'center',
@@ -122,6 +184,6 @@ const styles = StyleSheet.create({
   },
   primaryText: { color: '#fff', fontSize: 16, fontWeight: '700' },
   bottomRow: { flexDirection: 'row', justifyContent: 'center', marginTop: 14 },
-  bottomText: { color: 'rgba(255,255,255,0.9)' },
+  bottomText: { color: 'rgba(230, 26, 26, 0.9)' },
   bottomLink: { color: '#fff', fontWeight: '700' },
 });

@@ -5,12 +5,12 @@ import { useRouter } from 'expo-router'; // Or use react-navigation
 
 const images = [
 
-    require("../assets/solution1.jpg"),
-    require("../assets/solution2.jpg"),
-    require("../assets/solution3.jpg"),
+    require("../assets/solution1.png"),
+    require("../assets/solution2.png"),
+    require("../assets/solution3.png"),
 
     
-    require("../assets/solution-modified2.jpg"),
+    require("../assets/solution-modified2.png"),
 ];
 
 
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     height: 200,
   },
   cardImageModified: {
-    width: '90%',
+    width: '100%',
     height: 400,
     borderRadius: 20,
     borderWidth: 3,

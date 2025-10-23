@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "Daily Money",
-    "slug": "daily-money-app",
+    "name": "Daily Message",
+    "slug": "daily-message-app",
+    "icon": "./assets/DailyMoney.png",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/DailyMoney.png",
     "scheme": "dailymoneyapp",
     "userInterfaceStyle": "automatic",
     "ios": {

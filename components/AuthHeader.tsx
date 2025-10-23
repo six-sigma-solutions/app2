@@ -6,7 +6,7 @@ type Props = {
   subtitle?: string;
 };
 
-export default function AuthHeader({ title = 'DailyMoney', subtitle = 'Manage your money easily' }: Props) {
+export default function AuthHeader({ title = 'Daily', subtitle = 'Manage your healthy, wealthy life!  '}: Props) {
   return (
     <View style={styles.container} accessible accessibilityRole="header">
       {/* prefer local asset if available */}
@@ -15,7 +15,7 @@ export default function AuthHeader({ title = 'DailyMoney', subtitle = 'Manage yo
         source={
           (() => {
             try {
-              return require('../assets/logo.png');
+              return require('../assets/DailyMoney.png');
             } catch (e) {
               return { uri: 'https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png' };
             }
@@ -24,7 +24,7 @@ export default function AuthHeader({ title = 'DailyMoney', subtitle = 'Manage yo
         style={styles.logo}
         resizeMode="contain"
         accessibilityIgnoresInvertColors
-        accessibilityLabel="DailyMoney logo"
+        accessibilityLabel="DM logo"
       />
       <Text style={styles.title} accessibilityRole="text">
         {title}
@@ -42,12 +42,13 @@ const styles = StyleSheet.create({
   logo: {
     width: 90,
     height: 90,
-    marginBottom: 8,
+  
   },
   title: {
     fontSize: 32,
     fontWeight: '700',
-    color: '#0F2330',
+    color: '#fff',
+    padding:-1,
   },
   subtitle: {
     marginTop: 6,

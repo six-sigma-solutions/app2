@@ -194,11 +194,11 @@ const Visionmission: React.FC = () => {
       <View style={styles.footer}>
         <Image
           source={{
-            uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png",
+            uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png",
           }}
           style={styles.footerLogo}
         />
-        <Text style={styles.footerTitle}>DAILY MONEY</Text>
+        <Text style={styles.footerTitle}></Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
     </AutoScrollView>
@@ -355,6 +355,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", marginTop:-10 },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

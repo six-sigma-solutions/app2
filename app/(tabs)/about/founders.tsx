@@ -52,10 +52,10 @@ export default function FounderMsg() {
           {/* Footer Section */}
           <View style={styles.cardFooterBg}>
             <Image
-              source={{ uri: 'https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png' }}
+              source={{ uri: 'https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png' }}
               style={styles.footerLogo}
             />
-            <Text style={styles.footerTitle2}>DAILY MONEY</Text>
+            <Text style={styles.footerTitle2}></Text>
             <Text style={styles.footerSubtitle2}>Independent for Entire Life</Text>
           </View>
         </View>
@@ -203,6 +203,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 1,
     color: '#facc15',
+    marginTop: -10,
     textTransform: 'uppercase',
   },
   footerSubtitle2: {

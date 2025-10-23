@@ -23,7 +23,7 @@ export default function Navbar() {
   let logoSource: any = null;
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
-    logoSource = require('../assets/logo.png');
+    logoSource = require('../assets/DailyMoney.png');
   } catch (e) {
     logoSource = null;
   }
@@ -46,7 +46,7 @@ export default function Navbar() {
         <Link href="/home" asChild>
           <TouchableOpacity activeOpacity={0.8} style={styles.logoWrapper}>
             <Image
-              source={logoSource || { uri: 'https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png' }}
+              source={logoSource || {  }}
               resizeMode="contain"
               style={[styles.logo, { width: logoWidth }]}
             />

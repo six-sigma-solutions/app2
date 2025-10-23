@@ -89,9 +89,9 @@ export default function Entrepreneur() {
         },
         {
           image: require("../../../assets/entp8.jpg"),
-          text: `"I have dreams of financial freedom and impact."
+          text: `"I have dreams of financial support and impact."
 "I dream of creating wealth and making a difference."
-"My goal is to build financial freedom and inspire change."
+"My goal is to build financial support and inspire change."
 "My vision combines financial success with social impact."`,
           bgColor: "#dfdfdfff",
           textColor: "#000",
@@ -117,11 +117,11 @@ export default function Entrepreneur() {
       <View style={styles.footer}>
         <Image
           source={{
-            uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png",
+            uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png",
           }}
           style={styles.footerLogo}
         />
-        <Text style={styles.footerTitle}>DAILY MONEY</Text>
+        <Text style={styles.footerTitle}></Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
     </AutoScrollView>
@@ -208,6 +208,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerTitle: { fontSize: 20, marginTop: -10, fontWeight: "700", color: "#fffb2c" },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

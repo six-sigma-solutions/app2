@@ -49,7 +49,7 @@ export default function Contact() {
       `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.countryCode} ${form.phone}\nCompany: ${form.company}\n\nMessage:\n${form.message}`
     );
 
-    const mailtoUrl = `mailto:ilayaraju28@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoUrl = `sixsigmaspvs@gmail.com?subject=${subject}&body=${body}`;
 
     Linking.openURL(mailtoUrl)
       .then(() => {

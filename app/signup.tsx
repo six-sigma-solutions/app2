@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, findNodeHandle, Pressable, Keyboard } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import AutoScrollView from '../components/AutoScrollView';
+import FloatingLabelInput from '../components/FloatingLabelInput';
 import { Link, useRouter } from 'expo-router';
 import AuthHeader from '../components/AuthHeader';
 import { signUp as firebaseSignUp } from '../lib/firebase';
@@ -11,6 +14,10 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const scrollRef = useRef<any>(null);
+  const nameRef = useRef<any>(null);
+  const emailRef = useRef<any>(null);
+  const passwordRef = useRef<any>(null);
 
   function onSignUp() {
     setError('');
@@ -41,42 +48,90 @@ export default function SignUp() {
   }
 
   return (
-    <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <View style={styles.container}>
-        <AuthHeader />
-
-        <View style={styles.form}>
-          <TextInput style={styles.input} placeholder="Name" placeholderTextColor="rgba(255,255,255,0.7)" value={name} onChangeText={setName} accessibilityLabel="Name" />
-          <TextInput style={styles.input} placeholder="Email" placeholderTextColor="rgba(255,255,255,0.7)" keyboardType="email-address" autoCapitalize="none" value={email} onChangeText={setEmail} accessibilityLabel="Email" />
-          <TextInput style={styles.input} placeholder="Password" placeholderTextColor="rgba(255,255,255,0.7)" secureTextEntry value={password} onChangeText={setPassword} accessibilityLabel="Password" />
-
-          {error ? <Text style={styles.error}>{error}</Text> : null}
-
-          <TouchableOpacity accessibilityRole="button" onPress={onSignUp} style={styles.primaryButton}>
-            <Text style={styles.primaryText}>{loading ? 'Creating...' : 'Sign Up'}</Text>
-          </TouchableOpacity>
-
-          <View style={styles.bottomRow}>
-            <Text style={styles.bottomText}>Already have an account? </Text>
-            <Link href="/signin" style={styles.bottomLink}>
-              <Text style={styles.bottomLink}>Sign In</Text>
-            </Link>
-          </View>
-        </View>
-      </View>
+    <KeyboardAvoidingView
+      style={styles.flex}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? -60: -70}
+    >
+      <SafeAreaView edges={["top","bottom"]} style={styles.safeArea}>
+        <Pressable style={styles.flex} onPress={Keyboard.dismiss}>
+          <AutoScrollView
+            ref={scrollRef}
+            contentContainerStyle={styles.container}
+            keyboardShouldPersistTaps="handled"
+          >
+            <AuthHeader />
+            <View style={styles.form}>
+              <FloatingLabelInput
+                ref={nameRef}
+                label="Name"
+                value={name}
+                onChangeText={setName}
+                accessibilityLabel="Name"
+                onFocus={() => {
+                  try {
+                    const node = findNodeHandle(nameRef.current);
+                    scrollRef.current?.scrollResponderScrollNativeHandleToKeyboard(node, 120, true);
+                  } catch (e) {}
+                }}
+              />
+              <FloatingLabelInput
+                ref={emailRef}
+                label="Email"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                value={email}
+                onChangeText={setEmail}
+                accessibilityLabel="Email"
+                onFocus={() => {
+                  try {
+                    const node = findNodeHandle(emailRef.current);
+                    scrollRef.current?.scrollResponderScrollNativeHandleToKeyboard(node, 120, true);
+                  } catch (e) {}
+                }}
+              />
+              <FloatingLabelInput
+                ref={passwordRef}
+                label="Password"
+                secureTextEntry
+                value={password}
+                onChangeText={setPassword}
+                accessibilityLabel="Password"
+                onFocus={() => {
+                  try {
+                    const node = findNodeHandle(passwordRef.current);
+                    scrollRef.current?.scrollResponderScrollNativeHandleToKeyboard(node, 120, true);
+                  } catch (e) {}
+                }}
+              />
+              {error ? <Text style={styles.error}>{error}</Text> : null}
+              <TouchableOpacity accessibilityRole="button" onPress={onSignUp} style={styles.primaryButton}>
+                <Text style={styles.primaryText}>{loading ? 'Creating...' : 'Sign Up'}</Text>
+              </TouchableOpacity>
+              <View style={styles.bottomRow}>
+                <Text style={styles.bottomText}>Already have an account? </Text>
+                <Link href="/signin" style={styles.bottomLink}>
+                  <Text style={styles.bottomLink}>Sign In</Text>
+                </Link>
+              </View>
+            </View>
+          </AutoScrollView>
+        </Pressable>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
+  safeArea: { flex: 1, backgroundColor: '#2a74c6' },
   container: {
     flex: 1,
     padding: 24,
     backgroundColor: '#2a74c6',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
-  form: { marginTop: 10 },
+  form: { marginTop: 10},
   input: {
     height: 48,
     borderRadius: 10,
@@ -89,7 +144,7 @@ const styles = StyleSheet.create({
   },
   error: { color: '#ffdcdc', marginBottom: 8 },
   primaryButton: {
-    backgroundColor: '#E16666',
+    backgroundColor: '#d63333ff',
     height: 52,
     borderRadius: 14,
     justifyContent: 'center',

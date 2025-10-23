@@ -22,34 +22,34 @@ export default function Elder() {
   const sections = [
     {
       img: require("../../../assets/ef1.jpg"),
-      text: `DailyMoney represents a rebirth, a movement where elders earn daily, share wisdom, and feel valuable again.
+      text: `DM represents a rebirth, a movement where elders earn daily, share wisdom, and feel valuable again.
 Live with financial confidence. Feel valued and included. Share your wisdom, not your worries.
-Enjoy peace, purpose, and pride in your DailyMoney life.`,
+Enjoy peace, purpose, and pride in your DM life.`,
     },
     {
       img: require("../../../assets/elder2.jpg"),
       text: `Empowerment begins with a choice. Choose to live with abundance, not dependence.
 Your experience is your greatest asset and we help you turn it into income.
-Invest in your health, reclaim your wealth, and cherish your family. That's the DailyMoney way.`,
+Invest in your health, reclaim your wealth, and cherish your family. That's the DM way.`,
     },
     {
       img: require("../../../assets/elder3.jpg"),
       text: `Retirement means living life on your own schedule and enjoying inner peace.
 It’s not the end of possibilities; it’s the start of living life on your own terms.
-That’s the DailyMoney way: freedom with purpose and dignity at every stage of life.`,
+That’s the DM way: freedom with purpose and dignity at every stage of life.`,
     },
     {
       img: require("../../../assets/elder4.jpg"),
       text: `When elders thrive, families become stronger. When their voices are valued, communities become wiser.
 Living freely and confidently makes society richer in humanity, not just wealth.
-The DailyMoney way lets every generation learn, earn, and live with purpose.`,
+The DM way lets every generation learn, earn, and live with purpose.`,
     },
   ];
 
   return (
     <AutoScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Daily Money – Empower Elders</Text>
+        <Text style={styles.headerText}>DM – Empower Elders</Text>
       </View>
 
       {sections.map((section, index) => (
@@ -87,12 +87,12 @@ The DailyMoney way lets every generation learn, earn, and live with purpose.`,
       <View style={styles.footer}>
         <Image
           source={{
-            uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png",
+            uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png",
           }}
           resizeMode="cover"
           style={styles.footerLogo}
         />
-        <Text style={styles.footerTitle}>DAILY MONEY</Text>
+        <Text style={styles.footerTitle}></Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
     </AutoScrollView>
@@ -156,6 +156,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", marginTop:-10 },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

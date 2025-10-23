@@ -137,11 +137,11 @@ export default function Health() {
       <View style={styles.footer2}>
         <Image
           source={{
-            uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png",
+            uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png",
           }}
           style={styles.footerLogo2}
         />
-        <Text style={styles.footerTitle2}>DAILY MONEY</Text>
+        <Text style={styles.footerTitle2}></Text>
         <Text style={styles.footerSubtitle2}>
           Independent for Entire Life
         </Text>
@@ -323,6 +323,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle2: { fontSize: 20, fontWeight: "700", color: "#fffb2c" },
+  footerTitle2: { fontSize: 20,marginTop:-10, fontWeight: "700", color: "#fffb2c" },
   footerSubtitle2: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

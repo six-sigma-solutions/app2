@@ -31,18 +31,18 @@ export default function Students() {
 
   const sections = [
     {
-      img: require("../../../assets/student-1.jpg"),
+      img: require("../../../assets/student-1.png"),
       text: `Our future starts with today's discipline. 
 We help turn student loans into student gains.
-Your degree gets you a job; your DailyMoney skills get you freedom.
+Your degree gets you a job; your DM skills get you freedom.
 Build wealth while you learn. Don't just chase grades, chase growth.`,
     },
     {
-      img: require("../../../assets/student-2.jpg"),
+      img: require("../../../assets/student-2.png"),
       text: `Learn to earn while you still have time.
 Our side hustle is your main opportunity.
 Financial confidence is the best graduation gift.
-DailyMoney provides a business blueprint for students.
+DM provides a business blueprint for students.
 We train you for real-world success.`,
     },
     {
@@ -53,7 +53,7 @@ Financial independence brings confidence and self-respect.`,
     },
     {
       img: require("../../../assets/student-4.jpg"),
-      text: `DailyMoney empowered to learn, inspired to earn.
+      text: `DM empowered to learn, inspired to earn.
 Earn with pride, learn with purpose.
 Students earn, and the world learns the value of determination.
 Self-earned income builds more than wealth, it builds wisdom.`,
@@ -63,7 +63,7 @@ Self-earned income builds more than wealth, it builds wisdom.`,
   return (
     <AutoScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Daily Money  Empower Students</Text>
+        <Text style={styles.headerText}>DM  Empower Students</Text>
       </View>
 
       {sections.map((section, index) => (
@@ -109,11 +109,11 @@ Self-earned income builds more than wealth, it builds wisdom.`,
       <View style={styles.footer}>
         <Image
           source={{
-            uri: "https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png",
+            uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1761126944/DailyMoney_wzp9zh.png",
           }}
           style={styles.footerLogo}
         />
-        <Text style={styles.footerTitle}>DAILY MONEY</Text>
+        <Text style={styles.footerTitle}></Text>
         <Text style={styles.footerSubtitle}>Independent for Entire Life</Text>
       </View>
     </AutoScrollView>
@@ -187,6 +187,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", padding: 10 },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", marginTop: -10 },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });
