@@ -1,5 +1,7 @@
-import firebaseConfig from '../firebaseConfig';
+import firebaseConfigFromFile from '../firebaseConfig';
 import { Platform } from 'react-native';
+// Try to pick up firebase config from other sources (expo Constants or env)
+import Constants from 'expo-constants';
 
 // We'll try to use the native @react-native-firebase/auth when running on
 // native platforms (Android/iOS) and fall back to the Web JS SDK on web.
@@ -40,9 +42,36 @@ async function initNativeAuth() {
 async function initWebAuth() {
   if (_initializedWeb) return _webAuth;
   _initializedWeb = true;
+  // Primary: firebaseConfig.ts (static file)
+  let firebaseConfig: any = firebaseConfigFromFile;
+
+  // Fallback 1: check Expo Constants (app.json extra or eas build profiles)
+  try {
+    const maybe = (Constants?.manifest?.extra?.firebaseConfig) || (Constants?.expoConfig?.extra?.firebaseConfig);
+    if ((!firebaseConfig || !firebaseConfig.apiKey) && maybe) {
+      console.log('[firebase] using firebaseConfig from Expo Constants.extra');
+      firebaseConfig = maybe;
+    }
+  } catch (e) {}
+
+  // Fallback 2: environment variables (EAS secrets or process.env)
+  if (!firebaseConfig || !firebaseConfig.apiKey) {
+    const envApiKey = process.env.FIREBASE_API_KEY || (Constants?.manifest?.extra?.FIREBASE_API_KEY) || (Constants?.expoConfig?.extra?.FIREBASE_API_KEY);
+    if (envApiKey) {
+      console.log('[firebase] building firebaseConfig from environment variables');
+      firebaseConfig = {
+        apiKey: envApiKey,
+        authDomain: process.env.FIREBASE_AUTH_DOMAIN || Constants?.manifest?.extra?.FIREBASE_AUTH_DOMAIN,
+        projectId: process.env.FIREBASE_PROJECT_ID || Constants?.manifest?.extra?.FIREBASE_PROJECT_ID,
+        storageBucket: process.env.FIREBASE_STORAGE_BUCKET || Constants?.manifest?.extra?.FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || Constants?.manifest?.extra?.FIREBASE_MESSAGING_SENDER_ID,
+        appId: process.env.FIREBASE_APP_ID || Constants?.manifest?.extra?.FIREBASE_APP_ID,
+      };
+    }
+  }
 
   if (!firebaseConfig || !firebaseConfig.apiKey) {
-    console.warn('[firebase] firebaseConfig is missing or incomplete. Please fill firebaseConfig.ts with your Firebase web config.');
+    console.warn('[firebase] firebaseConfig is missing or incomplete. Please add your Firebase web config to firebaseConfig.ts, or provide it via app.json extra or EAS secrets.');
     return null;
   }
 
