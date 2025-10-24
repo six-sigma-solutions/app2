@@ -19,7 +19,7 @@ export default function Entrepreneur() {
       <View style={styles.heroSection}>
         <Text style={styles.heroTitle}>Empowering You to Lead, Build, and Grow</Text>
         <Image
-          source={require("../../../assets/entphead1.jpeg")}
+          source={require("../../../assets/entphead1.png")}
           style={styles.heroImage}
         />
       </View>

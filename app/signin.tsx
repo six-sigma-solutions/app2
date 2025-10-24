@@ -13,6 +13,7 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const scrollRef = useRef<any>(null);
   const emailRef = useRef<any>(null);
   const passwordRef = useRef<any>(null);
@@ -73,8 +74,8 @@ export default function SignIn() {
       .then(() => router.replace('/(tabs)/home'))
       .catch((err) => {
         console.error('[signin] auth error', err);
-        if (err?.message?.includes('Firebase not initialized')) {
-          setError('Authentication backend not configured. Please add your Firebase config to firebaseConfig.ts');
+        if (err?.message?.includes(' not initialized')) {
+          setError( 'Login failed. Please try again');
         } else {
           setError(err.message || 'Sign in failed');
         }
@@ -115,7 +116,7 @@ export default function SignIn() {
               <FloatingLabelInput
                 ref={passwordRef}
                 label="Password"
-                secureTextEntry
+                secureTextEntry={!showPassword}
                 value={password}
                 onChangeText={setPassword}
                 accessibilityLabel="Password"
@@ -125,6 +126,11 @@ export default function SignIn() {
                     scrollRef.current?.scrollResponderScrollNativeHandleToKeyboard(node, 120, true);
                   } catch (e) {}
                 }}
+                rightIcon={
+                  <TouchableOpacity onPress={() => setShowPassword((v) => !v)}>
+                    <Text style={{padding:8, color:'#fff', fontSize:18}}>{showPassword ? '🙈' : '👁️'}</Text>
+                  </TouchableOpacity>
+                }
               />
               <Link href="/forgot-password" asChild>
                 <TouchableOpacity style={styles.forgotLink}>

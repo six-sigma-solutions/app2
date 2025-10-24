@@ -15,6 +15,7 @@ type Props = TextInputProps & {
   containerStyle?: any;
   labelStyle?: TextStyle;
   inputStyle?: TextStyle;
+  rightIcon?: React.ReactNode;
 };
 
 const FloatingLabelInput = React.forwardRef<any, Props>(
@@ -93,17 +94,21 @@ const FloatingLabelInput = React.forwardRef<any, Props>(
         >
           {label}
         </Animated.Text>
-
-        <TextInput
-          ref={internalRef as any}
-          value={value}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          style={[styles.input, inputStyle]}
-          placeholder={isFocused ? '' : undefined}
-          placeholderTextColor="rgba(255,255,255,0.7)"
-          {...rest}
-        />
+        <View style={styles.inputBoxWrap}>
+          <TextInput
+            ref={internalRef as any}
+            value={value}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            style={[styles.input, inputStyle, { flex: 1 }]}
+            placeholder={isFocused ? '' : undefined}
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            {...rest}
+          />
+          {rest.rightIcon ? (
+            <View style={styles.iconWrap}>{rest.rightIcon}</View>
+          ) : null}
+        </View>
       </View>
     );
   }
@@ -122,14 +127,32 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     paddingHorizontal: 4,
   },
-  input: {
-    height: 48,
+  inputBoxWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.35)',
+    backgroundColor: 'transparent',
+    height: 48,
     paddingHorizontal: 12,
+    marginBottom: 12,
+  },
+  input: {
+    flex: 1,
+    height: 48,
+    borderRadius: 10,
     paddingTop: Platform.OS === 'ios' ? 18 : 14,
     color: '#fff',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    paddingHorizontal: 0,
+  },
+  iconWrap: {
+    position: 'absolute',
+    right: 12,
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

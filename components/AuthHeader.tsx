@@ -6,7 +6,7 @@ type Props = {
   subtitle?: string;
 };
 
-export default function AuthHeader({ title = 'Daily', subtitle = 'Manage your healthy, wealthy life!  '}: Props) {
+export default function AuthHeader({ title = '', subtitle = 'Manage your healthy, wealthy life!  '}: Props) {
   return (
     <View style={styles.container} accessible accessibilityRole="header">
       {/* prefer local asset if available */}
@@ -40,8 +40,9 @@ const styles = StyleSheet.create({
     marginBottom: 18,
   },
   logo: {
-    width: 90,
-    height: 90,
+    width: 160,
+    height: 150,
+    
   
   },
   title: {
@@ -51,8 +52,8 @@ const styles = StyleSheet.create({
     padding:-1,
   },
   subtitle: {
-    marginTop: 6,
+    marginTop: -50,
     color: 'rgba(255,255,255,0.85)',
-    fontSize: 14,
+    fontSize: 17,
   },
 });

@@ -29,11 +29,11 @@ const solutions = [
 // NEW: Data for the Philosophy section
 const philosophyPoints = [
   "Your Partner in DM, Health, and Wealth for Life.",
-  "Every Stage, Every Step Money, Health & Wealth Solutions.",
+  "Every Stage, Every Step , Health & Wealth Solutions.",
   "Balance Your DM. Build Your Health. Grow Your Wealth.",
-  "Small Daily Money Wins, Big Health & Wealth Gains.",
+  "Small DM Wins, Big Health & Wealth Gains.",
   "Simplify DM. Strengthen Health. Secure Wealth.",
-  "Master Your Day, Master Your Money, Master Your Well-being.",
+  "Master Your Day, Master Your Health, Master Your Well-being.",
   "Turn Daily Financial Actions into a Lifetime of Health and Wealth.",
   "Live Well, Live Wealthy, Every Single Day.",
 ];
@@ -238,7 +238,7 @@ export default function HomeScreen() {
         </View>
         <View style={styles.solutionCard}>
           <Text style={styles.solutionCardTitle}>
-           Vision & Mission is your  <Text style={styles.redText}>Future Generation </Text>
+           Vision & Mission is your  <Text style={styles.redText}>        Future Generation</Text>
           </Text>
           <Image
             source={require("../../assets/phone2.png")}
@@ -247,7 +247,7 @@ export default function HomeScreen() {
         </View>
         <View style={styles.solutionCard}>
           <Text style={styles.solutionCardTitle}>
-           Vision & Mission is your <Text style={styles.redText}>Generation After Generations </Text>
+           Vision & Mission is your <Text style={styles.redText}> Generation After Generations </Text>
           </Text>
           <Image
             source={require("../../assets/phone3.png")}
@@ -289,9 +289,7 @@ export default function HomeScreen() {
           <Text style={[styles.teamMemberName, styles.founderName]}>
             Dr.V.Chellapondy
           </Text>
-          <Text style={[styles.teamMemberRole, styles.founderRole]}>
-            Founder & CEO
-          </Text>
+          
         </View>
         <View style={styles.teamGrid}>
           <View style={styles.teamMemberCard}>
@@ -601,7 +599,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: "center",
     overflow: "hidden",
-    height:490,
+    height:430,
     
   },
   solutionCardTitle: {
@@ -802,9 +800,10 @@ const styles = StyleSheet.create({
   },
   footerAddress: {
     color: "#bdbdbd",
-    marginTop: 15,
+    marginTop: 1,
     fontSize: 13,
     lineHeight: 22,
+    marginBottom: 12,
   },
   footerCopyright: {
     color: "#888",

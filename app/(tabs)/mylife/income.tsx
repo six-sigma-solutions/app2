@@ -20,7 +20,7 @@ export default function Income() {
       text: "Secure your family's future. Build lasting wealth and assets. Create the freedom to travel, explore, and experience the world. Live with peace of mind and purpose.",
     },
     {
-      image: require("../../../assets/income4.jpg"),
+      image: require("../../../assets/income4.png"),
       text: "Income powers growth, not greed. Energy creates opportunity. Wealth begins with wisdom. Freedom follows discipline. Balance builds true success.",
     },
   ];

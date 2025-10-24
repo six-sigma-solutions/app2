@@ -268,21 +268,21 @@ const styles = StyleSheet.create({
   footerQuoteTamil: {
     color: "#fffb2c",
     fontWeight: "700",
-    fontSize: 12,
+    fontSize: 10,
     textAlign: "center",
   },
 
   footerQuoteTamilsecond: {
     color: "#fffb2c",
     fontWeight: "700",
-    fontSize: 12,
+    fontSize: 10,
     textAlign: "center",
   },
 
   footerQuoteTamilsecondtitle: {
     color: "#fffb2c",
     fontWeight: "600",
-    fontSize: 12,
+    fontSize: 10,
     textAlign: "center",
     marginVertical: 5,
   },
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   footerQuoteTamilsecond3: {
     color: "#fffb2c",
     fontWeight: "600",
-    fontSize: 12,
+    fontSize: 10,
     textAlign: "center",
     paddingHorizontal: 10,
     marginVertical: 5,
@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
   footerQuoteTamilsecond4: {
     color: "#fffb2c",
     fontWeight: "600",
-    fontSize: 12,
+    fontSize: 10,
     textAlign: "center",
     paddingHorizontal: 10,
     marginVertical: 5,

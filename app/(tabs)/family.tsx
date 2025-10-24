@@ -53,9 +53,14 @@ export default function Family() {
           True prosperity comes from both good health and financial security.
           With our transparent, collaborative approach, we bring your vision to
           life. Guided by our three-phase methodology, we consistently deliver
-          value and adapt to change — building a better world: <Text style={styles.highlightText}>Healthier, Happier, and Wealthier</Text>
+          value and adapt to change — building a better world:
         </Text>
+        {/* Separate line for highlight text */}
+        <View style={{ marginTop: 8 }}>
+          <Text style={styles.highlightText}>Healthier, Happier, and Wealthier</Text>
+        </View>
       </View>
+     
 
       {/* Family Steps */}
       {steps.map((step) => (

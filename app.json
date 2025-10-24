@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Daily Message",
-    "slug": "daily-message-app",
+    "name": "DM",
+    "slug": "daily-money-app",
     "icon": "./assets/DailyMoney.png",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -37,7 +37,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "93a4f4be-668b-44f3-85b0-ef8ba40c0e75"
+        "projectId": "d9ac4d8a-920c-4a0f-b9fd-485d5a7e4d9b"
       }
     }
   }
