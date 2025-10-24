@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "718070565957",
+    "project_id": "react-native-dm",
+    "storage_bucket": "react-native-dm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718070565957:android:4ca8ab1c774de08f65672c",
+        "android_client_info": {
+          "package_name": "com.sathish2882sk.dailymoneyapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaI-bvSXddWBePYlQxZk78qn1L2da3FY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
