@@ -15,8 +15,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let unsub: (() => void) | undefined = undefined;
+    // Safety timeout: if auth initialization stalls (native module issues or
+    // networking), don't keep the whole app blank in production. After 5s
+    // fall back to unauthenticated state so routes (signin/signup) render.
+    const safetyTimeout = setTimeout(() => {
+      console.warn('[AuthProvider] auth init timeout - falling back to unauthenticated state');
+      setUser(null);
+      setLoading(false);
+    }, 5000);
+
     (async () => {
       unsub = await onAuthStateChanged((u) => {
+        // auth responded; clear the safety timeout and update state
+        try {
+          clearTimeout(safetyTimeout);
+        } catch (e) {}
         setUser(u);
         setLoading(false);
       });
@@ -28,6 +41,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } catch (e) {
         // ignore
       }
+      try {
+        clearTimeout(safetyTimeout);
+      } catch (e) {}
     };
   }, []);
 

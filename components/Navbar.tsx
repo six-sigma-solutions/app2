@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
 
   logoWrapper: { justifyContent: "center", alignItems: "flex-start", paddingLeft: 4 },
-  logo: { width: 140, height: 48 },
+  logo: { width: 190, height: 80 },
 
   // Fixed-height button; avoid paddingVertical so height is stable
   contactButton: {
