@@ -18,7 +18,7 @@ export default function PresidentMsg() {
           
           {/* Header */}
           <View style={styles.cardHeaderBg}>
-            <Text style={styles.headerTitle}>President's Message</Text>
+            <Text style={styles.headerTitle}>President&apos;s Message</Text>
             <Text style={styles.headerSubtitle}>Leading with Vision and Commitment</Text>
           </View>
 
@@ -32,7 +32,7 @@ export default function PresidentMsg() {
           {/* Message Content */}
           <View style={styles.messageContent}>
             <Text style={styles.messageQuote}>
-              "It is my Honor to lead the DailyMoney community. We are dedicated to translating our Founder's Vision into tangible success for every individual. Our focus remains steadfast on the balance of Health, Wealth, and Family."
+              It is my Honor to lead the DailyMoney community. We are dedicated to translating our Founder&apos;s Vision into tangible success for every individual. Our focus remains steadfast on the balance of Health, Wealth, and Family.
             </Text>
 
             <Text style={styles.messageParagraph}>
@@ -46,7 +46,7 @@ export default function PresidentMsg() {
             {/* Signature */}
             <View style={styles.signatureBlock}>
               <Text style={styles.signatureName}>{president.name}</Text>
-              <Text style={styles.signatureTitle}>President, DailyMoney</Text>
+              <Text style={styles.signatureTitle}>President, DM</Text>
             </View>
           </View>
 

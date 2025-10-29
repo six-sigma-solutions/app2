@@ -116,6 +116,9 @@ const FloatingLabelInput = React.forwardRef<any, Props>(
 
 export default FloatingLabelInput;
 
+// Provide a display name for debugging and to satisfy eslint react/display-name
+(FloatingLabelInput as any).displayName = 'FloatingLabelInput';
+
 const styles = StyleSheet.create({
   container: {
     position: 'relative',

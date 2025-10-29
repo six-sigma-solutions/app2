@@ -4,8 +4,8 @@ import AutoScrollView from '../../../components/AutoScrollView';
 import { Link } from 'expo-router'; // or react-navigation if using that
 
 const founder = {
-  name: "Dr.V.Chellapondy",
-  role: "Founder & Financial Advisor",
+  name: "Dr.V.Chellapondy ",
+  role: "Founder & CEO",
   image: require('../../../assets/sir.png'), // Adjust your path
 };
 
@@ -17,7 +17,7 @@ export default function FounderMsg() {
         <View style={styles.founderMessageCard}>
           {/* Header Section */}
           <View style={styles.cardHeaderBg}>
-            <Text style={styles.headerTitle}>Founder's Message</Text>
+            <Text style={styles.headerTitle}>Founder&apos;s Message</Text>
             <Text style={styles.headerSubtitle}>A Note on Vision and Commitment</Text>
           </View>
 
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   founderName: {
-    fontSize: 30,
+    fontSize: 26,
     fontWeight: '700',
     color: '#fff',
     marginTop: 16,
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   messageImage: {
     width: '100%',
     height: 440,
-    borderRadius: 15,
+   
     objectFit:'cover',
     
     resizeMode: 'cover',

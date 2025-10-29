@@ -83,4 +83,7 @@ const AutoScrollView = React.forwardRef<any, ScrollViewProps>((props, forwardedR
   );
 });
 
+// Add displayName for clearer React DevTools and to satisfy eslint (react/display-name)
+(AutoScrollView as any).displayName = 'AutoScrollView';
+
 export default AutoScrollView;

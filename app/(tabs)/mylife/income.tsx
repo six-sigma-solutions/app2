@@ -12,12 +12,12 @@ export default function Income() {
       text: "Income is more than just money earned — it is the reward for effort, time, and value created. Whether through wages, salaries, profits, or investments, income provides the foundation for stability and growth.",
     },
     {
-      image: require("../../../assets/income-12.png"),
+      image: require("../../../assets/income-12.jpg"),
       text: "True income, however, is not just financial. It is about the returns you gain from life itself — the knowledge you acquire, the relationships you nurture, and the health you maintain.",
     },
     {
       image: require("../../../assets/incomeimg-33.jpg"),
-      text: "Secure your family's future. Build lasting wealth and assets. Create the freedom to travel, explore, and experience the world. Live with peace of mind and purpose.",
+      text: "Secure your family's future. Build lasting wealth and assets. Create the freedom to travel, explore, and experience life. Live with peace of mind and purpose.",
     },
     {
       image: require("../../../assets/income4.png"),
@@ -116,14 +116,14 @@ const styles = StyleSheet.create({
 
   image: {
     width: "100%",
-    height: 280,
+    height: 450,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     resizeMode: "cover",
   },
 
   textBox: { padding: 16 },
-  text: { fontSize: 16, lineHeight: 24, textAlign: "center", color: "#333" },
+  text: { fontSize: 15, lineHeight: 25, textAlign: "justify",fontWeight: "500", color: "#333" },
 
   viewMoreWrap: { alignItems: "center", marginVertical: 30 },
   viewMoreBtn: {

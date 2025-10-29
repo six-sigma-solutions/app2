@@ -3,7 +3,7 @@ import { Platform } from "react-native";
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import "react/compiler-runtime";
+// no runtime import required here
 
 export default function TabsLayout() {
   const insets = useSafeAreaInsets();
@@ -41,36 +41,36 @@ export default function TabsLayout() {
         name="home"
         options={{
           title: "Home",
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="home-outline" size={23} color={color} />
-          ),
+          tabBarIcon: ({ color }: { color?: string }) => (
+              <Ionicons name="home-outline" size={23} color={color ?? '#000'} />
+            ),
         }}
       />
       <Tabs.Screen
         name="health"
         options={{
           title: "Health",
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="heart-outline" size={23} color={color} />
-          ),
+          tabBarIcon: ({ color }: { color?: string }) => (
+              <Ionicons name="heart-outline" size={23} color={color ?? '#000'} />
+            ),
         }}
       />
       <Tabs.Screen
         name="wealth"
         options={{
           title: "Wealth",
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="wallet-outline" size={23} color={color} />
-          ),
+          tabBarIcon: ({ color }: { color?: string }) => (
+              <Ionicons name="wallet-outline" size={23} color={color ?? '#000'} />
+            ),
         }}
       />
       <Tabs.Screen
         name="family"
         options={{
           title: "Family",
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="people-outline" size={23} color={color} />
-          ),
+          tabBarIcon: ({ color }: { color?: string }) => (
+              <Ionicons name="people-outline" size={23} color={color ?? '#000'} />
+            ),
         }}
       />
       <Tabs.Screen
@@ -78,8 +78,8 @@ export default function TabsLayout() {
         options={{
           title: "My Life",
           headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="leaf-outline" size={23} color={color} />
+          tabBarIcon: ({ color }: { color?: string }) => (
+            <Ionicons name="leaf-outline" size={23} color={color ?? '#000'} />
           ),
         }}
       />
@@ -88,8 +88,8 @@ export default function TabsLayout() {
         options={{
           title: "About",
           headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="information-circle-outline" size={23} color={color} />
+          tabBarIcon: ({ color }: { color?: string }) => (
+            <Ionicons name="information-circle-outline" size={23} color={color ?? '#000'} />
           ),
         }}
       />

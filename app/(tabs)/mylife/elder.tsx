@@ -22,27 +22,19 @@ export default function Elder() {
   const sections = [
     {
       img: require("../../../assets/ef1.jpg"),
-      text: `DM represents a rebirth, a movement where elders earn daily, share wisdom, and feel valuable again.
-Live with financial confidence. Feel valued and included. Share your wisdom, not your worries.
-Enjoy peace, purpose, and pride in your DM life.`,
+      text: `DM represents a rebirth a movement where elders independent and earn daily, share wisdom, and feel valuable again. Live with financial confidence. Feel valued and included. Share your wisdom, not your worries. Enjoy peace, purpose, and pride in your DM life.`,
     },
     {
       img: require("../../../assets/elder2.jpg"),
-      text: `Empowerment begins with a choice. Choose to live with abundance, not dependence.
-Your experience is your greatest asset and we help you turn it into income.
-Invest in your health, reclaim your wealth, and cherish your family. That's the DM way.`,
+      text: `Empowerment begins with a choice. Choose to live with abundance, not dependence. Your experience is your greatest asset and we help you turn it into income. It's time to invest in your health, reclaim your wealth, and cherish your family. That's the DM way.`,
     },
     {
       img: require("../../../assets/elder3.jpg"),
-      text: `Retirement means living life on your own schedule and enjoying inner peace.
-It’s not the end of possibilities; it’s the start of living life on your own terms.
-That’s the DM way: freedom with purpose and dignity at every stage of life.`,
+      text: `Retirement means living life on your own schedule and enjoying inner peace. It’s not the end of possibilities it’s the start of living life on your own terms. That’s the DM way. Freedom with purpose and dignity at every stage of life.`,
     },
     {
-      img: require("../../../assets/elder4.jpg"),
-      text: `When elders thrive, families become stronger. When their voices are valued, communities become wiser.
-Living freely and confidently makes society richer in humanity, not just wealth.
-The DM way lets every generation learn, earn, and live with purpose.`,
+      img: require("../../../assets/elder4.png"),
+      text: `When elders thrive, families become stronger. When their voices are valued, communities become wiser. When they live freely and confidently, the society grows richer in humanity, not just in wealth. That’s the DM, way where every generation learns, earns, and lives with purpose.`,
     },
   ];
 
@@ -134,10 +126,10 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 15,
-    lineHeight: 22,
-    textAlign: "center",
+    lineHeight: 25,
+    textAlign: "justify",
     color: "#0f172a",
-    fontWeight: "600",
+    fontWeight: "500",
   },
 
   viewMoreWrap: { alignItems: "center", marginVertical: 30 },

@@ -11,7 +11,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useRouter, useSegments } from 'expo-router';
-
 // Root index — redirect to the main tabs home route so the router always
 // has a matching entry for '/'. This prevents the 'Unmatched Route' page.
 export default function Index() {

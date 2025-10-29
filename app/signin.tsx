@@ -32,7 +32,7 @@ export default function SignIn() {
         }
 
         // dynamic require so bundlers don't crash when package is missing
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
+         
         const NavigationBar = require('expo-navigation-bar');
         if (NavigationBar?.setBackgroundColorAsync) {
           await NavigationBar.setBackgroundColorAsync('#2a74c6');
@@ -127,8 +127,8 @@ export default function SignIn() {
                   } catch (e) {}
                 }}
                 rightIcon={
-                  <TouchableOpacity onPress={() => setShowPassword((v) => !v)}>
-                    <Text style={{padding:8, color:'#fff', fontSize:18}}>{showPassword ? '🙈' : '👁️'}</Text>
+                  <TouchableOpacity onPress={() => setShowPassword((v: boolean) => !v)}>
+                    <Text style={{padding:8, color:'#fff', fontSize:18}}>{showPassword ? 'Hide' : 'Show'}</Text>
                   </TouchableOpacity>
                 }
               />
@@ -142,7 +142,7 @@ export default function SignIn() {
                 <Text style={styles.primaryText}>{loading ? 'Signing in...' : 'Sign In'}</Text>
               </TouchableOpacity>
               <View style={styles.bottomRow}>
-                <Text style={styles.bottomText}>Don't have an account? </Text>
+                <Text style={styles.bottomText}>Don&apos;t have an account? </Text>
                 <Link href="/signup" style={styles.bottomLink}>
                   <Text style={styles.bottomLink}> Sign Up</Text>
                 </Link>

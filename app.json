@@ -31,13 +31,14 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-router"
+      "expo-router",
+      "expo-video"
     ],
     "sdkVersion": "54.0.0",
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "d9ac4d8a-920c-4a0f-b9fd-485d5a7e4d9b"
+        "projectId": "fb406d17-d820-44ec-9dd4-8e270f6c1376"
       }
     }
   }

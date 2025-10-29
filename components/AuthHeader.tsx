@@ -10,7 +10,7 @@ export default function AuthHeader({ title = '', subtitle = 'Manage your healthy
   return (
     <View style={styles.container} accessible accessibilityRole="header">
       {/* prefer local asset if available */}
-      {/* eslint-disable-next-line global-require, import/no-dynamic-require */}
+      { }
       <Image
         source={
           (() => {

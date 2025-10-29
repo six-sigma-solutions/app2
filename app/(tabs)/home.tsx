@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Linking } from "react-native";
-import {
+import { Linking ,
   StyleSheet,
   View,
   Text,
@@ -11,31 +10,33 @@ import {
 import { Video, ResizeMode } from "expo-av";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Asset } from "expo-asset";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useRouter, useFocusEffect } from "expo-router";
 import { FontAwesome6 } from "@expo/vector-icons";
+
 import MaskedView from "@react-native-masked-view/masked-view";
 import PopupModal from "../../components/PopupModal";
 import AutoScrollView from "../../components/AutoScrollView";
 
 // Data for the bullet points to make the code cleaner
 const solutions = [
-  "Solutions for Every Stage of Your Health & Wealth Journey.",
-  "DM Made Easy, Health & Wealth Made Possible.",
+  "Solutions for Every Stage of Your Health & Wealth Journey",
+  "DM Made Easy, Health & Wealth Made Possible",
   "Smart Choices for DM, Smarter Future in Health & Wealth.",
-  "From Today’s Money to Tomorrow’s Wealth & Wellness.",
-  "Empowering You Every Day with Money, Health, and Wealth.",
+  "From Today’s Health to Tomorrow’s Wealth & Wellness.",
+  "Empowering You Every Day with Health, and Wealth.",
 ];
 
 // NEW: Data for the Philosophy section
 const philosophyPoints = [
-  "Your Partner in DM, Health, and Wealth for Life.",
-  "Every Stage, Every Step , Health & Wealth Solutions.",
-  "Balance Your DM. Build Your Health. Grow Your Wealth.",
-  "Small DM Wins, Big Health & Wealth Gains.",
-  "Simplify DM. Strengthen Health. Secure Wealth.",
-  "Master Your Day, Master Your Health, Master Your Well-being.",
-  "Turn Daily Financial Actions into a Lifetime of Health and Wealth.",
-  "Live Well, Live Wealthy, Every Single Day.",
+"Your Partner in DM, Health, and Wealth for Life.",
+"Every Stage - Every Step - Health & Wealth Solutions.",
+"DM Balance Your Life. Build Your Health. Grow Your Wealth.",
+"Small Income Wins, Big Health & Wealth Gains.",
+"Simplify with DM. Strengthen Health. Secure Wealth.",
+"Master Your Day, Master Your Health, Master Your Well-being.",
+"Turn Daily Financial Actions into a Lifetime of Health and Wealth.",
+"Live Well - Live Wealthy - Every Single Day.",
 ];
 
 export default function HomeScreen() {
@@ -61,6 +62,7 @@ export default function HomeScreen() {
           require("../../assets/buddha_grayscale4.png"),
           require("../../assets/buddha_color4.png"),
         ]);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (e) {
         // ignore – still try to render
       } finally {
@@ -90,11 +92,11 @@ export default function HomeScreen() {
       <PopupModal
         visible={showPopup}
         onClose={() => setShowPopup(false)}
-        title={"Welcome to Daily Money 💰"}
+        title={"Welcome to DM 💰"}
         // pass a Text node so we can style the popup message white
         message={
           <Text style={{ color: '#ffffff', fontSize: 22, fontWeight: '600', textAlign: 'center', lineHeight: 34 }}>
-            For the betterment of all people worldwide — Especially those driving innovation in the Global IT Industry.
+            For the betterment of all people across the world — Especially those driving innovation in the Global IT Community.
           </Text>
         }
         buttonText={"Get in →"}
@@ -110,7 +112,8 @@ export default function HomeScreen() {
       >
         <View style={styles.bannerInner}>
           <Text style={styles.bannerTitle}>DM - Daily Message</Text>
-          <Text style={styles.bannerSubtitle}> Health and Freedom</Text>
+          <Text style={styles.bannerSubtitle}>Health and Wellness</Text>
+          <Text style={styles.bannerSubtitle}>The World Premium Healthy and Happy Community.</Text>
 
         </View>
       </LinearGradient>
@@ -172,12 +175,14 @@ export default function HomeScreen() {
           <Text style={styles.heroSub}>Health & Wealth. </Text>
           <Text style={styles.heroSubtitle}>Independent for Entire life.</Text>
           <Text style={styles.heroDesc}>
-            DM stands for discipline, unity and freedom. Together, we
-            are shaping a future of health, wealth, and limitless opportunities.
+            DM stands for discipline, unity, and independance.
           </Text>
           <Text style={styles.heroDesc}>
-            With DM, every step forward is a step toward freedom, and a
-            life without limits.
+          Together, we are shaping a future of health, wealth, and limitless opportunities.
+          </Text>
+          <Text style={styles.heroDesc}>
+           With DM, every step forward is a step towards economic freedom, and a life without limits.
+
           </Text>
           <Text style={styles.heroDesc}>
             Welcome to <Text style={styles.span}>DM! </Text>

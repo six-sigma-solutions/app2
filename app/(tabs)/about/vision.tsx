@@ -76,10 +76,24 @@ const Visionmission: React.FC = () => {
     require("../../../assets/test4.jpg"),
   ];
 
+  // arrow animations per gallery item (avoid calling hooks inside map)
+  const arrowAnims = useRef(galleryImages.map(() => new Animated.Value(0))).current;
+
+  useEffect(() => {
+    arrowAnims.forEach((anim) => {
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(anim, { toValue: 15, duration: 800, useNativeDriver: true }),
+          Animated.timing(anim, { toValue: -15, duration: 800, useNativeDriver: true }),
+        ])
+      ).start();
+    });
+  }, [arrowAnims]);
+
   return (
     <AutoScrollView style={styles.container}>
       {/* Title */}
-      <Text style={styles.title}>Daily Money Vision & Mission</Text>
+      <Text style={styles.title}>DM Vision & Mission</Text>
 
       {/* Hero Section */}
       <View style={styles.heroCard}>
@@ -98,14 +112,14 @@ const Visionmission: React.FC = () => {
           ]}
         >
           <Text style={styles.heroHeading}>
-            Improving the world's health, happiness, and prosperity{"\n"}Deliver
+            Improving the world&apos;s health, happiness, and prosperity{"\n"}deliver
             with precision.
           </Text>
           <Text style={styles.heroParagraph}>
             A brighter world — healthy in spirit, joyful in living, and abundant
             in growth.{"\n"}Living in flow with nature — where wellness
             nourishes wealth and joy sustains growth.{"\n"}Building a future
-            where vitality, happiness, and financial freedom flow as one.{"\n"}
+            where vitality, happiness, and financial independance flow as one.{"\n"}
             To enrich every life with balance, energy, and prosperity.
           </Text>
         </Animated.View>
@@ -137,46 +151,21 @@ const Visionmission: React.FC = () => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.galleryContainer}
         >
-          {galleryImages.map((img, idx) => {
-            const arrowAnim = useRef(new Animated.Value(0)).current;
-
-            useEffect(() => {
-              Animated.loop(
-                Animated.sequence([
-                  Animated.timing(arrowAnim, {
-                    toValue: 15, // move right
-                    duration: 800,
-                    useNativeDriver: true,
-                  }),
-                  Animated.timing(arrowAnim, {
-                    toValue: -15, // move left
-                    duration: 800,
-                    useNativeDriver: true,
-                  }),
-                ])
-              ).start();
-            }, []);
-
-            return (
-              <View key={idx} style={styles.galleryItem}>
-                <Image
-                  source={img}
-                  style={styles.galleryImage}
-                  resizeMode="cover"
-                />
-                <Animated.Text
-                  style={[
-                    styles.arrow,
-                    {
-                      transform: [{ translateX: arrowAnim }],
-                    },
-                  ]}
-                >
-                  →
-                </Animated.Text>
-              </View>
-            );
-          })}
+          {galleryImages.map((img, idx) => (
+            <View key={idx} style={styles.galleryItem}>
+              <Image source={img} style={styles.galleryImage} resizeMode="cover" />
+              <Animated.Text
+                style={[
+                  styles.arrow,
+                  {
+                    transform: [{ translateX: arrowAnims[idx] }],
+                  },
+                ]}
+              >
+                →
+              </Animated.Text>
+            </View>
+          ))}
         </ScrollView>
       </View>
 

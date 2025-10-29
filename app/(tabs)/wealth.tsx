@@ -23,12 +23,12 @@ export default function Wealth() {
     {
       image: require("../../assets/wealth3.jpg"),
       text:
-        "Our wealth is not just about what we accumulate, but about what we enable. With wealth, we gain the ability to support our families, nurture dreams, create opportunities, and contribute to causes that uplift society.",
+        "Our wealth is not just about what we accumulate, but about what we enable. With it, we gain the ability to support our families, nurture dreams, create opportunities, and contribute to causes that uplift society.",
     },
     {
       image: require("../../assets/wealth4.png"),
       text:
-        "Wealth is not greed—it is growth. It is not selfishness—it is stewardship. When guided by purpose, wealth becomes a force for freedom, for impact, and for legacy. Our wealth is our power to live with dignity, give with generosity, and build a future that outlives us.",
+        "Wealth is not greed — it is growth. It is not selfishness—it is stewardship. When guided by purpose, wealth becomes a force for freedom, impact, and legacy. Our wealth is our power to live with dignity, give with generosity, and build a future that outlives us.",
     },
   ];
 
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   },
 
   textBox: { padding: 16 },
-  text: { fontSize: 16, lineHeight: 24, textAlign: "center", color: "#333" },
+  text: { fontSize: 15, lineHeight: 25, fontWeight: "600", justifyContent: "center", color: "#333" , textAlign:"justify" },
 
   viewMoreWrap: { alignItems: "center", marginVertical: 30 },
   viewMoreBtn: {

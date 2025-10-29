@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { View, Image, Text, TouchableOpacity, StyleSheet, Platform, Modal, TouchableWithoutFeedback, useWindowDimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link } from "expo-router";
-import { useRouter } from 'expo-router';
+import { Link , useRouter } from "expo-router";
 import { signOut } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -22,7 +21,7 @@ export default function Navbar() {
   // prefer a local logo at assets/logo.png but fall back to the remote URL
   let logoSource: any = null;
   try {
-    // eslint-disable-next-line global-require, import/no-dynamic-require
+     
     logoSource = require('../assets/DailyMoney.png');
   } catch (e) {
     logoSource = null;

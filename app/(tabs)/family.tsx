@@ -20,7 +20,7 @@ export default function Family() {
       id: 1,
       img: require('../../assets/family1.png'),
       quote:
-        '“I have secured my family\'s health, education, and finances, ensuring long-term security, growth, and happiness for future generations.”',
+        '“ I have secured my family\'s health, education, and finances, and aim to ensure long - term security, growth, and happiness for future generations.”',
     },
     {
       id: 2,
@@ -32,13 +32,13 @@ export default function Family() {
       id: 3,
       img: require('../../assets/family3.png'),
       quote:
-        '“I\'ve secured my children\'s future with education, savings, and guidance, aiming for long-term financial freedom.”',
+        '“I\'ve secured my children\'s future through education, savings, and guidance, aiming for long-term financial freedom.”',
     },
     {
       id: 4,
       img: require('../../assets/family4.png'),
       quote:
-        '“I prioritize my family, ensuring their financial security and emotional support for the long term.”',
+        '“I prioritize my family, ensuring their financial security and providing emotional support even after me.”',
     },
   ];
 
@@ -50,10 +50,10 @@ export default function Family() {
            Our family
         </Text>
         <Text style={styles.subtitle}>
-          True prosperity comes from both good health and financial security.
-          With our transparent, collaborative approach, we bring your vision to
-          life. Guided by our three-phase methodology, we consistently deliver
-          value and adapt to change — building a better world:
+          True prosperity comes from both good health and financial security. 
+          With our transparent, collaborative approach, we bring your vision to life. 
+          Guided by our three-phase methodology, we consistently deliver value and 
+          adapt to change — building the best world:
         </Text>
         {/* Separate line for highlight text */}
         <View style={{ marginTop: 8 }}>
@@ -118,10 +118,12 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 15,
+    lineHeight: 25, 
+    fontWeight: "600", 
+    justifyContent: "center",
     color: '#001f54',
-    textAlign: 'center',
-    lineHeight: 22,
-    fontWeight: '500',
+    textAlign: 'justify',
+
   },
   highlightText: {
     backgroundColor: '#d4edda',
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   textContainer: {
-    width: '90%',
+    width: '95%',
     alignItems: 'center',
   },
   quote: {
@@ -160,6 +162,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: '#333',
     lineHeight: 22,
+    fontWeight: "500", 
     textAlign: 'center',
   },
 

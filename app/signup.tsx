@@ -39,8 +39,9 @@ export default function SignUp() {
       .then(() => router.replace('/(tabs)/home'))
       .catch((err) => {
         console.error('[signup] auth error', err);
-        if (err?.message?.includes(' Account not initialized')) {
-          setError(' "Login failed. Please try again');
+        // firebase throws 'Firebase not initialized' when native/web auth wasn't initialized
+        if (err?.message?.includes('Firebase not initialized') || err?.message?.includes('not initialized')) {
+          setError('Login failed. Please try again');
         } else {
           setError(err.message || 'Sign up failed');
         }
@@ -71,7 +72,9 @@ export default function SignUp() {
                 accessibilityLabel="Name"
                 onFocus={() => {
                   try {
-                    const node = findNodeHandle(nameRef.current);
+                    const target = nameRef.current;
+                    const native = target?.getNative ? target.getNative() : target;
+                    const node = findNodeHandle(native);
                     scrollRef.current?.scrollResponderScrollNativeHandleToKeyboard(node, 120, true);
                   } catch (e) {}
                 }}
@@ -79,14 +82,15 @@ export default function SignUp() {
               <FloatingLabelInput
                 ref={emailRef}
                 label="Email"
-                keyboardType="email-address"
                 autoCapitalize="none"
                 value={email}
                 onChangeText={setEmail}
                 accessibilityLabel="Email"
                 onFocus={() => {
                   try {
-                    const node = findNodeHandle(emailRef.current);
+                    const target = emailRef.current;
+                    const native = target?.getNative ? target.getNative() : target;
+                    const node = findNodeHandle(native);
                     scrollRef.current?.scrollResponderScrollNativeHandleToKeyboard(node, 120, true);
                   } catch (e) {}
                 }}
@@ -100,14 +104,16 @@ export default function SignUp() {
                 accessibilityLabel="Password"
                 onFocus={() => {
                   try {
-                    const node = findNodeHandle(passwordRef.current);
+                    const target = passwordRef.current;
+                    const native = target?.getNative ? target.getNative() : target;
+                    const node = findNodeHandle(native);
                     scrollRef.current?.scrollResponderScrollNativeHandleToKeyboard(node, 120, true);
                   } catch (e) {}
                 }}
                 rightIcon={
-                  <TouchableOpacity onPress={() => setShowPassword((v) => !v)}>
+                  <TouchableOpacity onPress={() => setShowPassword((v: boolean) => !v)}>
                     <Text style={{padding:8, color:'#fff', fontSize:18}}>
-                      {showPassword ? '�️‍🗨️' : '👁️'}
+                      {showPassword ? 'Hide' : 'Show'}
                     </Text>
                   </TouchableOpacity>
                 }

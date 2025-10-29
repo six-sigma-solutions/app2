@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+ 
 import { useRouter } from "expo-router";
 import React from "react";
 import {
@@ -83,7 +83,7 @@ export default function Entrepreneur() {
           text: `"I am ready to take a risk for success."
 "I’m willing to take chances for success."
 "I’m ready to embrace challenges."
-"I’m not afraid to take bold steps toward my goals."`,
+"I’m not afraid to take bold steps towards my goal."`,
           bgColor: "#dbf79cff",
           textColor: "#000000ff",
         },
@@ -164,20 +164,20 @@ const styles = StyleSheet.create({
   image: {
     width: "95%",
     height: 350,
-    borderRadius: 14,
+    borderRadius: 15,
     resizeMode: "cover",
     marginBottom: 12,
   },
 
   textBox: {
     width: "100%",
-    paddingHorizontal: 12,
+    paddingHorizontal: 15,
   },
 
   quote: {
-    fontSize: 14,
-    lineHeight: 20,
-    fontWeight: "600",
+    fontSize: 13,
+    lineHeight: 25,
+    fontWeight: "500",
     textAlign: "center",
   },
 

@@ -12,7 +12,7 @@ import {
 // Prefer the project's firebaseConfig.ts when available
 let firebaseConfig = undefined;
 try {
-  // eslint-disable-next-line global-require, import/no-dynamic-require
+   
   firebaseConfig = require('./firebaseConfig').default;
 } catch (e) {
   // no-op; keep undefined and rely on environment variables if needed

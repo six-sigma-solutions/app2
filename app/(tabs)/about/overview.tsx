@@ -23,25 +23,25 @@ export default function Overview() {
     {
       title: "Our Purpose",
       color: "#f30000ff",
-      text: "DM exists to make the world healthier, happier, wealthier — one person, one family, and one community at a time.",
+      text: "DM exists to make the world healthier, happier, wealthier - one person, one family, and one community at a time.",
       img: require("../../../assets/over1.jpg"),
     },
     {
       title: "Our Approach",
       color: "#0035c7ff",
-      text: "Clarity – Simplifying money so everyone can understand it.\nDiscipline – Encouraging consistent daily habits that build lasting wealth.\nIntegration – Connecting health, wealth, and peace as part of the same journey.\nGenerational Growth – Ensuring prosperity passes forward, sustaining families across generations.",
+      text: "Clarity – Simplifying finance so everyone feels confident.\nDiscipline – Encouraging consistent daily habits that build lasting wealth.\nIntegration – Connecting health, wealth, and peace as part of the same journey.\nGenerational Growth – Ensuring prosperity passes forward, sustaining families across generations.",
       img: require("../../../assets/over2.jpg"),
     },
     {
       title: "Our Core Beliefs",
       color: "#e70074ff",
-      text: "Wealth is Freedom – The ability to choose your path without limits.\nHealth is Wealth – Without wellness, money loses its meaning.\nPeace is Success – A balanced life is the ultimate achievement.\nLegacy Matters – True prosperity is measured in impact that outlives us.",
+      text: "Health is Wealth – Without wellness, income loses its meaning.\nWealth is Freedom – The ability to choose your path without limits.\nLegacy Matters – True prosperity is measured in impact that outlives us.",
       img: require("../../../assets/image-3.jpg"),
     },
     {
       title: "Our Promise",
       color: "#c29503ff",
-      text: "DM is not just about income today, but about wealth for life and beyond. We help build strong foundations so every generation thrives — financially, physically, and spiritually.",
+      text: "DM stands for more than health, it represents lifelong prosperity. We help create strong foundations for generations to flourish — in wealth, wellness, and spirit.",
       img: require("../../../assets/image-4.jpg"),
     },
   ];
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
 
   title: { fontSize: 20, fontWeight: "700", marginBottom: 10, textAlign: "center" },
-  text: { fontSize: 15, lineHeight: 22, textAlign: "center", color: "#0f172a", marginBottom: 12 },
+  text: { fontSize: 15, lineHeight: 25, textAlign: "justify", color: "#0f172a", marginBottom: 15, fontWeight: "500" },
 
   image: { width: "100%", height: 210, borderRadius: 10 },
 

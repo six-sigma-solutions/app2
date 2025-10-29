@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Stack, useRouter } from 'expo-router';
+import { Platform } from 'react-native';
 import Navbar from '../components/Navbar';
 import { AuthProvider, useAuth } from '../contexts/AuthContext';
 
@@ -47,6 +48,20 @@ function AuthStartup() {
 
   // If not authenticated: render only the auth stack (signin, signup, forgot-password)
   if (!user) {
+    // Show the Navbar on web during development so designers can preview layout
+    if (Platform.OS === 'web') {
+      return (
+        <>
+          <Navbar />
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="signin" options={{ headerShown: false }} />
+            <Stack.Screen name="signup" options={{ headerShown: false }} />
+            <Stack.Screen name="forgot-password" options={{ headerShown: false }} />
+          </Stack>
+        </>
+      );
+    }
+
     return (
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="signin" options={{ headerShown: false }} />

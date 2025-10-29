@@ -32,31 +32,19 @@ export default function Students() {
   const sections = [
     {
       img: require("../../../assets/student-1.png"),
-      text: `Our future starts with today's discipline. 
-We help turn student loans into student gains.
-Your degree gets you a job; your DM skills get you freedom.
-Build wealth while you learn. Don't just chase grades, chase growth.`,
+      text: `Our future starts with today's discipline. We help turn student loans into student gains.Your degree gets you a job; your DM skills get you freedom.Build wealth while you learn. Don't just chase grades, chase growth.`,
     },
     {
       img: require("../../../assets/student-2.png"),
-      text: `Learn to earn while you still have time.
-Our side hustle is your main opportunity.
-Financial confidence is the best graduation gift.
-DM provides a business blueprint for students.
-We train you for real-world success.`,
+      text: `Learn to earn while you still have time. Our side hustle is your main opportunity. Financial confidence is the best graduation gift.DM provides a business blueprint for students. We train you for real-world success.`,
     },
     {
       img: require("../../../assets/student-3.jpg"),
-      text: `Achieve personal growth and financial freedom.
-Pay off student debt through your own earned income.
-Financial independence brings confidence and self-respect.`,
+      text: `Achieve personal growth and financial freedom. Pay off student debt through your own earned income. Financial independence brings confidence and self-respect.`,
     },
     {
       img: require("../../../assets/student-4.jpg"),
-      text: `DM empowered to learn, inspired to earn.
-Earn with pride, learn with purpose.
-Students earn, and the world learns the value of determination.
-Self-earned income builds more than wealth, it builds wisdom.`,
+      text: `DM empowered to learn, inspired to earn. Earn with pride, learn with purpose. Students earn, and the world learns the value of determination. Self-earned income builds more than wealth, it builds wisdom.`,
     },
   ];
 
@@ -165,9 +153,10 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 14,
-    lineHeight: 22,
-    textAlign: "center",
+    fontSize: 15,
+    lineHeight: 25,
+    textAlign: "justify",
+    fontWeight: "500",
     color: "#0f172a",
   },
 

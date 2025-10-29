@@ -17,7 +17,7 @@ async function initNativeAuth() {
     // Before requiring the RNFB JS package ensure the native module is linked.
     // Requiring the package when the native module is missing can cause a hard
     // crash during module initialization. Check NativeModules first.
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+     
     const { NativeModules } = require('react-native');
     if (!NativeModules || !NativeModules.RNFBAppModule) {
       console.warn('[firebase] RNFBAppModule not present; skipping native @react-native-firebase initialization');
@@ -25,7 +25,7 @@ async function initNativeAuth() {
       return null;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+     
     const rnFirebaseAuth = require('@react-native-firebase/auth');
     // Some versions of the package export a function, some export an object.
     _nativeAuth = typeof rnFirebaseAuth === 'function' ? rnFirebaseAuth() : rnFirebaseAuth;
@@ -89,7 +89,7 @@ async function initWebAuth() {
     // so auth state persists between sessions. If AsyncStorage is available we'll use it.
     if (Platform.OS === 'android' || Platform.OS === 'ios') {
       try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
+         
         const ReactNativeAsyncStorage = require('@react-native-async-storage/async-storage');
         if (ReactNativeAsyncStorage && initializeAuth && getReactNativePersistence) {
           try {

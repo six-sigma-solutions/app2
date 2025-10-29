@@ -33,8 +33,7 @@ export default function Health() {
         <View style={styles.heroContent}>
           <Text style={styles.heroText}>
             Your journey to wellness and financial freedom starts here.
-          </Text>
-          <Text style={styles.heroText}>
+    
             Our health is our true wealth — it gives us energy, focus, and freedom to live fully. Every choice - what we eat, how we move, how we rest shapes our future. When we care for our health, we care for our dreams, our families, and our world. Strong bodies. Clear minds. Happy hearts. Together, we build a healthier tomorrow - Our health, our strength, our future.
           </Text>
         </View>
@@ -102,7 +101,7 @@ export default function Health() {
       <View style={styles.footerCard}>
         <View style={styles.footer}>
           <Text style={styles.footerQuoteEnglish}>
-            "No need of medicine if you allow proper digestion between meals."
+            "No need for medicine if you allow proper digestion between meals."
           </Text>
           <Text style={styles.footerQuoteTamil}>
             “மருந்தென வேண்டாவாம் யாக்கைக்கு அருந்தியது”
@@ -111,15 +110,16 @@ export default function Health() {
           <Text style={styles.footerQuoteTamilsecondtitle}>- திருக்குறள்</Text>
 
           <Text style={styles.footerQuoteTamilsecond3}>
-            முன் உண்டது செரித்ததைத் தெளிவாக அறிந்து, அதன் பின்னரே உண்பானால், அவனுடைய உடலுக்கு ‘மருந்து’ வேண்டாம்.
+           முன் உண்டது செரித்ததைத் தெளிவாக அறிந்து, அதன் பின்னரே உண்பானால், அவனுடைய உடலுக்கு ‘மருந்து’ வேண்டாம்.
           </Text>
 
           <Text style={styles.footerQuoteTamilsecond4}>
-            “நீரை சாப்பிட கற்றுக்கொள், உணவை அருந்த கற்றுக்கொள் — அதுவே உண்மையான ஆரோக்கியம்.”
+            “தண்ணீரைச் சாப்பிடு, உணவை அருந்து”
+            உண்மையான ஆரோக்கிய வாழ்க்கையின் ரகசியம்.
           </Text>
 
           <Text style={styles.footerQuoteEnglish}>
-            💧 “Eat your water. Drink your food. The secret of true health.”
+            💧 “Eat your water. Sip your meals. The secret of true healthy life.”
           </Text>
         </View>
       </View>
@@ -196,11 +196,13 @@ const styles = StyleSheet.create({
   colorWealthy: { color: "#002770" },
 
   heroText: {
-    fontSize: 16,
-    marginVertical: 5,
+    fontSize: 17,
+    fontWeight: "700",
+    marginVertical: 15,
     color: "#333",
-    textAlign: "center",
-    lineHeight: 22,
+    justifyContent: "center",
+    textAlign: "justify",
+    lineHeight: 25,
   },
 
   sectionHeader: {
@@ -240,11 +242,11 @@ const styles = StyleSheet.create({
 
   cardText: {
     color: "#fff",
-    fontWeight: "600",
-    fontSize: 16,
+    fontWeight: "700",
+    fontSize: 15,
     textAlign: "center",
-    marginVertical: 4,
-    lineHeight: 22,
+    marginVertical: 5,
+    lineHeight: 25,
     minHeight:60,
   },
 

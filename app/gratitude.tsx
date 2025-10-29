@@ -62,7 +62,7 @@ const Gratitude: React.FC = () => {
               </Text>
 
               <Text style={styles.paragraph}>
-                I thank the Universe for blessing us with health, wealth, happiness, our children's future, abundance, opportunities to travel, and above all, virtue (good karma).
+                I thank the Universe for blessing us with health, wealth, happiness, our children&apos;s future, abundance, opportunities to travel, and above all, virtue (good karma).
               </Text>
 
               <Text style={styles.paragraph}>
@@ -70,7 +70,7 @@ const Gratitude: React.FC = () => {
               </Text>
 
               <Text style={styles.highlight}>
-                Guided by the wisdom, discipline and spirit of the world's greatest Legends.
+                Guided by the wisdom, discipline and spirit of the world&apos;s greatest Legends.
               </Text>
             </View>
 
