@@ -22,7 +22,7 @@ export default function Elder() {
   const sections = [
     {
       img: require("../../../assets/ef1.jpg"),
-      text: `DM represents a rebirth a movement where elders independent and earn daily, share wisdom, and feel valuable again. Live with financial confidence. Feel valued and included. Share your wisdom, not your worries. Enjoy peace, purpose, and pride in your DM life.`,
+      text: `DM represents a rebirth-a movement where elders & independent and earn daily, share wisdom, and feel valuable again. Live with financial confidence. Feel valued and included. Share your wisdom, not your worries. Enjoy peace, purpose, and pride in your DM life.`,
     },
     {
       img: require("../../../assets/elder2.jpg"),

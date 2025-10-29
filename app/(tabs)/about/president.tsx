@@ -52,11 +52,12 @@ export default function PresidentMsg() {
 
           {/* View More Button */}
           <View style={styles.viewMoreLink}>
-            <Link href="/(tabs)/about/vision" asChild>
-              <TouchableOpacity style={styles.viewMoreBtn}>
-                <Text style={styles.viewMoreText}>View More</Text>
-              </TouchableOpacity>
-            </Link>
+           <Link href="/about/vision" asChild>
+           <TouchableOpacity style={styles.viewMoreBtn}>
+          <Text style={styles.viewMoreText}>View More</Text>
+  </TouchableOpacity>
+</Link>
+
           </View>
 
           {/* Footer */}
@@ -96,12 +97,12 @@ const styles = StyleSheet.create({
   headerSubtitle: { fontSize: 18, fontWeight: '500', color: '#99f6e4', textAlign: 'center' },
 
   presidentProfileArea: { alignItems: 'center', marginTop: -44, paddingHorizontal: 24 },
-  presidentImage: { width: 160, height: 160, borderRadius: 80, borderWidth: 8, borderColor: '#fff', marginTop: 25 },
+  presidentImage: { width: 160, height: 160, borderRadius: 80, borderWidth: 4, borderColor: '#fff', marginTop: 25 },
   presidentName: { fontSize: 28, fontWeight: '700', color: '#fff', marginTop: 16 },
   presidentRole: { fontSize: 20, fontWeight: '600', color: '#99f6e4' },
 
   messageContent: { padding: 32 },
-  messageQuote: { fontSize: 16, color: '#fff', lineHeight: 26, marginBottom: 24, paddingLeft: 10, fontStyle: 'italic', textAlign: 'center' },
+  messageQuote: { fontSize: 16, color: '#fff', lineHeight: 26, marginBottom: 24, paddingLeft: 10, fontStyle: 'italic', textAlign: 'justify' },
   messageParagraph: { fontSize: 16, color: '#fff', lineHeight: 26, marginBottom: 16 },
   
   signatureBlock: { marginTop: 24, alignItems: 'flex-end' },

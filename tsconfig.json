@@ -1,3 +1,20 @@
+// // {
+// //   "extends": "expo/tsconfig.base",
+// //   "compilerOptions": {
+// //     "strict": true,
+// //     "jsx": "react-native",
+// //     "allowJs": true,
+// //     "esModuleInterop": true,
+// //     "skipLibCheck": true,
+// //     "forceConsistentCasingInFileNames": true,
+// //     "baseUrl": "./src",
+// //     "paths": {
+// //       "@/*": ["./*"]
+// //     }
+// //   },
+// //   "include": ["**/*.ts", "**/*.tsx", "app/**/*.tsx"],
+// //   "exclude": ["node_modules"]
+// // }
 // {
 //   "extends": "expo/tsconfig.base",
 //   "compilerOptions": {
@@ -10,7 +27,8 @@
 //     "baseUrl": "./src",
 //     "paths": {
 //       "@/*": ["./*"]
-//     }
+//     },
+//     "ignoreDeprecations": "6.0"
 //   },
 //   "include": ["**/*.ts", "**/*.tsx", "app/**/*.tsx"],
 //   "exclude": ["node_modules"]
@@ -24,12 +42,13 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["src/*", "app/*"]
     },
     "ignoreDeprecations": "6.0"
   },
-  "include": ["**/*.ts", "**/*.tsx", "app/**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
+

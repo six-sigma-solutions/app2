@@ -32,15 +32,15 @@ export default function Students() {
   const sections = [
     {
       img: require("../../../assets/student-1.png"),
-      text: `Our future starts with today's discipline. We help turn student loans into student gains.Your degree gets you a job; your DM skills get you freedom.Build wealth while you learn. Don't just chase grades, chase growth.`,
+      text: `Our future starts with today's discipline. We help turn student loans into student gains.Your degree gets you a job. Your DM skills get you freedom. Build wealth while you learn. Don't just chase grades, chase growth.`,
     },
     {
       img: require("../../../assets/student-2.png"),
-      text: `Learn to earn while you still have time. Our side hustle is your main opportunity. Financial confidence is the best graduation gift.DM provides a business blueprint for students. We train you for real-world success.`,
+      text: `Learn to earn while you still have time. Our side hustle is your main opportunity. Financial confidence is the best graduation gift. DM delivers a blueprint for students to design their future. We train you for real-world success.`,
     },
     {
       img: require("../../../assets/student-3.jpg"),
-      text: `Achieve personal growth and financial freedom. Pay off student debt through your own earned income. Financial independence brings confidence and self-respect.`,
+      text:` Achieve personal growth and financial support. Pay off student debt through  your own earned income. Financial independence that brings confidence and self-respect.`,
     },
     {
       img: require("../../../assets/student-4.jpg"),
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginHorizontal: 16,
     marginVertical: 12,
-    padding: 16,
+    padding: 13,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },

@@ -32,9 +32,9 @@ export default function Health() {
 
         <View style={styles.heroContent}>
           <Text style={styles.heroText}>
-            Your journey to wellness and financial freedom starts here.
+            Your journey to wellness and financial support starts here.
     
-            Our health is our true wealth — it gives us energy, focus, and freedom to live fully. Every choice - what we eat, how we move, how we rest shapes our future. When we care for our health, we care for our dreams, our families, and our world. Strong bodies. Clear minds. Happy hearts. Together, we build a healthier tomorrow - Our health, our strength, our future.
+            Our health is our true wealth — it gives us energy, focus, and freedom to live fully. Every choice - what we eat, how we move, how we rest shapes our future. When we care for our health, we care for our dreams, our families, and our world. Strong bodies, Clear minds and Happy hearts. Together, we build a healthier tomorrow. Our health - our strength & our future.
           </Text>
         </View>
       </View>
@@ -130,7 +130,7 @@ export default function Health() {
         onPress={() => router.push("/(tabs)/wealth")}
         activeOpacity={0.8}
       >
-        <Text style={styles.btnText}>Learn More</Text>
+        <Text style={styles.btnText}>View More</Text>
       </TouchableOpacity>
 
       {/* === FINAL FOOTER === */}

@@ -35,7 +35,7 @@ export default function Overview() {
     {
       title: "Our Core Beliefs",
       color: "#e70074ff",
-      text: "Health is Wealth – Without wellness, income loses its meaning.\nWealth is Freedom – The ability to choose your path without limits.\nLegacy Matters – True prosperity is measured in impact that outlives us.",
+      text: "Health is Wealth – Without wellness, income loses its meaning.\nWealth is Freedom – The ability to choose your path without limits.\nLegacy Matters – True prosperity is measured in impact that outlives us. \n Peace is Success- A balanced life is the ultimate achievement.",
       img: require("../../../assets/image-3.jpg"),
     },
     {

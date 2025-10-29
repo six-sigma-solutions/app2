@@ -43,7 +43,7 @@ const Visionmission: React.FC = () => {
       img: require("../../../assets/vision11.jpg"),
       points: [
         "Transforming the way the world lives — healthier in body, happier in heart, and richer in spirit.",
-        "Inspire a world where well-being, joy, and prosperity thrive together.",
+        "To inspire a world where well-being, joy, and prosperity thrive together.",
       ],
     },
     {

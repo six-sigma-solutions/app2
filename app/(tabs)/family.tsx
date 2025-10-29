@@ -32,7 +32,7 @@ export default function Family() {
       id: 3,
       img: require('../../assets/family3.png'),
       quote:
-        '“I\'ve secured my children\'s future through education, savings, and guidance, aiming for long-term financial freedom.”',
+        '“I\'ve secured my children\'s future through education, savings, and guidance, aiming for long-term financial support.”',
     },
     {
       id: 4,
@@ -79,7 +79,7 @@ export default function Family() {
           style={styles.readMoreBtn}
           onPress={() => router.push("/(tabs)/mylife/entrepreneur")}
         >
-          <Text style={styles.readMoreText}>Read More →</Text>
+          <Text style={styles.readMoreText}>View More →</Text>
         </TouchableOpacity>
       </View>
 

@@ -10,33 +10,31 @@ import { Linking ,
 import { Video, ResizeMode } from "expo-av";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Asset } from "expo-asset";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useRouter, useFocusEffect } from "expo-router";
 import { FontAwesome6 } from "@expo/vector-icons";
-
 import MaskedView from "@react-native-masked-view/masked-view";
 import PopupModal from "../../components/PopupModal";
 import AutoScrollView from "../../components/AutoScrollView";
 
 // Data for the bullet points to make the code cleaner
 const solutions = [
-  "Solutions for Every Stage of Your Health & Wealth Journey",
-  "DM Made Easy, Health & Wealth Made Possible",
+  "Solutions for Every Stage of Your Health & Wealth Journey.",
+  "DM Made Easy, Health & Wealth Made Possible.",
   "Smart Choices for DM, Smarter Future in Health & Wealth.",
-  "From Today’s Health to Tomorrow’s Wealth & Wellness.",
-  "Empowering You Every Day with Health, and Wealth.",
+  "From Today’s Money to Tomorrow’s Wealth & Wellness.",
+  "Empowering You Every Day with Money, Health, and Wealth.",
 ];
 
 // NEW: Data for the Philosophy section
 const philosophyPoints = [
-"Your Partner in DM, Health, and Wealth for Life.",
-"Every Stage - Every Step - Health & Wealth Solutions.",
-"DM Balance Your Life. Build Your Health. Grow Your Wealth.",
-"Small Income Wins, Big Health & Wealth Gains.",
-"Simplify with DM. Strengthen Health. Secure Wealth.",
-"Master Your Day, Master Your Health, Master Your Well-being.",
-"Turn Daily Financial Actions into a Lifetime of Health and Wealth.",
-"Live Well - Live Wealthy - Every Single Day.",
+  "Your Partner in DM, Health, and Wealth for Life.",
+  "Every Stage, Every Step , Health & Wealth Solutions.",
+  "DM Balance Your Life. Build Your Health. Grow Your Wealth.",
+  "Small Income Wins, Big Health & Wealth Gains.",
+  "Simplify with DM. Strengthen Health. Secure Wealth.",
+  "Master Your Day, Master Your Health, Master Your Well-being.",
+  "Turn Daily Financial Actions into a Lifetime of Health and Wealth.",
+  "Live Well-Live Wealthy-Every Single Day.",
 ];
 
 export default function HomeScreen() {
@@ -59,10 +57,9 @@ export default function HomeScreen() {
       try {
         await Asset.loadAsync([
           require("../../assets/bg-mask.png"),
-          require("../../assets/buddha_grayscale4.png"),
-          require("../../assets/buddha_color4.png"),
+          require("../../assets/budhha-video6.mp4"),
+          require("../../assets/budhha-video6.mp4"),
         ]);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (e) {
         // ignore – still try to render
       } finally {
@@ -92,12 +89,12 @@ export default function HomeScreen() {
       <PopupModal
         visible={showPopup}
         onClose={() => setShowPopup(false)}
-        title={"Welcome to DM 💰"}
+        title={"Welcome to DM "}
         // pass a Text node so we can style the popup message white
         message={
           <Text style={{ color: '#ffffff', fontSize: 22, fontWeight: '600', textAlign: 'center', lineHeight: 34 }}>
-            For the betterment of all people across the world — Especially those driving innovation in the Global IT Community.
-          </Text>
+            "For the betterment of all people across the world — Especially those driving innovation in the Global IT Community."
+          </Text>
         }
         buttonText={"Get in →"}
       />
@@ -145,13 +142,23 @@ export default function HomeScreen() {
                 activeOpacity={0.9}
                 onPress={() => setIsGrayscale(!isGrayscale)}
               >
-                <Image
+                <Video
+                  ref={video}
+                  style={styles.buddhaImage}
+                   resizeMode={ResizeMode.COVER}
+            isLooping
+            shouldPlay
+            isMuted
                   source={
                     isGrayscale
-                      ? require("../../assets/buddha_grayscale4.png")
-                      : require("../../assets/buddha_color4.png")
+                      ? require("../../assets/budhha-video6.mp4")
+                      : require("../../assets/budhha-video6.mp4")
+
+                      
                   }
-                  style={styles.buddhaImage}
+           
+                  
+                 
                 />
               </TouchableOpacity>
             </View>
@@ -159,8 +166,8 @@ export default function HomeScreen() {
         ) : (
           // Placeholder occupies space while assets preload
           <View style={styles.maskedViewStyle}>
-            <Image
-              source={require("../../assets/buddha_grayscale4.png")}
+            <Video
+              source={require("../../assets/budhha-video6.mp4")}
               style={styles.buddhaImage}
             />
           </View>
@@ -175,14 +182,14 @@ export default function HomeScreen() {
           <Text style={styles.heroSub}>Health & Wealth. </Text>
           <Text style={styles.heroSubtitle}>Independent for Entire life.</Text>
           <Text style={styles.heroDesc}>
-            DM stands for discipline, unity, and independance.
+            DM stands for discipline, unity and independence.
           </Text>
           <Text style={styles.heroDesc}>
           Together, we are shaping a future of health, wealth, and limitless opportunities.
           </Text>
           <Text style={styles.heroDesc}>
-           With DM, every step forward is a step towards economic freedom, and a life without limits.
-
+            With DM, every step forward is a step towards economic freedom, and a
+            life without limits.
           </Text>
           <Text style={styles.heroDesc}>
             Welcome to <Text style={styles.span}>DM! </Text>
@@ -205,15 +212,12 @@ export default function HomeScreen() {
       {/* ========== "WALK WITH YOU" CARD ========== */}
       <View style={styles.cardSection}>
         <View style={styles.videoCardContainer}>
-          <Video
-            ref={video}
+          <Image
+            
             style={styles.videoBackground}
-            source={require("../../assets/gif7.mp4")}
-            resizeMode={ResizeMode.COVER}
-            isLooping
-            shouldPlay
-            isMuted
-          />
+            source={require("../../assets/gif7.png")}
+            
+            />
         </View>
       </View>
 
@@ -324,7 +328,7 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      {/* ========== FOOTER ========== */}
+            {/* ========== FOOTER ========== */}
       <View style={styles.footer}>
         <View style={styles.footerBannerContainer}>
           <Image
@@ -449,6 +453,7 @@ export default function HomeScreen() {
   );
 }
 
+
 // ========== STYLESHEET ==========
 const styles = StyleSheet.create({
   container: {
@@ -479,7 +484,7 @@ const styles = StyleSheet.create({
   },
   buddhaImage: {
     width: "100%",
-    height: "99%",
+    height: "100%",
     resizeMode: "cover",
   },
   heroContent: {
@@ -545,11 +550,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
   },
   videoBackground: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
+   height:"100%",
+   width:"100%",
   },
   philosophyCard: {
     backgroundColor: "#fff",
@@ -615,7 +617,7 @@ const styles = StyleSheet.create({
   },
   solutionCardImage: {
     width: "100%",
-    height: 400,
+    height: 368,
     resizeMode: "contain",
 
   },
@@ -790,8 +792,8 @@ const styles = StyleSheet.create({
     gap: 25,
   },
   footerLogo: {
-    width: 40,
-    height: 40,
+    width: 80,
+    height: 80,
     resizeMode: "contain",
     marginLeft:35,
   },
@@ -799,7 +801,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 20,
     fontWeight: "bold",
-    marginTop: 5,
+    marginTop: -25,
     marginLeft:36,
     
   },

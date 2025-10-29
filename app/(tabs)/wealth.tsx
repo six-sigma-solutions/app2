@@ -13,7 +13,7 @@ export default function Wealth() {
     {
       image: require("../../assets/wealth1.png"),
       text:
-        "Wealth is more than numbers in a bank account. It is the freedom to choose our path, the security to protect what matters, and the power to create a lasting impact.",
+        "Wealth is more than numbers in a bank account. It is the freedom to choose our path, the security to protect what matters,and the power to create a lasting impact.",
     },
     {
       image: require("../../assets/wealth2.png"),

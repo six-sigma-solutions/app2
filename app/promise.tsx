@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   image: {
-    width: "98%",
-    height: 310,
+    width: "100%",
+    height: 300,
   },
   button: {
     position: "absolute",

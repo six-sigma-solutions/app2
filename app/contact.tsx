@@ -87,22 +87,25 @@ export default function Contact() {
         </Text>
 
         <Text style={[styles.heading, { marginTop: 20 }]}>✉️ Email us</Text>
-        <Text style={styles.link} onPress={() => Linking.openURL("mailto:cpdian@gmail.com")}>
-          cpdian@gmail.com
+        <Text style={styles.link} onPress={() => Linking.openURL("mailto:support@dmhealthy.com")}>
+        support@dmhealthy.com
+        </Text>
+        <Text style={styles.link} onPress={() => Linking.openURL("mailto:service@dmhealthy.com")}>
+        service@dmhealthy.com
         </Text>
 
         <Text style={[styles.heading, { marginTop: 20 }]}>📞 Call us</Text>
-        <Text style={styles.link} onPress={() => Linking.openURL("tel:+919884590009")}>
-          +91 98845 90009
+        <Text style={styles.link} onPress={() => Linking.openURL("tel:+917904373255")}>
+         +91 79043 73255
         </Text>
 
         <View style={styles.socials}>
-          <TouchableOpacity onPress={() => Linking.openURL("https://x.com/cpdian?s=11")}>
+          <TouchableOpacity onPress={() => Linking.openURL("https://x.com/dailymsghealthy")}>
             <FontAwesome name="twitter" size={22} color="#0a66c2" />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              Linking.openURL("https://www.facebook.com/share/1Cx1RDAMqQ/?mibextid=wwXIfr")
+              Linking.openURL("https://www.facebook.com/Daily.Message.Healthy")
             }
           >
             <FontAwesome name="facebook" size={22} color="#1877f2" />
@@ -110,8 +113,7 @@ export default function Contact() {
           <TouchableOpacity
             onPress={() =>
               Linking.openURL(
-                "https://www.instagram.com/chellapondyvellaiswamy?igsh=MTgwM25qbnBpb2Nxbg%3D%3D&utm_source=qr"
-              )
+                "https://www.instagram.com/daily_message_healthy/",)
             }
           >
             <FontAwesome name="instagram" size={22} color="#e1306c" />

@@ -63,9 +63,9 @@ export default function Entrepreneur() {
         {
           image: require("../../../assets/entp5.jpg"),
           text: `"Yes, I believe in building dreams into reality."
-"I believe in making dreams come true through action."
+"Yes,I turn dreams into reality through my action."
 "I’m committed to turning vision into reality."
-"I believe that dreams are meant to be built, not just imagined."`,
+"I believe that dreamsnto be built, not just dreamed."`,
           bgColor: "#34657cff",
           textColor: "#fff",
         },
@@ -89,9 +89,9 @@ export default function Entrepreneur() {
         },
         {
           image: require("../../../assets/entp8.jpg"),
-          text: `"I have dreams of financial support and impact."
+          text: `"I have dreams of financial independence and impact."
 "I dream of creating wealth and making a difference."
-"My goal is to build financial support and inspire change."
+"My goal is to build economic freedom and inspire change."
 "My vision combines financial success with social impact."`,
           bgColor: "#dfdfdfff",
           textColor: "#000",
