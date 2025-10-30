@@ -1,16 +1,4 @@
-// Paste your Firebase web config here. You can find this in the Firebase console -> Project settings -> Your apps (Web)
-// Example:
-// export default {
-//   apiKey: "...",
-//   authDomain: "your-app.firebaseapp.com",
-//   projectId: "your-app-id",
-//   storageBucket: "your-app.appspot.com",
-//   messagingSenderId: "...",
-//   appId: "1:...:web:...",
-// };
 
-// Values inferred from android/app/google-services.json. If you have a
-// dedicated Web app in Firebase Console, prefer to use that web config.
 const firebaseConfig = {
   apiKey: "AIzaSyAaI-bvSXddWBePYlQxZk78qn1L2da3FY8",
   authDomain: "react-native-dm.firebaseapp.com",

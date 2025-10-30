@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
   },
   logo: {
-    width: 160,
+    width: 140,
     height: 150,
     
   
@@ -50,9 +50,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#fff',
     padding:-1,
+    
   },
   subtitle: {
-    marginTop: -50,
+    marginTop: -65,
     color: 'rgba(255,255,255,0.85)',
     fontSize: 17,
   },

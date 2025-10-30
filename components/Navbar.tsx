@@ -152,8 +152,8 @@ const styles = StyleSheet.create({
     paddingLeft: 4,
   },
   logo: {
-    width: 190,
-    height: 80,
+    width: 200,
+    height: 100,
   },
   hamburgerBtn: {
     width: 44,

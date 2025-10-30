@@ -8,9 +8,9 @@ import { Linking ,
   ImageBackground,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
 import { Asset } from "expo-asset";
-import { useRouter, useFocusEffect } from "expo-router";
+import { useRouter } from "expo-router";
 import { FontAwesome6 } from "@expo/vector-icons";
 import MaskedView from "@react-native-masked-view/masked-view";
 import PopupModal from "../../components/PopupModal";

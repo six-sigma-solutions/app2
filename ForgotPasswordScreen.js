@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { resetPassword } from './firebase';
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { resetPassword } from "../firebase";
+import { useRouter } from "expo-router";
 
 export default function ForgotPasswordScreen() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   async function onReset() {
     setLoading(true);
     try {
       await resetPassword(email);
-      Alert.alert('Check your email', 'Password reset email sent');
+      Alert.alert("Success", "Password reset email sent!");
+      router.push("/signin");
     } catch (err) {
-      Alert.alert('Reset failed', err.message || String(err));
+      Alert.alert("Error", err.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -24,16 +27,16 @@ export default function ForgotPasswordScreen() {
       <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail} autoCapitalize="none" keyboardType="email-address" />
 
       <TouchableOpacity style={styles.button} onPress={onReset} disabled={loading}>
-        <Text style={styles.buttonText}>{loading ? 'Sending...' : 'Send Reset Email'}</Text>
+        <Text style={styles.buttonText}>{loading ? "Sending..." : "Send Reset Link"}</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 24, justifyContent: 'center' },
-  title: { fontSize: 24, fontWeight: '700', marginBottom: 12 },
-  input: { height: 48, borderWidth: 1, borderColor: '#ccc', borderRadius: 8, paddingHorizontal: 12, marginBottom: 12 },
-  button: { backgroundColor: '#2a74c6', height: 48, borderRadius: 8, justifyContent: 'center', alignItems: 'center' },
-  buttonText: { color: '#fff', fontWeight: '700' },
+  container: { flex: 1, padding: 24, justifyContent: "center" },
+  title: { fontSize: 26, fontWeight: "bold", marginBottom: 20 },
+  input: { height: 48, borderWidth: 1, borderColor: "#ccc", borderRadius: 8, paddingHorizontal: 12, marginBottom: 12 },
+  button: { backgroundColor: "#2a74c6", height: 48, borderRadius: 8, justifyContent: "center", alignItems: "center" },
+  buttonText: { color: "#fff", fontWeight: "700" },
 });

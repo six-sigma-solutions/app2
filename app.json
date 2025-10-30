@@ -15,7 +15,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/DailyMoney.png",
         "backgroundColor": "#E6F4FE"
-      }
+      },
+      "permissions": [
+        "INTERNET"
+      ]
     },
     "web": {
       "output": "static",
@@ -38,7 +41,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "130e2541-22ca-4623-b214-97fc9e671a25"
+        
       }
     }
   }
