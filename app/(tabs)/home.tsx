@@ -400,10 +400,10 @@ export default function HomeScreen() {
             </View>
 
             <View style={styles.footerLinkSection}>
-              <Text style={styles.footerLinkTitle}>Connect</Text>
+              <Text style={styles.footerLinkTitle}>Connect </Text>
               <TouchableOpacity
                 style={styles.socialLinkItem}
-                onPress={() => Linking.openURL("https://x.com/cpdian?s=11")}
+                onPress={() => Linking.openURL("https://x.com/dailymsghealthy")}
               >
                 <FontAwesome6
                   name="x-twitter"
@@ -417,7 +417,7 @@ export default function HomeScreen() {
                 style={styles.socialLinkItem}
                 onPress={() =>
                   Linking.openURL(
-                    "https://www.facebook.com/share/1Cx1RDAMqQ/?mibextid=wwXIfr"
+                    "https://www.facebook.com/Daily.Message.Healthy"
                   )
                 }
               >
@@ -433,8 +433,7 @@ export default function HomeScreen() {
                 style={styles.socialLinkItem}
                 onPress={() =>
                   Linking.openURL(
-                    "https://www.instagram.com/chellapondyvellaiswamy?igsh=MTgwM25qbnBpb2Nxbg%3D%3D&utm_source=qr"
-                  )
+                    "https://www.instagram.com/daily_message_healthy/")
                 }
               >
                 <FontAwesome6

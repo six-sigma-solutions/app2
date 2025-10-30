@@ -207,7 +207,7 @@ export default function Bio() {
           <Text
             style={[
               styles.headerText,
-              isMobile && { fontSize: 20, marginHorizontal: 10, paddingVertical: 15 },
+              isMobile && { fontSize:15,marginHorizontal:9, paddingVertical: 25,justifyContent:'center' },
               isTablet && { marginHorizontal: 40 },
             ]}
           >
