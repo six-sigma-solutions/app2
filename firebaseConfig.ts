@@ -1,4 +1,10 @@
 
+
+// src/config/firebase.js
+
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAaI-bvSXddWBePYlQxZk78qn1L2da3FY8",
   authDomain: "react-native-dm.firebaseapp.com",
@@ -8,4 +14,9 @@ const firebaseConfig = {
   appId: "1:718070565957:android:bce9544431a2ffb665672c",
 };
 
-export default firebaseConfig;
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+export { auth };
+
