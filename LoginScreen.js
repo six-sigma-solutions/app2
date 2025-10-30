@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useRouter } from "expo-router";
-import { signIn } from "../firebase";
+import { signIn } from "../lib/firebase";
 
 export default function SigninScreen() {
   const router = useRouter();

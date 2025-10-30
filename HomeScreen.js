@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { signOut, onAuthStateChanged } from './firebase';
+import { signOut, onAuthStateChanged } from '../lib/firebase';
 import { useRouter } from 'expo-router';
 
 export default function HomeScreen() {
