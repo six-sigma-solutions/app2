@@ -47,7 +47,7 @@ const Visionmission: React.FC = () => {
       ],
     },
     {
-      img: require("../../../assets/vision2.jpg"),
+      img: require("../../../assets/vision2.png"),
       points: [
         "To nurture global wellness and wealth through mindful living and empowered growth.",
         "To harmonize body, mind, and prosperity through conscious, nature-powered living.",

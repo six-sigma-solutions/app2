@@ -35,7 +35,7 @@ export default function Overview() {
     {
       title: "Our Core Beliefs",
       color: "#e70074ff",
-      text: "Health is Wealth – Without wellness, income loses its meaning.\nWealth is Freedom – The ability to choose your path without limits.\nLegacy Matters – True prosperity is measured in impact that outlives us. \n Peace is Success- A balanced life is the ultimate achievement.",
+      text: "Health is Wealth – Without wellness, income loses its meaning.\nWealth is Freedom – The ability to choose your path without limits.\nLegacy Matters – True prosperity is measured in impact that outlives us. \nPeace is Success- A balanced life is the ultimate achievement.",
       img: require("../../../assets/image-3.jpg"),
     },
     {
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: "#fff",
-    borderRadius: 20,
-    marginHorizontal: 16,
+    borderRadius: 19,
+    marginHorizontal: 14,
     marginVertical: 12,
     padding: 16,
     alignItems: "center",
@@ -120,9 +120,9 @@ const styles = StyleSheet.create({
   },
 
   title: { fontSize: 20, fontWeight: "700", marginBottom: 10, textAlign: "center" },
-  text: { fontSize: 15, lineHeight: 25, textAlign: "justify", color: "#0f172a", marginBottom: 15, fontWeight: "500" },
+  text: { fontSize: 14, lineHeight: 25, textAlign: "justify", color: "#0f172a", marginBottom: 15, fontWeight: "500" },
 
-  image: { width: "100%", height: 210, borderRadius: 10 },
+  image: { width: "100%", height: 200, borderRadius: 10 },
 
   buttonWrap: { alignItems: "center", marginVertical: 30 },
   button: { backgroundColor: "#4caf50", paddingVertical: 12, paddingHorizontal: 30, borderRadius: 30 },

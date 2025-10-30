@@ -56,7 +56,7 @@ export default function FounderMsg() {
               style={styles.footerLogo}
             />
             <Text style={styles.footerTitle2}></Text>
-            <Text style={styles.footerSubtitle2}>Independent for Entire Life</Text>
+            <Text style={styles.footerSubtitle2}>Independent for Entire Life </Text>
           </View>
         </View>
       </View>

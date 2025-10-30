@@ -46,7 +46,7 @@ export default function PresidentMsg() {
             {/* Signature */}
             <View style={styles.signatureBlock}>
               <Text style={styles.signatureName}>{president.name}</Text>
-              <Text style={styles.signatureTitle}>President, DM</Text>
+              <Text style={styles.signatureTitle}>President, DM </Text>
             </View>
           </View>
 
@@ -67,7 +67,7 @@ export default function PresidentMsg() {
               style={styles.footerLogo}
             />
             <Text style={styles.footerTitle2}></Text>
-            <Text style={styles.footerSubtitle2}>Independent for Entire Life</Text>
+            <Text style={styles.footerSubtitle2}>Independent for Entire Life </Text>
           </View>
         </View>
 
