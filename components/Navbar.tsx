@@ -25,7 +25,7 @@ export default function Navbar() {
   const [signingOut, setSigningOut] = useState(false);
   const { width: windowWidth } = useWindowDimensions();
 
-  const logoWidth = Math.max(90, Math.min(160, Math.floor(windowWidth * 0.28)));
+  const logoWidth = Math.max(80, Math.min(200, Math.floor(windowWidth * 0.32)));
 
   let logoSource: any = null;
   try {
@@ -56,7 +56,7 @@ export default function Navbar() {
             <Image
               source={logoSource}
               resizeMode="contain"
-              style={[styles.logo, { width: logoWidth, height: 60 }]}
+              style={[styles.logo, { width: logoWidth, height: 75 }]}
             />
           </TouchableOpacity>
         </Link>
@@ -152,8 +152,8 @@ const styles = StyleSheet.create({
     paddingLeft: 4,
   },
   logo: {
-    width: 200,
-    height: 100,
+    width: 220,
+    height: 90,
   },
   hamburgerBtn: {
     width: 44,

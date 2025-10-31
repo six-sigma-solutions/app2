@@ -48,7 +48,7 @@ export default function Contact() {
 
   const handleSubmit = () => {
     if (!form.name || !form.email || !form.message) {
-      Alert.alert("Missing Info", "Please fill in your name, email, and message.");
+      Alert.alert("Missing Info", "Please fill in your name, email, and message.".replace(/["']/g, ""));
       return;
     }
 

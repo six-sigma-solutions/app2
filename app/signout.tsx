@@ -12,7 +12,7 @@ export default function SignOutScreen() {
       await signOut();
       router.replace("/signin");
     } catch (err: any) {
-      Alert.alert("Error", err.message);
+      Alert.alert("Error", err.message.replace(/["']/g, ""));
     }
   };
 

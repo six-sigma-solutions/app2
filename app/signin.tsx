@@ -13,7 +13,7 @@ export default function SignInScreen() {
 
   const handleSignIn = async () => {
     if (!email || !password) {
-      Alert.alert("Error", "Please fill all fields");
+  Alert.alert("Error", "Please fill all fields".replace(/["']/g, ""));
       return;
     }
 
@@ -22,7 +22,7 @@ export default function SignInScreen() {
       await signIn(email, password);
       router.replace("/(tabs)/home");
     } catch (err: any) {
-      Alert.alert("Login Failed", err.message);
+  Alert.alert("Login Failed", err.message.replace(/["']/g, ""));
     } finally {
       setLoading(false);
     }
@@ -37,9 +37,8 @@ export default function SignInScreen() {
         <View style={styles.container}>
           {/* Logo + Title Section */}
           <View style={styles.headerContainer}>
-            <AuthHeader title="Sign In" />
+            <AuthHeader title={"Sign In".replace(/["']/g, "")}/>
           </View>
-
           {/* Input Fields */}
           <View style={styles.formContainer}>
             <FloatingLabelInput
@@ -54,7 +53,6 @@ export default function SignInScreen() {
               onChangeText={setPassword}
               secureTextEntry
             />
-
             <TouchableOpacity
               style={styles.button}
               onPress={handleSignIn}
@@ -63,15 +61,15 @@ export default function SignInScreen() {
               {loading ? (
                 <ActivityIndicator color="#fff" />
               ) : (
-                <Text style={styles.buttonText}>Login</Text>
+                <Text style={styles.buttonText}>Sign In</Text>
               )}
             </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => router.push("/forgot-password")}>
+            <TouchableOpacity onPress={() => router.push("/forgot-password")}
+              style={{ marginTop: 16 }}>
               <Text style={styles.link}>Forgot Password?</Text>
             </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => router.push("/signup")}>
+            <TouchableOpacity onPress={() => router.push("/signup")}
+              style={{ marginTop: 8 }}>
               <Text style={styles.link}>Don’t have an account? Sign Up</Text>
             </TouchableOpacity>
           </View>
@@ -89,26 +87,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 40, // reduced top padding to remove large gap
     backgroundColor: "#001f3f",
-    
   },
   headerContainer: {
     marginBottom: 24,
-    
-    
-    
   },
   title: {
-  fontSize: 32,
-  fontWeight: "bold",
-  color: "#fff",
-  textAlign: "center",
-  marginTop: 8, // 👈 this moves Sign In slightly downward
-},
-
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#fff",
+    textAlign: "center",
+    marginTop: 8, // 👈 this moves Sign In slightly downward
+  },
   formContainer: {
     width: "100%",
     marginTop: 10,
-    
   },
   button: {
     backgroundColor: "#007AFF",

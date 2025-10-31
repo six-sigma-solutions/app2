@@ -79,23 +79,9 @@ function AuthStartup() {
     return null; // keep blank; you can replace with a spinner view if desired
   }
 
-  // If not authenticated: render only the auth stack (signin, signup, forgot-password)
+  // Do NOT show Navbar on unauthenticated (auth) screens
   if (!user) {
     console.log('User not authenticated, showing auth stack');
-    // Show the Navbar on web during development so designers can preview layout
-    if (Platform.OS === 'web') {
-      return (
-        <>
-          <Navbar />
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="signin" options={{ headerShown: false }} />
-            <Stack.Screen name="signup" options={{ headerShown: false }} />
-            <Stack.Screen name="forgot-password" options={{ headerShown: false }} />
-          </Stack>
-        </>
-      );
-    }
-
     return (
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="signin" options={{ headerShown: false }} />

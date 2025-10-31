@@ -14,6 +14,8 @@ import {
 } from 'react-native';
 import AutoScrollView from '../components/AutoScrollView';
 
+import { useRouter } from 'expo-router';
+
 const NAVY = '#000080';
 
 type Member = {
@@ -26,7 +28,7 @@ type Member = {
 const founder = {
   name: 'Dr.V.Chellapondy',
   image: require("../assets/sir.png"),
-  link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+  link: '/contact',
   slogan: "My job is - changing people's life.",
 };
 
@@ -35,88 +37,81 @@ const members: Member[] = [
     name: 'S.Vasu',
     image: require("../assets/vasu.jpg"),
     slogan: 'My Health is My Wealth.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'R.K.Selvamani',
     image: require("../assets/person23.jpg"),
     slogan: 'My World - My Children.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'C.Arvind',
     image: require("../assets/aravind.jpg"),
     slogan: 'I want to became Entrepreneur.',
-    link: 'https://arvindc.herbalife.com/en-us/u',
+    link: '/contact',
   },
- 
   {
     name: 'Dr.K.P.Kosygan',
     image: require("../assets/kosy.jpg"),
     slogan: "I'm Forever a Student.",
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'Dhanush A V',
-      image: require("../assets/dhanush.jpg"),
+    image: require("../assets/dhanush.jpg"),
     slogan: 'My Healthy weight loss journey starts Now.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'Kishore K',
     image: require("../assets/kisore.jpg"),
     slogan: 'Slim, Fit, and full of Energy.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'Jeganraj A',
-      image: require("../assets/jega2.png"),
+    image: require("../assets/jega2.png"),
     slogan: 'Healthy living happy living.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'Sathish M',
-      image: require("../assets/sathish.jpg"),
+    image: require("../assets/sathish.jpg"),
     slogan: 'Choosing health and happiness every day.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'Ilayaraju C',
-     image: require("../assets/raju.jpg"),
+    image: require("../assets/raju.jpg"),
     slogan: 'Small steps lead to big changes.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
-  {
-    name: 'Baskar U',
-     image: require("../assets/baskar.jpg"),
-    slogan: 'Positive changes lead to powerful results.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
-  },
-
+ 
   // Examples with placeholders via remote URLs:
   {
     name: 'X X X X',
     image: { uri: 'https://placehold.co/100x100/EFEFEFF/grey?text=Member' },
     slogan: 'My wellness journey begins Now.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'X X X X',
     image: { uri: 'https://placehold.co/100x100/EFEFEFF/grey?text=Member' },
     slogan: 'My wellness journey begins Now.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'X X X X',
     image: { uri: 'https://placehold.co/100x100/EFEFEFF/grey?text=Member' },
     slogan: 'My wellness journey begins Now.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   {
     name: 'X X X X',
     image: { uri: 'https://placehold.co/100x100/EFEFEFF/grey?text=Member' },
     slogan: 'My wellness journey begins Now.',
-    link: 'https://cpdian.goherbalife.com/Catalog/Home/Index/en-IN/',
+    link: '/contact',
   },
   // ...add the rest of your “X X X X” entries similarly
 ];
@@ -154,6 +149,7 @@ function PointingIcon() {
 
 function TeamCard({ member }: { member: Member }) {
   const scale = useRef(new Animated.Value(1)).current;
+  const router = useRouter();
 
   const onPressIn = () => {
     Animated.spring(scale, { toValue: 1.03, useNativeDriver: true, friction: 6, tension: 90 }).start();
@@ -162,7 +158,7 @@ function TeamCard({ member }: { member: Member }) {
     Animated.spring(scale, { toValue: 1, useNativeDriver: true, friction: 6, tension: 90 }).start();
   };
 
-  const open = () => Linking.openURL(member.link).catch(() => {});
+  const open = () => router.push('/contact');
 
   return (
     <Animated.View style={[styles.card, { transform: [{ scale }] }]}>
@@ -193,8 +189,8 @@ export default function Bio() {
   const isTiny = width <= 480;
 
   const containerPad = useMemo(() => (isTiny ? 10 : 20), [isTiny]);
-
-  const openFounder = () => Linking.openURL(founder.link).catch(() => {});
+  const router = useRouter();
+  const openFounder = () => router.push('/contact');
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -405,6 +401,6 @@ const styles = StyleSheet.create({
     paddingRight:10,
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", marginTop:-10 },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", marginTop:-20 },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

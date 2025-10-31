@@ -19,21 +19,21 @@ export default function ForgotPasswordScreen() {
 
   const handleReset = async () => {
     if (!email) {
-      Alert.alert("Error", "Please enter your email");
+  Alert.alert("Error", "Please enter your email".replace(/["']/g, ""));
       return;
     }
 
     setLoading(true);
     try {
       await resetPassword(email);
-      Alert.alert("Success", "Password reset link sent to your email");
+  Alert.alert("Success", "Password reset link sent to your email".replace(/["']/g, ""));
       router.push("/signin");
     } catch (err) {
       const errorMessage =
         err && typeof err === "object" && "message" in err
           ? err.message
           : "Something went wrong. Please try again.";
-      Alert.alert("Reset Failed", errorMessage as string);
+  Alert.alert("Reset Failed", (errorMessage as string).replace(/["']/g, ""));
     } finally {
       setLoading(false);
     }
@@ -42,29 +42,29 @@ export default function ForgotPasswordScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.headerWrapper}>
-        <AuthHeader title="Reset Password" />
+  <AuthHeader title={"Reset Password".replace(/["']/g, "")}/>
       </View>
-
       <FloatingLabelInput
         label="Email"
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
       />
-
       <TouchableOpacity
         style={styles.button}
         onPress={handleReset}
         disabled={loading}
       >
         {loading ? (
-          <ActivityIndicator color="#fff" />
+          <ActivityIndicator />
         ) : (
           <Text style={styles.buttonText}>Send Reset Link</Text>
         )}
       </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => router.push("/signin")}>
+      <TouchableOpacity
+        onPress={() => router.push("/signin")}
+        style={{ marginTop: 16 }}
+      >
         <Text style={styles.link}>Back to Sign In</Text>
       </TouchableOpacity>
     </View>

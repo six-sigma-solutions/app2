@@ -21,12 +21,12 @@ export default function SignUpScreen() {
 
   const handleSignUp = async () => {
     if (!email || !password || !confirmPassword) {
-      Alert.alert("Error", "Please fill all fields");
+  Alert.alert("Error", "Please fill all fields".replace(/["']/g, ""));
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert("Error", "Passwords do not match");
+  Alert.alert("Error", "Passwords do not match".replace(/["']/g, ""));
       return;
     }
 
@@ -35,7 +35,7 @@ export default function SignUpScreen() {
       await signUp(email, password);
       router.replace("/(tabs)/home");
     } catch (err: any) {
-      Alert.alert("Signup Failed", err.message);
+  Alert.alert("Signup Failed", err.message.replace(/["']/g, ""));
     } finally {
       setLoading(false);
     }
@@ -44,9 +44,8 @@ export default function SignUpScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.headerWrapper}>
-        <AuthHeader title="Sign Up" />
+  <AuthHeader title={"Sign Up".replace(/["']/g, "")}/>
       </View>
-
       <FloatingLabelInput
         label="Email"
         value={email}
@@ -65,7 +64,6 @@ export default function SignUpScreen() {
         onChangeText={setConfirmPassword}
         secureTextEntry
       />
-
       <TouchableOpacity
         style={styles.button}
         onPress={handleSignUp}
@@ -74,11 +72,13 @@ export default function SignUpScreen() {
         {loading ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text style={styles.buttonText}>Create Account</Text>
+          <Text style={styles.buttonText}>Sign Up</Text>
         )}
       </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => router.push("/signin")}>
+      <TouchableOpacity
+        onPress={() => router.push("/signin")}
+        style={{ marginTop: 16 }}
+      >
         <Text style={styles.link}>Already have an account? Sign In</Text>
       </TouchableOpacity>
     </View>
@@ -90,11 +90,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#001f3f",
     justifyContent: "center",
-    padding: 20,
+    padding: 24,
   },
   headerWrapper: {
-    marginBottom: 40,
-    marginTop: -65, // 👈 moves only the “Sign Up” text slightly upward
+    marginBottom: 24,
     alignItems: "center",
   },
   button: {

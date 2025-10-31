@@ -184,8 +184,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 
-  textBox: { padding: 16 },
-  text: { fontSize: 15, lineHeight: 25, fontWeight: "600", justifyContent: "center", color: "#333" , textAlign:"justify" },
+  textBox: { padding: 14 },
+  text: { fontSize: 15, lineHeight: 24, fontWeight: "600", justifyContent: "center", color: "#333" , textAlign:"justify" },
 
   viewMoreWrap: { alignItems: "center", marginVertical: 30 },
   viewMoreBtn: {
@@ -207,6 +207,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", marginTop: -10 },
+  footerTitle: { fontSize: 20, fontWeight: "700", color: "#fffb2c", marginTop: -20 },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

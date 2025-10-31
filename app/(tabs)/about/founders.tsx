@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 1,
     color: '#facc15',
-    marginTop: -10,
+    marginTop: -50,
     textTransform: 'uppercase',
   },
   footerSubtitle2: {

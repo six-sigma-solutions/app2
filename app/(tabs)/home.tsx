@@ -89,14 +89,14 @@ export default function HomeScreen() {
       <PopupModal
         visible={showPopup}
         onClose={() => setShowPopup(false)}
-        title={"Welcome to DM "}
+        title={"Welcome to DM ".replace(/["']/g, "")}
         // pass a Text node so we can style the popup message white
         message={
           <Text style={{ color: '#ffffff', fontSize: 22, fontWeight: '600', textAlign: 'center', lineHeight: 34 }}>
-            "For the betterment of all people across the world — Especially those driving innovation in the Global IT Community."
+            {"For the betterment of all people across the world — Especially those driving innovation in the Global IT Community.".replace(/["']/g, "")}
           </Text>
         }
-        buttonText={"Get in →"}
+        buttonText={"Get in →".replace(/["']/g, "")}
       />
        <AutoScrollView style={styles.container}>    
 
@@ -180,7 +180,7 @@ export default function HomeScreen() {
             <Text style={styles.money}>M</Text>
           </Text>
           <Text style={styles.heroSub}>Health & Wealth. </Text>
-          <Text style={styles.heroSubtitle}>Independent for Entire life.</Text>
+          <Text style={styles.heroSubtitle}>Independent for Entire life.  </Text>
           <Text style={styles.heroDesc}>
             DM stands for discipline, unity and independence.
           </Text>
@@ -400,7 +400,7 @@ export default function HomeScreen() {
             </View>
 
             <View style={styles.footerLinkSection}>
-              <Text style={styles.footerLinkTitle}>Connect </Text>
+              <Text style={styles.footerLinkTitle}>Connect  </Text>
               <TouchableOpacity
                 style={styles.socialLinkItem}
                 onPress={() => Linking.openURL("https://x.com/dailymsghealthy")}
@@ -795,6 +795,7 @@ const styles = StyleSheet.create({
     height: 80,
     resizeMode: "contain",
     marginLeft:35,
+    marginTop:-10,
   },
   footerLogoText: {
     color: "#fff",
@@ -821,10 +822,12 @@ const styles = StyleSheet.create({
   },
   footerLinkTitle: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "bold",
-    marginBottom: 10,
-    
+    marginBottom: 14,
+    marginTop: 6,
+    paddingRight: -65
+
   },
   footerLink: {
     color: "#949090",

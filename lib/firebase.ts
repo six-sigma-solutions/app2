@@ -1,33 +1,8 @@
 import firebaseConfigFromFile from '../firebaseConfig';
-import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 
-let _nativeAuth: any | null = null;
 let _webAuth: any | null = null;
-let _initializedNative = false;
 let _initializedWeb = false;
-
-async function initNativeAuth() {
-  if (_initializedNative) return _nativeAuth;
-  _initializedNative = true;
-  try {
-    const { NativeModules } = require('react-native');
-    if (!NativeModules?.RNFBAppModule) {
-      console.warn('[firebase] RNFBAppModule not found, skipping native initialization');
-      _nativeAuth = null;
-      return null;
-    }
-
-    const rnFirebaseAuth = require('@react-native-firebase/auth');
-    _nativeAuth = typeof rnFirebaseAuth === 'function' ? rnFirebaseAuth() : rnFirebaseAuth;
-    console.log('[firebase] initialized native Firebase Auth');
-    return _nativeAuth;
-  } catch (err) {
-    console.warn('[firebase] native @react-native-firebase/auth not available:', String(err));
-    _nativeAuth = null;
-    return null;
-  }
-}
 
 async function initWebAuth() {
   if (_initializedWeb) return _webAuth;
@@ -55,21 +30,30 @@ async function initWebAuth() {
 
     const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 
-    if (Platform.OS === 'android' || Platform.OS === 'ios') {
+    // Use AsyncStorage persistence on React Native
+    if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+      const AsyncStorage = (await import('@react-native-async-storage/async-storage')).default;
+      let authInstance;
       try {
-        const AsyncStorage = require('@react-native-async-storage/async-storage');
-        _webAuth = initializeAuth(app, {
-          persistence: getReactNativePersistence(AsyncStorage),
-        });
-        console.log('[firebase] initialized web Firebase Auth with persistence');
-        return _webAuth;
-      } catch (e) {
-        console.warn('[firebase] initializeAuth with AsyncStorage failed, falling back');
+        authInstance = getAuth(app);
+        // If this succeeds, auth is already initialized
+        console.log('[firebase] getAuth returned existing Auth instance');
+      } catch (e: any) {
+        // If not initialized, initialize it
+        if (e.code === 'auth/no-auth') {
+          authInstance = initializeAuth(app, {
+            persistence: getReactNativePersistence(AsyncStorage)
+          });
+          console.log('[firebase] initialized Firebase Auth with AsyncStorage persistence');
+        } else {
+          throw e;
+        }
       }
+      _webAuth = authInstance;
+    } else {
+      _webAuth = getAuth(app);
+      console.log('[firebase] initialized web Firebase Auth');
     }
-
-    _webAuth = getAuth(app);
-    console.log('[firebase] initialized web Firebase Auth');
     return _webAuth;
   } catch (err) {
     console.error('[firebase] failed to initialize web SDK:', err);
@@ -79,12 +63,6 @@ async function initWebAuth() {
 }
 
 async function getAuthForPlatform() {
-  if (Platform.OS === 'ios' || Platform.OS === 'android') {
-    const native = await initNativeAuth();
-    if (native) return { type: 'native', auth: native };
-    const web = await initWebAuth();
-    return { type: 'web', auth: web };
-  }
   const web = await initWebAuth();
   return { type: 'web', auth: web };
 }
@@ -92,9 +70,6 @@ async function getAuthForPlatform() {
 export async function signIn(email: string, password: string) {
   const result = await getAuthForPlatform();
   if (!result.auth) throw new Error('Firebase not initialized');
-  if (result.type === 'native') {
-    return result.auth.signInWithEmailAndPassword(email, password);
-  }
   const { signInWithEmailAndPassword } = await import('firebase/auth');
   return signInWithEmailAndPassword(result.auth, email, password);
 }
@@ -102,9 +77,6 @@ export async function signIn(email: string, password: string) {
 export async function signUp(email: string, password: string) {
   const result = await getAuthForPlatform();
   if (!result.auth) throw new Error('Firebase not initialized');
-  if (result.type === 'native') {
-    return result.auth.createUserWithEmailAndPassword(email, password);
-  }
   const { createUserWithEmailAndPassword } = await import('firebase/auth');
   return createUserWithEmailAndPassword(result.auth, email, password);
 }
@@ -121,17 +93,6 @@ export async function onAuthStateChanged(callback: (user: any) => void) {
   if (!result.auth) {
     callback(null);
     return () => {};
-  }
-
-  if (result.type === 'native') {
-    try {
-      const unsub = result.auth().onAuthStateChanged(callback);
-      return unsub;
-    } catch (err) {
-      console.warn('[firebase] native onAuthStateChanged failed', String(err));
-      callback(null);
-      return () => {};
-    }
   }
 
   const { onAuthStateChanged: webOnAuth } = await import('firebase/auth');

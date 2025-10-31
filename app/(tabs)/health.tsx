@@ -10,7 +10,7 @@ export default function Health() {
   return (
     <AutoScrollView style={styles.container}>
       {/* === PAGE TITLE === */}
-      <Text style={styles.heading}>Our Health</Text>
+  <Text style={styles.heading}>{"Our Health".replace(/["']/g, "")}</Text>
 
       {/* === HERO SECTION === */}
       <View style={styles.hero}>
@@ -18,9 +18,9 @@ export default function Health() {
 
         <View style={styles.heroContent}>
           <Text style={styles.heroTitle}>
-            <Text style={styles.colorHealthy}>Live Healthy, </Text>
-            <Text style={styles.colorHappy}>Live Happy, </Text>
-            <Text style={styles.colorWealthy}>Live Wealthy</Text>
+            <Text style={styles.colorHealthy}>{"Live Healthy, ".replace(/["']/g, "")}</Text>
+            <Text style={styles.colorHappy}>{"Live Happy, ".replace(/["']/g, "")}</Text>
+            <Text style={styles.colorWealthy}>{"Live Wealthy".replace(/["']/g, "")}</Text>
           </Text>
           </View>
           <View style={styles.heroImageContainer}>
@@ -32,16 +32,14 @@ export default function Health() {
 
         <View style={styles.heroContent}>
           <Text style={styles.heroText}>
-            Your journey to wellness and financial support starts here.
-    
-            Our health is our true wealth — it gives us energy, focus, and freedom to live fully. Every choice - what we eat, how we move, how we rest shapes our future. When we care for our health, we care for our dreams, our families, and our world. Strong bodies, Clear minds and Happy hearts. Together, we build a healthier tomorrow. Our health - our strength & our future.
+            {"Your journey to wellness and financial support starts here. Our health is our true wealth — it gives us energy, focus, and freedom to live fully. Every choice - what we eat, how we move, how we rest shapes our future. When we care for our health, we care for our dreams, our families, and our world. Strong bodies, Clear minds and Happy hearts. Together, we build a healthier tomorrow. Our health - our strength & our future.".replace(/["']/g, "")}
           </Text>
         </View>
       </View>
 
       {/* === QUOTE HEADER === */}
       <Text style={styles.sectionHeader}>
-        My health is my greatest wealth. 😊
+        {"My health is my greatest wealth. 😊".replace(/["']/g, "")}
       </Text>
 
       {/* === HEALTH CARDS === */}
@@ -89,7 +87,7 @@ export default function Health() {
             <View style={[styles.cardBox, { backgroundColor: item.color }]}>
               {item.quotes.map((q, i) => (
                 <Text key={i} style={styles.cardText}>
-                  “{q}”
+                  {q.replace(/["']/g, "")}
                 </Text>
               ))}
             </View>
@@ -101,25 +99,24 @@ export default function Health() {
       <View style={styles.footerCard}>
         <View style={styles.footer}>
           <Text style={styles.footerQuoteEnglish}>
-            "No need for medicine if you allow proper digestion between meals."
+            {"No need for medicine if you allow proper digestion between meals.".replace(/["']/g, "")}
           </Text>
           <Text style={styles.footerQuoteTamil}>
-            “மருந்தென வேண்டாவாம் யாக்கைக்கு அருந்தியது”
+            {"மருந்தென வேண்டாவாம் யாக்கைக்கு அருந்தியது".replace(/["']/g, "")}
           </Text>
-          <Text style={styles.footerQuoteTamilsecond}>அற்றது போற்றி உணின்.”</Text>
-          <Text style={styles.footerQuoteTamilsecondtitle}>- திருக்குறள்</Text>
+          <Text style={styles.footerQuoteTamilsecond}>{"அற்றது போற்றி உணின்.".replace(/["']/g, "")}</Text>
+          <Text style={styles.footerQuoteTamilsecondtitle}>{"- திருக்குறள்".replace(/["']/g, "")}</Text>
 
           <Text style={styles.footerQuoteTamilsecond3}>
-           முன் உண்டது செரித்ததைத் தெளிவாக அறிந்து, அதன் பின்னரே உண்பானால், அவனுடைய உடலுக்கு ‘மருந்து’ வேண்டாம்.
+           {"முன் உண்டது செரித்ததைத் தெளிவாக அறிந்து, அதன் பின்னரே உண்பானால், அவனுடைய உடலுக்கு ‘மருந்து’ வேண்டாம்.".replace(/["']/g, "")}
           </Text>
 
           <Text style={styles.footerQuoteTamilsecond4}>
-            “தண்ணீரைச் சாப்பிடு, உணவை அருந்து”
-            உண்மையான ஆரோக்கிய வாழ்க்கையின் ரகசியம்.
+            {"தண்ணீரைச் சாப்பிடு, உணவை அருந்து உண்மையான ஆரோக்கிய வாழ்க்கையின் ரகசியம்.".replace(/["']/g, "")}
           </Text>
 
           <Text style={styles.footerQuoteEnglish}>
-            💧 “Eat your water. Sip your meals. The secret of true healthy life.”
+            💧 Eat your water. Sip your meals. The secret of true healthy life.  
           </Text>
         </View>
       </View>
@@ -325,6 +322,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle2: { fontSize: 20,marginTop:-10, fontWeight: "700", color: "#fffb2c" },
+  footerTitle2: { fontSize: 20,marginTop:-20, fontWeight: "700", color: "#fffb2c" },
   footerSubtitle2: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

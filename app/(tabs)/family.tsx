@@ -20,25 +20,25 @@ export default function Family() {
       id: 1,
       img: require('../../assets/family1.png'),
       quote:
-        '“ I have secured my family\'s health, education, and finances, and aim to ensure long - term security, growth, and happiness for future generations.”',
+        ' I have secured my family\'s health, education, and finances, and aim to ensure long - term security, growth, and happiness for future generations.'.replace(/["']/g, ""),
     },
     {
       id: 2,
       img: require('../../assets/family2.png'),
       quote:
-        '“I’ve secured my family\'s well-being and plan to expand their opportunities, investing in their safety, education, and lifestyle.”',
+        'I’ve secured my family\'s well-being and plan to expand their opportunities, investing in their safety, education, and lifestyle.'.replace(/["']/g, ""),
     },
     {
       id: 3,
       img: require('../../assets/family3.png'),
       quote:
-        '“I\'ve secured my children\'s future through education, savings, and guidance, aiming for long-term financial support.”',
+        'I\'ve secured my children\'s future through education, savings, and guidance, aiming for long-term financial support.'.replace(/["']/g, ""),
     },
     {
       id: 4,
       img: require('../../assets/family4.png'),
       quote:
-        '“I prioritize my family, ensuring their financial security and providing emotional support even after me.”',
+        'I prioritize my family, ensuring their financial security and providing emotional support even after me.'.replace(/["']/g, ""),
     },
   ];
 
@@ -46,18 +46,11 @@ export default function Family() {
     <AutoScrollView style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>
-           Our family
-        </Text>
-        <Text style={styles.subtitle}>
-          True prosperity comes from both good health and financial security. 
-          With our transparent, collaborative approach, we bring your vision to life. 
-          Guided by our three-phase methodology, we consistently deliver value and 
-          adapt to change — building the best world:
-        </Text>
+        <Text style={styles.headerTitle}>{"Our family".replace(/["']/g, "")}</Text>
+        <Text style={styles.subtitle}>{"True prosperity comes from both good health and financial security. With our transparent, collaborative approach, we bring your vision to life. Guided by our three-phase methodology, we consistently deliver value and adapt to change — building the best world:".replace(/["']/g, "")}</Text>
         {/* Separate line for highlight text */}
         <View style={{ marginTop: 8 }}>
-          <Text style={styles.highlightText}>Healthier, Happier, and Wealthier</Text>
+          <Text style={styles.highlightText}>{"Healthier, Happier, and Wealthier".replace(/["']/g, "")}</Text>
         </View>
       </View>
      
@@ -67,7 +60,7 @@ export default function Family() {
         <View key={step.id} style={styles.step}>
           <Image source={step.img} style={styles.imageTop} />
           <View style={styles.textContainer}>
-            <Text style={styles.quote}>{step.quote}</Text>
+            <Text style={styles.quote}>{step.quote.replace(/["']/g, "")}</Text>
           </View>
         </View>
       ))}
@@ -199,6 +192,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, fontWeight: "700", marginTop:-10, color: "#fffb2c" },
+  footerTitle: { fontSize: 20, fontWeight: "700", marginTop:-20, color: "#fffb2c" },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });

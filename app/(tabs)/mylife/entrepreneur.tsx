@@ -28,71 +28,71 @@ export default function Entrepreneur() {
       {[
         {
           image: require("../../../assets/entp1.jpg"),
-          text: `"I want to be my own boss."
-"Freedom is my first goal, purpose is my next."
-"Self-leadership is my success story."
-"I want to build a life that reflects my values."`,
+          text: `I want to be my own boss.
+Freedom is my first goal, purpose is my next.
+Self-leadership is my success story.
+I want to build a life that reflects my values.`,
           bgColor: "#252525ff",
           textColor: "#fff",
         },
         {
           image: require("../../../assets/entp2.jpg"),
-          text: `"I'm ready to start, build, and grow something of my own."
-"I’m ready to take my first step toward independence."
-"I’m ready to shape my own success."`,
+          text: `"I'm ready to start, build, and grow something of my own.
+I’m ready to take my first step toward independence.
+I’m ready to shape my own success.`,
           bgColor: "#b9b9b2ff",
           textColor: "#000",
         },
         {
           image: require("../../../assets/entp3.jpg"),
-          text: `"Entrepreneurship is for freedom and financial independence."
-"I choose independence over comfort."
-"I’m ready to create my own future."
-"I’m ready to launch my own vision."`,
+          text: `Entrepreneurship is for freedom and financial independence.
+I choose independence over comfort.
+I’m ready to create my own future.
+I’m ready to launch my own vision.`,
           bgColor: "#a33b11ff",
           textColor: "#fff",
         },
         {
           image: require("../../../assets/entp4.jpg"),
-          text: `"I'm looking for entrepreneurship to create opportunities."
-"I’m drawn to entrepreneurship to make opportunities."
-"I choose entrepreneurship to shape opportunities."`,
+          text: `I'm looking for entrepreneurship to create opportunities.
+I’m drawn to entrepreneurship to make opportunities.
+I choose entrepreneurship to shape opportunities.`,
           bgColor: "#b3ece8c4",
           textColor: "#000",
         },
         {
           image: require("../../../assets/entp5.jpg"),
-          text: `"Yes, I believe in building dreams into reality."
-"Yes,I turn dreams into reality through my action."
-"I’m committed to turning vision into reality."
-"I believe that dreamsnto be built, not just dreamed."`,
+          text: `Yes, I believe in building dreams into reality.
+Yes,I turn dreams into reality through my action.
+I’m committed to turning vision into reality.
+Dreams are meant to be built, not just dreamed.`,
           bgColor: "#34657cff",
           textColor: "#fff",
         },
         {
           image: require("../../../assets/entp6.jpg"),
-          text: `"I want to lead instead of follow."
-"I choose to lead rather than follow."
-"I aim to set the direction, not just follow it."
-"Leadership is my choice, not conformity."`,
+          text: `I want to lead instead of follow.
+I choose to lead rather than follow.
+I aim to set the direction,not just follow it.
+Leadership is my choice, not conformity.`,
           bgColor: "#3c3d2dff",
           textColor: "#ffffffff",
         },
         {
           image: require("../../../assets/entp7.jpg"),
-          text: `"I am ready to take a risk for success."
-"I’m willing to take chances for success."
-"I’m ready to embrace challenges."
-"I’m not afraid to take bold steps towards my goal."`,
+          text: `I am ready to take a risk for success.
+I’m willing to take chances for success.
+I’m ready to embrace challenges.
+I’m not afraid to take bold steps towards my goal.`,
           bgColor: "#dbf79cff",
           textColor: "#000000ff",
         },
         {
           image: require("../../../assets/entp8.jpg"),
-          text: `"I have dreams of financial independence and impact."
-"I dream of creating wealth and making a difference."
-"My goal is to build economic freedom and inspire change."
-"My vision combines financial success with social impact."`,
+          text: `I have dreams of financial independence and impact.
+I dream of creating wealth and making a difference.
+My goal is to build economic freedom and inspire change.
+My vision combines financial success with social impact.`,
           bgColor: "#dfdfdfff",
           textColor: "#000",
         },
@@ -208,6 +208,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 10,
   },
-  footerTitle: { fontSize: 20, marginTop: -10, fontWeight: "700", color: "#fffb2c" },
+  footerTitle: { fontSize: 20, marginTop: -20, fontWeight: "700", color: "#fffb2c" },
   footerSubtitle: { fontSize: 16, fontWeight: "700", color: "#fffb2c" },
 });
