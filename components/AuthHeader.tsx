@@ -15,7 +15,7 @@ export default function AuthHeader({ title = '', subtitle = 'Manage your healthy
         source={
           (() => {
             try {
-              return require('../assets/DailyMoney.png');
+              return require('../assets/dailymoney.png');
             } catch (e) {
               return { uri: 'https://res.cloudinary.com/dq9zq6ubg/image/upload/v1758609670/daily-money_fbjvzk.png' };
             }

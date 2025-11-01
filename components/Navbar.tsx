@@ -30,10 +30,10 @@ export default function Navbar() {
   let logoSource: any = null;
   try {
     // ✅ Use static require — ensures image is bundled in release build
-    logoSource = require("../assets/DailyMoney.png");
+  logoSource = require("../assets/dailymoney.png");
   } catch (e) {
     console.warn("Logo not found, using fallback URI");
-    logoSource = { uri: "https://yourcdn.com/DailyMoney.png" }; // fallback URL
+  logoSource = { uri: "https://yourcdn.com/dailymoney.png" }; // fallback URL
   }
 
   async function onLogout() {

@@ -351,7 +351,7 @@ export default function HomeScreen() {
               activeOpacity={0.7}
             >
               <Image
-                source={require("../../assets/DailyMoney.png")}
+                source={require("../../assets/dailymoney.png")}
                 style={styles.footerLogo}
                 
               />
