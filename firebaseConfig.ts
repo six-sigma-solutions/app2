@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "react-native-dm",
   storageBucket: "react-native-dm.firebasestorage.app",
   messagingSenderId: "718070565957",
-  appId: "1:718070565957:android:bce9544431a2ffb665672c",
+    appId: "1:718070565957:android:4ca8ab1c774de08f65672c",
 };
 
 

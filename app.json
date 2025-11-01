@@ -18,7 +18,8 @@
       },
       "permissions": [
         "INTERNET"
-      ]
+      ],
+      "googleServicesFile": "./android/app/google-services.json"
     },
     "web": {
       "output": "static",

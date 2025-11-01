@@ -30,22 +30,44 @@ import { Platform } from 'react-native';
 import Navbar from '../components/Navbar';
 import { AuthProvider, useAuth } from '../contexts/AuthContext';
 
+
+import SignInScreen from './signin';
+import SignUpScreen from './signup';
+import ForgotPasswordScreen from './forgot-password';
+import { Tabs } from 'expo-router';
+
 function AuthGate() {
   const { user, loading } = useAuth();
-  const router = useRouter();
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (loading) return;
-    if (user) {
-      // If logged in, ensure we're at the home tab
-      router.replace('/(tabs)/home');
-    } else {
-      // If not logged in, go to signin
-      router.replace('/signin');
-    }
-  }, [user, loading, router]);
+  console.log('[AuthGate] loading:', loading, 'user:', user);
 
-  return null;
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff' }}>
+        <Text style={{ color: '#333', fontSize: 18 }}>Loading authentication...</Text>
+      </View>
+    );
+  }
+
+
+  if (user) {
+    // If logged in, render the main tabs stack (Navbar is handled in (tabs)/_layout.tsx)
+    return (
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack>
+    );
+  }
+
+  // If not logged in, show the auth stack (sign-in, sign-up, forgot-password)
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="signin" options={{ headerShown: false }} />
+      <Stack.Screen name="signup" options={{ headerShown: false }} />
+      <Stack.Screen name="forgot-password" options={{ headerShown: false }} />
+    </Stack>
+  );
 }
 
 
@@ -53,7 +75,7 @@ export default function RootLayout() {
   return (
     <ErrorBoundary>
       <AuthProvider>
-        <AuthStartup />
+        <AuthGate />
       </AuthProvider>
     </ErrorBoundary>
   );
