@@ -12,12 +12,15 @@ import AuthHeader from "../components/AuthHeader";
 import FloatingLabelInput from "../components/FloatingLabelInput";
 import { signUp } from "../lib/firebase";
 
+
 export default function SignUpScreen() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSignUp = async () => {
     if (!email || !password || !confirmPassword) {
@@ -56,13 +59,17 @@ export default function SignUpScreen() {
         label="Password"
         value={password}
         onChangeText={setPassword}
-        secureTextEntry
+        secureTextEntry={!showPassword}
+        rightIcon={showPassword ? "👁️" : "🙈"}
+        onRightIconPress={() => setShowPassword((v) => !v)}
       />
       <FloatingLabelInput
         label="Confirm Password"
         value={confirmPassword}
         onChangeText={setConfirmPassword}
-        secureTextEntry
+        secureTextEntry={!showConfirmPassword}
+        rightIcon={showConfirmPassword ? "👁️" : "🙈"}
+        onRightIconPress={() => setShowConfirmPassword((v) => !v)}
       />
       <TouchableOpacity
         style={styles.button}
@@ -90,14 +97,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#001f3f",
     justifyContent: "center",
-    padding: 24,
+    padding: 28,
   },
   headerWrapper: {
-    marginBottom: 24,
+    marginBottom: 25,
     alignItems: "center",
   },
   button: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#e70b0bff",
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: "center",
@@ -111,6 +118,6 @@ const styles = StyleSheet.create({
   link: {
     color: "#fff",
     textAlign: "center",
-    marginTop: 10,
+    marginTop: 30,
   },
 });

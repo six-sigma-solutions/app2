@@ -16,6 +16,7 @@ type Props = TextInputProps & {
   labelStyle?: TextStyle;
   inputStyle?: TextStyle;
   rightIcon?: React.ReactNode;
+  onRightIconPress?: () => void;
 };
 
 const FloatingLabelInput = React.forwardRef<any, Props>(
@@ -106,7 +107,15 @@ const FloatingLabelInput = React.forwardRef<any, Props>(
             {...rest}
           />
           {rest.rightIcon ? (
-            <View style={styles.iconWrap}>{rest.rightIcon}</View>
+            <View style={styles.iconWrap}>
+              <Text
+                onPress={rest.onRightIconPress}
+                style={{ color: '#fff', fontSize: 20, padding: 4 }}
+                accessibilityRole="button"
+              >
+                {rest.rightIcon}
+              </Text>
+            </View>
           ) : null}
         </View>
       </View>

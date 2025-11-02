@@ -5,11 +5,13 @@ import AuthHeader from "../components/AuthHeader";
 import FloatingLabelInput from "../components/FloatingLabelInput";
 import { signIn } from "../lib/firebase";
 
+
 export default function SignInScreen() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignIn = async () => {
     if (!email || !password) {
@@ -51,7 +53,9 @@ export default function SignInScreen() {
               label="Password"
               value={password}
               onChangeText={setPassword}
-              secureTextEntry
+              secureTextEntry={!showPassword}
+              rightIcon={showPassword ? "👁️" : "🙈"}
+              onRightIconPress={() => setShowPassword((v) => !v)}
             />
             <TouchableOpacity
               style={styles.button}
@@ -103,7 +107,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#e70b0bff",
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: "center",

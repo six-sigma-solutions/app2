@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Platform } from 'react-native';
 import { onAuthStateChanged, signOutUser } from '../lib/firebase';
 
 type AuthContextType = {
@@ -15,16 +16,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let unsub: (() => void) | undefined = undefined;
-    // Safety timeout: if auth initialization stalls (native module issues or
-    // networking), don't keep the whole app blank in production. After 5s
-    // fall back to unauthenticated state so routes (signin/signup) render.
-    const safetyTimeout = setTimeout(() => {
-      console.warn('[AuthProvider] auth init timeout - falling back to unauthenticated state');
-      setUser(null);
-      setLoading(false);
-    }, 5000);
 
     (async () => {
+      // Force sign-out on every launch (all platforms, including web)
+      try {
+        await signOutUser();
+        console.log('[AuthProvider] forced sign-out on every launch');
+      } catch (e) {
+        // ignore sign-out errors
+      }
+
+      // Safety timeout: if auth initialization stalls (native module issues or
+      // networking), don't keep the whole app blank in production. After 5s
+      // fall back to unauthenticated state so routes (signin/signup) render.
+      const safetyTimeout = setTimeout(() => {
+        console.warn('[AuthProvider] auth init timeout - falling back to unauthenticated state');
+        setUser(null);
+        setLoading(false);
+      }, 5000);
+
       unsub = await onAuthStateChanged((u) => {
         // auth responded; clear the safety timeout and update state
         try {
@@ -41,9 +51,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } catch (e) {
         // ignore
       }
-      try {
-        clearTimeout(safetyTimeout);
-      } catch (e) {}
     };
   }, []);
 
