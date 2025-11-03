@@ -10,7 +10,7 @@ const images = [
     require("../assets/solution3.png"),
 
     
-    require("../assets/solution-modified2.png"),
+    require("../assets/solution-modified2.jpg"),
 ];
 
 

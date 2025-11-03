@@ -4,9 +4,9 @@ import AutoScrollView from '../../../components/AutoScrollView';
 import { Link } from 'expo-router'; // Or use react-navigation if needed
 
 const president = {
-  name: "XXXXXX",
+  name: "C.Valarmathi",
   role: "President",
-  image: { uri: "https://via.placeholder.com/150/0d9488/ffffff?text=President" },
+  image: { uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1762149692/IMG_7131-Photoroom_xwfitz.png" },
 };
 
 export default function PresidentMsg() {

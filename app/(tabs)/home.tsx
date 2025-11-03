@@ -213,11 +213,9 @@ export default function HomeScreen() {
       <View style={styles.cardSection}>
         <View style={styles.videoCardContainer}>
           <Image
-            
             style={styles.videoBackground}
             source={require("../../assets/gif7.png")}
-            
-            />
+          />
         </View>
       </View>
 
@@ -303,7 +301,7 @@ export default function HomeScreen() {
         <View style={styles.teamGrid}>
           <View style={styles.teamMemberCard}>
             <Image
-              source={{ uri: "https://via.placeholder.com/120" }}
+              source={{ uri: "https://res.cloudinary.com/dgay8ba3o/image/upload/v1762151586/person-1_fy6xyi.jpg" }}
               style={styles.teamMemberImage}
             />
             <Text style={styles.teamMemberName}>S.Vasu</Text>
@@ -314,7 +312,7 @@ export default function HomeScreen() {
               source={{ uri: "https://via.placeholder.com/120" }}
               style={styles.teamMemberImage}
             />
-            <Text style={styles.teamMemberName}>Dr. KP Kosygan</Text>
+            <Text style={styles.teamMemberName}>xxxxx</Text>
           
           </View>
           <View style={styles.teamMemberCard}>
@@ -322,7 +320,7 @@ export default function HomeScreen() {
               source={{ uri: "https://via.placeholder.com/120" }}
               style={styles.teamMemberImage}
             />
-            <Text style={styles.teamMemberName}>R.K.Selvamani</Text>
+            <Text style={styles.teamMemberName}>xxxxx</Text>
             
           </View>
         </View>
@@ -353,12 +351,11 @@ export default function HomeScreen() {
               <Image
                 source={require("../../assets/dailymoney.png")}
                 style={styles.footerLogo}
-                
               />
             </TouchableOpacity>
             <Text style={styles.footerLogoText}></Text>
             <Text style={styles.footerAddress}>
-              Six Sigma Solutions, NKC Towers 1st Floor, Opp to Government
+              Six Sigma Solutions,{"\n"}NKC Towers 1st Floor, Opp to Government
               Engineering College, Salem-636011. TamilNadu, India.
             </Text>
             <Text style={styles.footerCopyright}>

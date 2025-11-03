@@ -14,6 +14,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, useRouter } from "expo-router";
 import { signOut } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
+import DrawerMenu from "./DrawerMenu";
 
 const BAR_HEIGHT = 65;
 const BUTTON_HEIGHT = 35;
@@ -25,7 +26,7 @@ export default function Navbar() {
   const [signingOut, setSigningOut] = useState(false);
   const { width: windowWidth } = useWindowDimensions();
 
-  const logoWidth = Math.max(80, Math.min(200, Math.floor(windowWidth * 0.32)));
+  const logoWidth = Math.max(120, Math.min(260, Math.floor(windowWidth * 0.40)));
 
   let logoSource: any = null;
   try {
@@ -50,18 +51,7 @@ export default function Navbar() {
   return (
     <SafeAreaView style={styles.safeArea} edges={["top"]}>
       <View style={styles.navbar}>
-        {/* Left Logo */}
-        <Link href="/home" asChild>
-          <TouchableOpacity activeOpacity={0.8} style={styles.logoWrapper}>
-            <Image
-              source={logoSource}
-              resizeMode="contain"
-              style={[styles.logo, { width: logoWidth, height: 75 }]}
-            />
-          </TouchableOpacity>
-        </Link>
-
-        {/* Right Hamburger */}
+        {/* Left Hamburger */}
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => setMenuOpen((s) => !s)}
@@ -72,9 +62,20 @@ export default function Navbar() {
           <View style={[styles.hamLine, { width: 18 }]} />
           <View style={[styles.hamLine, { width: 14 }]} />
         </TouchableOpacity>
+
+        {/* Right Logo */}
+        <Link href="/home" asChild>
+          <TouchableOpacity activeOpacity={0.8} style={styles.logoWrapper}>
+            <Image
+              source={logoSource}
+              resizeMode="contain"
+              style={[styles.logo, { width: logoWidth, height: 75 }]}
+            />
+          </TouchableOpacity>
+        </Link>
       </View>
 
-      {/* ✅ Modal fixed for Android release builds */}
+      {/* DrawerMenu Modal */}
       <Modal
         visible={menuOpen}
         transparent
@@ -86,47 +87,10 @@ export default function Navbar() {
         <TouchableWithoutFeedback onPress={() => setMenuOpen(false)}>
           <View style={styles.backdropFull} />
         </TouchableWithoutFeedback>
-
-        <View style={styles.menuOverlayFull} accessible accessibilityRole="menu">
-          <TouchableOpacity
-            style={styles.menuItem}
-            accessibilityRole="menuitem"
-            onPress={() => {
-              setMenuOpen(false);
-              router.push("/contact");
-            }}
-          >
-            <Text style={styles.menuText}>📞 Contact</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.menuItem}
-            accessibilityRole="menuitem"
-            onPress={async () => {
-              setMenuOpen(false);
-              setSigningOut(true);
-              try {
-                await onLogout();
-              } catch (e) {
-                try {
-                  await signOut();
-                  router.replace("/signin");
-                } catch (er) {
-                  console.error(er);
-                }
-              } finally {
-                setSigningOut(false);
-              }
-            }}
-          >
-            <Text style={[styles.menuText, { color: "#E21212" }]}>🚪 Sign Out</Text>
-          </TouchableOpacity>
-
-          {signingOut && (
-            <View style={styles.signingOutRow}>
-              <Text style={styles.menuText}>Signing out…</Text>
-            </View>
-          )}
+        <View style={styles.menuOverlayFull}>
+          <DrawerMenu
+            onClose={() => setMenuOpen(false)}
+          />
         </View>
       </Modal>
     </SafeAreaView>
@@ -152,16 +116,18 @@ const styles = StyleSheet.create({
     paddingLeft: 4,
   },
   logo: {
-    width: 220,
-    height: 90,
+    width: 460,
+    height: 400,
+    marginRight:-40,
   },
   hamburgerBtn: {
-    width: 44,
-    height: 44,
+    width: 50,
+    height: 47,
     borderRadius: 10,
     backgroundColor: "#f6f8fa",
     justifyContent: "center",
     alignItems: "center",
+    marginLeft: 20,
   },
   hamburgerBtnActive: { backgroundColor: "#e9f2ff" },
   hamLine: {
@@ -197,7 +163,7 @@ const styles = StyleSheet.create({
   },
   menuOverlayFull: {
     position: "absolute",
-    right: 12,
+    left: 12,
     top: 70,
     backgroundColor: "#fff",
     borderRadius: 10,
