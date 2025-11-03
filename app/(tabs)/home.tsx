@@ -8,6 +8,7 @@ import { Linking ,
   ImageBackground,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
+import { useIsFocused } from '@react-navigation/native';
 import { LinearGradient } from "expo-linear-gradient";
 import { Asset } from "expo-asset";
 import { useRouter } from "expo-router";
@@ -37,6 +38,7 @@ const philosophyPoints = [
   "Live Well-Live Wealthy-Every Single Day.",
 ];
 
+
 export default function HomeScreen() {
   const router = useRouter();
 
@@ -44,6 +46,7 @@ export default function HomeScreen() {
   const [showPopup, setShowPopup] = useState(false);
 
   const video = React.useRef<Video>(null);
+  const isFocused = useIsFocused();
   // State to track if the image is grayscale or color
   const [isGrayscale, setIsGrayscale] = useState(true);
 
@@ -51,14 +54,20 @@ export default function HomeScreen() {
   const [assetsReady, setAssetsReady] = useState(false);
   const [rerenderKey, setRerenderKey] = useState(0);
 
+  // Reload and play video when home page is focused
+  useEffect(() => {
+    if (isFocused && video.current) {
+      // For remote video, just try to play again
+      video.current.playAsync?.();
+    }
+  }, [isFocused]);
+
   useEffect(() => {
     let mounted = true;
     (async () => {
       try {
         await Asset.loadAsync([
           require("../../assets/bg-mask.png"),
-          require("../../assets/budhha-video6.mp4"),
-          require("../../assets/budhha-video6.mp4"),
         ]);
       } catch (e) {
         // ignore – still try to render
@@ -119,25 +128,24 @@ export default function HomeScreen() {
       {/* ========== HERO SECTION (FIXED) ========== */}
       <View style={styles.heroSection}>
         {/* Masked Buddha */}
-        {assetsReady ? (
-          <MaskedView
-            key={rerenderKey}
-            style={styles.maskedViewStyle}
-            maskElement={
-              <View
-                style={styles.maskContainer}
-                renderToHardwareTextureAndroid
-                collapsable={false}
-              >
-                <Image
-                  source={require("../../assets/bg-mask.png")}
-                  style={styles.maskImage}
-                />
-              </View>
-            }
-          >
-            {/* Put the hardware hint on a View, not TouchableOpacity */}
-            <View renderToHardwareTextureAndroid>
+        {/* Always show the video immediately. When mask asset is ready, apply mask. */}
+        <View style={styles.maskedViewStyle}>
+          {assetsReady ? (
+            <MaskedView
+              style={{ flex: 1 }}
+              maskElement={
+                <View
+                  style={styles.maskContainer}
+                  renderToHardwareTextureAndroid
+                  collapsable={false}
+                >
+                  <Image
+                    source={require("../../assets/bg-mask.png")}
+                    style={styles.maskImage}
+                  />
+                </View>
+              }
+            >
               <TouchableOpacity
                 activeOpacity={0.9}
                 onPress={() => setIsGrayscale(!isGrayscale)}
@@ -145,33 +153,36 @@ export default function HomeScreen() {
                 <Video
                   ref={video}
                   style={styles.buddhaImage}
-                   resizeMode={ResizeMode.COVER}
-            isLooping
-            shouldPlay
-            isMuted
-                  source={
-                    isGrayscale
-                      ? require("../../assets/budhha-video6.mp4")
-                      : require("../../assets/budhha-video6.mp4")
-
-                      
-                  }
-           
-                  
-                 
+                  resizeMode={ResizeMode.COVER}
+                  isLooping
+                  shouldPlay={true}
+                  isMuted
+                  useNativeControls={false}
+                  progressUpdateIntervalMillis={16}
+                  source={{ uri: "https://res.cloudinary.com/dgay8ba3o/video/upload/v1762162056/WhatsApp_Video_2025-11-03_at_2.56.43_PM_fobwfz.mp4" }}
                 />
               </TouchableOpacity>
-            </View>
-          </MaskedView>
-        ) : (
-          // Placeholder occupies space while assets preload
-          <View style={styles.maskedViewStyle}>
-            <Video
-              source={require("../../assets/budhha-video6.mp4")}
-              style={styles.buddhaImage}
-            />
-          </View>
-        )}
+            </MaskedView>
+          ) : (
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => setIsGrayscale(!isGrayscale)}
+              style={{ flex: 1 }}
+            >
+              <Video
+                ref={video}
+                style={styles.buddhaImage}
+                resizeMode={ResizeMode.COVER}
+                isLooping
+                shouldPlay={true}
+                isMuted
+                useNativeControls={false}
+                progressUpdateIntervalMillis={16}
+                source={{ uri: "https://res.cloudinary.com/dgay8ba3o/video/upload/v1762162056/WhatsApp_Video_2025-11-03_at_2.56.43_PM_fobwfz.mp4" }}
+              />
+            </TouchableOpacity>
+          )}
+        </View>
 
         {/* The hero text content now follows the masked image */}
         <View style={styles.heroContent}>

@@ -1,5 +1,6 @@
 
 import { useRouter } from 'expo-router';
+import { useAuth } from '../contexts/AuthContext';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
@@ -9,18 +10,34 @@ type DrawerMenuProps = {
 
 function DrawerMenu({ onClose }: DrawerMenuProps) {
   const router = useRouter();
+  const { signOut } = useAuth();
   const handleNavigate = (to: string) => {
-    const aboutRoute = to.startsWith('about/') ? '/' + to : null;
-    const mylifeRoute = to.startsWith('mylife/') ? '/(tabs)/mylife/' + to.split('/')[1] : null;
-    const tabsRoute = (!aboutRoute && !mylifeRoute) ? '/(tabs)/' + to : null;
-    let finalRoute = aboutRoute || mylifeRoute || tabsRoute;
-    if (to === 'life') {
-      Alert.alert('Not implemented', 'No "life" route exists.');
-      return;
+    let finalRoute = null;
+    if (to === 'contact') {
+      finalRoute = '/contact';
+    } else {
+      const aboutRoute = to.startsWith('about/') ? '/' + to : null;
+      const mylifeRoute = to.startsWith('mylife/') ? '/(tabs)/mylife/' + to.split('/')[1] : null;
+      const tabsRoute = (!aboutRoute && !mylifeRoute) ? '/(tabs)/' + to : null;
+      finalRoute = aboutRoute || mylifeRoute || tabsRoute;
+      if (to === 'life') {
+        Alert.alert('Not implemented', 'No "life" route exists.');
+        return;
+      }
     }
     if (onClose) onClose();
     console.log(`[DrawerMenu] Navigating to: ${finalRoute}`);
     if (finalRoute) router.push(finalRoute);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      if (onClose) onClose();
+      router.push('/signin');
+    } catch (e) {
+      Alert.alert('Sign out failed', typeof e === 'object' && e && 'message' in e ? (e as any).message : String(e));
+    }
   };
 
   return (
@@ -45,7 +62,7 @@ function DrawerMenu({ onClose }: DrawerMenuProps) {
       {/* Profile/Sign out/Contact */}
       <View style={styles.profileRow}>
         <Ionicons name="person-circle-outline" size={24} color="#333" />
-        <TouchableOpacity onPress={() => handleNavigate('signout')}>
+        <TouchableOpacity onPress={handleSignOut}>
           <Text style={styles.signOut}>Sign Out</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleNavigate('contact')}>
